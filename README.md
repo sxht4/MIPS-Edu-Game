@@ -1,7 +1,10 @@
 # MIPS Educational Game for CSE442 semester long project in Spring 2019
 Purpose: Educational game for MIPS beginner
+
 Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
+
 Last updated on 06 February 2019
+
 Project webpage will be available soon!
 
 # Internal Contact Channels

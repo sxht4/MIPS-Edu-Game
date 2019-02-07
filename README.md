@@ -5,10 +5,12 @@ Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
 Last updated on 06 February 2019
 
-Project webpage will be available soon!
+Website: https://cse442-project.miku.hbai.me
+
+Project webpage will be available soon! Stay tuned!
 
 # Internal Contact Channels
-* **We have MANDATORY meetings each Wednesday at 6pm(18:00-18:50) in Baldy 19**
+**IMPORTANT: We have MANDATORY meetings each Wednesday at 6pm(18:00-18:50) in Baldy 19**
 * Issue tracker on this github repository 
 * [Bulletin and Scrum Board](https://trello.com/b/NIahwqsH/cse442-mips-educational-game "Official Channel")
 * [Official Slack channel](https://cse442-workspace.slack.com/messages/GG14R0RF1/details/ "Official Slack channel for group activities")
@@ -21,7 +23,7 @@ Project webpage will be available soon!
 * ~~Emacs addon(Provided by Tianyu Cao)~~
 * ~~Chemistry review game(Provided by Xiang Li)~~
 
-# What was on our mind?
+## What was on our mind?
 |Research Subject|Examples|Impacts|Description|Difficulties|Author|Final Choice|
 |---|---|---|---|---|---|---|
 |Games that teach you how to code|1.Human Resource Machine 2.Code combat|Visionary programming makes learning programming more vivid and less abstract|Game that is based on visionary programming We prefer make it follows OOP like Java|1.How do we return the result from pseudo-code? 2.GUI heavy level design|Sai Cao|No|

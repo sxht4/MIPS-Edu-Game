@@ -15,7 +15,7 @@ Project webpage will be available soon! Stay tuned!
 * [Bulletin and Scrum Board](https://trello.com/b/NIahwqsH/cse442-mips-educational-game "Official Channel")
 * [Official Slack channel](https://cse442-workspace.slack.com/messages/GG14R0RF1/details/ "Official Slack channel for group activities")
 
-# Branch Protection Settings overview
+# Branch Protection Settings Overview
 * `master` branch requires TWO(2) people to approve other than the author
 * `development` branch reuiqres ONE(1) person to approve other than the author
 

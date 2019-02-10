@@ -2,12 +2,17 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIPS Education Game</title>
 
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
 </head>
 
-<body>
-    <canvas id="gameCanvas" width="480" height="320"></canvas>
+<body onload="initGame();">
+    <div id="screen"> 
+        <p>MIPS Education Game</p>
+        <canvas id="gameCanvas"  ></canvas>    
+    </div>
+
     <script src="JS/GameInit.js"> </script>
 </body>
 

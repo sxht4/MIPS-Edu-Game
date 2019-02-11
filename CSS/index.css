@@ -11,10 +11,18 @@ author: sai cao
    
 
 }
-#screen p{
+#screen h1{
     color: black;
     font-size: 20pt;
     text-align: center;
+}
+#screen p{
+
+    color: black;
+    font-size: 10pt;
+    text-align: center;
+
+
 }
 body {
     background-color: lightblue;

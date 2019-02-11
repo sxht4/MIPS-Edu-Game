@@ -1,0 +1,29 @@
+/*
+author: sai cao
+2 10 2019 
+*/
+#screen canvas{
+    display: block;
+    margin: 0 auto;
+    border: 1pt solid black;
+    align-self: center;
+
+   
+
+}
+#screen h1{
+    color: black;
+    font-size: 20pt;
+    text-align: center;
+}
+#screen p{
+
+    color: black;
+    font-size: 10pt;
+    text-align: center;
+
+
+}
+body {
+    background-color: lightblue;
+  }

@@ -2,6 +2,9 @@
 Under development since I need to understand these documentation
 
 # Mocha Unit Test Documentation
+
+I suggest you run a system check before start debugging this project. I will update these scripts when dependencies changes.
+
 ### Install on Windows
 
 * In progress

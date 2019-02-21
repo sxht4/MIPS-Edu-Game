@@ -19,6 +19,12 @@ Project webpage will be available soon! Stay tuned!
 * `master` branch requires TWO(2) people to approve other than the author
 * `development` branch reuiqres ONE(1) person to approve other than the author
 
+# Environment setup 
+
+Google Chrome + NPM + Mocha 
+
+Since it is OS independent, it should be able to debug on both Linux and Windows 10
+
 # Before choosing MIPS Educational Game in this project
 ## Ideas
 * MIPS educational game (Provided by Dr. Hartloff, and Adapted by Sai Cao)

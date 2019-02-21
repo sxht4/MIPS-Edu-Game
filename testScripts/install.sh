@@ -25,9 +25,9 @@ echo -e "INFO: npm version: \c"
 npm -v
 echo -e "INFO: node version: \c"
 node -v
+npm install -g npm
 npm install -g mocha
 npm install request --save
-npm install -g npm
 exit 0
 else
 echo "INFO: Installing nodejs since you do not have it on your machine"
@@ -43,6 +43,6 @@ echo -e "INFO: npm version: \c"
 npm -v
 echo -e "INFO: node version: \c"
 node -v
+npm install -g npm
 npm install -g mocha
 npm install request --save
-npm install -g npm

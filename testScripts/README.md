@@ -1,5 +1,5 @@
 # Unit Test Scripts
-Under development
+Under development since I need to understand these documentation
 
 # Mocha Unit Test Documentation
 ### Install on Windows
@@ -7,7 +7,6 @@ Under development
 * In progress
 
 ### Install on Ubuntu 18.04 LTS
-Use the installation script and run with `sudo ./install.sh`
-` sudo apt install curl && curl -sL https://deb.nodesource.com/setup_10.x | sudo bash - && sudo apt install nodejs && node -v && npm -v` where
-* You will need to update your operating system and flush `apt` cache
-* Add the program GPG key and then install
+Use the installation script and run with `sudo ./install.sh` unless you are root
+If you are root, run with `./install.sh` instead
+

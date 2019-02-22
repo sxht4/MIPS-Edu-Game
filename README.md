@@ -3,7 +3,7 @@ Purpose: Educational game for MIPS beginner
 
 Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
-Last updated on 06 February 2019
+Last updated on 21 February 2019
 
 Website: https://cse442-project.miku.hbai.me
 
@@ -18,6 +18,12 @@ Project webpage will be available soon! Stay tuned!
 # Branch Protection Settings Overview
 * `master` branch requires TWO(2) people to approve other than the author
 * `development` branch reuiqres ONE(1) person to approve other than the author
+
+# Environment setup 
+
+Google Chrome + NPM + Mocha 
+
+Since it is OS independent, it should be able to debug on both Linux and Windows 10
 
 # Before choosing MIPS Educational Game in this project
 ## Ideas

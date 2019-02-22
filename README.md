@@ -3,7 +3,7 @@ Purpose: Educational game for MIPS beginner
 
 Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
-Last updated on 06 February 2019
+Last updated on 21 February 2019
 
 Website: https://cse442-project.miku.hbai.me
 

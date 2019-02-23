@@ -1,5 +1,5 @@
 # MIPS Educational Game for CSE442 semester long project
-this is my brach
+
 Purpose: Educational game for MIPS beginner
 
 Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao

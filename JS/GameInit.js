@@ -10,7 +10,7 @@ var myGamePiece;
 function initGame() {
     myGamePiece = new component(10, 50, 25);
     myGameArea.start();
-    //Animation timer, animation will stop after 5 sec.
+    //Animation timer, animation will stop after 8 sec.
         var t=setInterval(function(){startTime()},800);
         var counter = 1;
         function startTime()
@@ -33,7 +33,7 @@ var myGameArea = {
         this.context = this.canvas.getContext("2d");
         CTX = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        this.interval = setInterval(updateGameArea, 50);
+        this.interval = setInterval(updateGameArea, 0);
 
     },
     stop : function() {

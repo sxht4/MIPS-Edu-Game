@@ -2,12 +2,14 @@
 // 2 10 2019 
 
 var CTX=undefined;
-var myGamePiece;
+var canvas=undefined;
+
 
 
 // var BACKGROUND_FPS =30;
 
 function initGame() {
+<<<<<<< HEAD
     myGamePiece = new component(10, 50, 25);
     myGameArea.start();
     //Animation timer, animation will stop after 8 sec.
@@ -108,3 +110,8 @@ function updateGameArea() {
 
 
 
+=======
+    var game=new Game(480,320,30);
+    game.run();
+}
+>>>>>>> origin/development

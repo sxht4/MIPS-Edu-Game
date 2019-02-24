@@ -1,6 +1,21 @@
 #!/bin/bash
 dt=$(date '+%d %h %Y %H:%M:%S');
 echo "INFO: Script started at $dt"
+unameOut="$(uname -s)"
+linux(){
+
+}
+function otherCases(){
+
+}
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+echo ${machine}
 echo "INFO: Your OS version strings"
 lsb_release -a
 echo "INFO: End of OS version strings"

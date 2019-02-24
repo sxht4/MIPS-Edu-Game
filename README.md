@@ -1,9 +1,10 @@
 # MIPS Educational Game for CSE442 semester long project
+
 Purpose: Educational game for MIPS beginner
 
 Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
-Last updated on 06 February 2019
+Last updated on 21 February 2019
 
 Website: https://cse442-project.miku.hbai.me
 
@@ -14,6 +15,16 @@ Project webpage will be available soon! Stay tuned!
 * Issue tracker on this github repository 
 * [Bulletin and Scrum Board](https://trello.com/b/NIahwqsH/cse442-mips-educational-game "Official Channel")
 * [Official Slack channel](https://cse442-workspace.slack.com/messages/GG14R0RF1/details/ "Official Slack channel for group activities")
+
+# Branch Protection Settings Overview
+* `master` branch requires TWO(2) people to approve other than the author
+* `development` branch reuiqres ONE(1) person to approve other than the author
+
+# Environment setup 
+
+Google Chrome + NPM + Mocha 
+
+Since it is OS independent, it should be able to debug on both Linux and Windows 10
 
 # Before choosing MIPS Educational Game in this project
 ## Ideas

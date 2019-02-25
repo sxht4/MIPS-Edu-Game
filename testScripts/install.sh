@@ -75,7 +75,7 @@ echo "$OSID"
 fi
 }
 function macOS(){
-echo "WARNING: Your machine is running macOS, and support is in beta"
+echo "WARNING: Your machine is running macOS, and support is currently in beta"
 echo "INFO: Installing brew in 10 seconds"
 sleep 10
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

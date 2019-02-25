@@ -40,8 +40,7 @@ echo "INFO: Done installing nodejs"
 install_mocha
 exit 0
 fi
-
-elif [ "$OSID" = "ID=centos" ] || [ "$OSID" = "ID=rhel" ]; then
+elif [ '$OSID" = "ID="centos"' ] || [ '$OSID" = "ID="rhel"' ]; then
 echo "Performing nececssary OS updates"
 yum update -y
 yum upgrade -y

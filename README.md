@@ -8,7 +8,7 @@ Last updated on 21 February 2019
 
 Website: https://cse442-project.miku.hbai.me
 
-Project webpage will be available soon! Stay tuned!
+~~Project webpage will be available soon! Stay tuned!~~
 
 # Internal Contact Channels
 **IMPORTANT: We have MANDATORY meetings each Wednesday at 6pm(18:00-18:50) in Baldy 19**

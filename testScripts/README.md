@@ -2,6 +2,8 @@
 
 Author: Hanzhang Bai
 
+Email address: `hbai [at] buffalo [dot] edu`
+
 Under development since I need to understand these documentation. I will put a few demos in this README when I finish setting them up.
 
 # Mocha Unit Test Documentation

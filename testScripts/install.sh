@@ -3,7 +3,6 @@ dt=$(date '+%d %h %Y %H:%M:%S');
 echo "INFO: Script started at $dt"
 echo "INFO: Getting info about your OS"
 unameOut="$(uname -s)"
-linux(){
 echo -e "INFO: Are you running this script as root or sudo? \c"
 if [[ $EUID -ne 0 ]]; then
    echo "No"
@@ -12,6 +11,7 @@ if [[ $EUID -ne 0 ]]; then
 else
 echo "Yes"
 fi
+linux(){
 OSID=$(cat /etc/os-release | grep -w "ID")
 if [ "$OSID" = "ID=ubuntu" ] || [ "$OSID" = "ID=debian" ]; then
 echo "INFO: Performing necessary software update"
@@ -41,7 +41,7 @@ install_mocha
 exit 0
 fi
 
-elif [ "$OSID" = "ID=centos" ]; then
+elif [ "$OSID" = "ID=centos" ] || [ "$OSID" = "ID=rhel" ]; then
 echo "Performing nececssary OS updates"
 yum update -y
 yum upgrade -y
@@ -60,22 +60,32 @@ exit 0
 else
 echo "INFO: Installing nodejs since you do not have it on your machine"
 echo "INFO: Adding key"
-#curl -sL https://deb.nodesource.com/setup_10.x | bash -
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 echo "INFO: Done adding key"
 echo "INFO: Installing nodejs"
-#apt install nodejs -y
+yum install nodejs -y
 echo "INFO: Done installing nodejs"
 install_mocha
 exit 0
 fi
 
 else
-echo "INFO: Your Linux OS is not yet supported"
+echo "INFO: Your Linux distribution is not yet supported"
 echo "$OSID"
 fi
 }
 function macOS(){
-echo "INFO: Your machine is running macOS, which is not yet supported"
+echo "WARNING: Your machine is running macOS, and support is in beta"
+echo "INFO: Installing brew in 10 seconds"
+sleep 10
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+echo "INFO: Begin pre-installation check"
+brew doctor
+echo "INFO: Updating brew"
+brew update
+echo "INFO: Installing npm"
+brew install node
+install_mocha
 }
 function cygwin(){
 echo "INFO: You are using cygwin, which is not yet supported"

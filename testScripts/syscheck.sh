@@ -21,7 +21,10 @@ echo "INFO: Consider install it through ./install.sh to resolve dependencies pro
 fi
 }
 function macOS(){
-echo "INFO: Your machine is running macOS, which is not yet supported"
+echo "INFO: Your machine is running macOS, and support is currently in beta"
+echo -e "INFO: brew version: \c"
+brew -v
+
 }
 function cygwin(){
 echo "INFO: You are using cygwin, which is not yet supported"

@@ -1,7 +1,12 @@
 # Unit Test Scripts
-Under development since I need to understand these documentation
+
+Author: Hanzhang Bai
+
+Under development since I need to understand these documentation. I will put a few demos in this README when I finish setting them up.
 
 # Mocha Unit Test Documentation
+
+Please notice: Even though you can debug it on any platform, I suggest you use Google Chrome with automatic update enabled. For the backend, use `mocha` for now unless otherwise stated.
 
 I suggest you run a system check before start debugging this project. I will update these scripts when dependencies changes.
 

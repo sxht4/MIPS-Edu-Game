@@ -40,7 +40,34 @@ echo "INFO: Done installing nodejs"
 install_mocha
 exit 0
 fi
-# elif [ "$OSID" = "ID=centos" ]; then
+
+elif [ "$OSID" = "ID=centos" ]; then
+echo "Performing nececssary OS updates"
+yum update -y
+yum upgrade -y
+echo -e "INFO: Checking if curl presents? \c"
+if hash curl 2>/dev/null; then
+echo -e "Yes, version: \c"
+curl -V | head -1
+else
+echo "No"
+echo "INFO: Installing curl since you do not have it on your machine"
+yum install curl -y
+fi
+if hash nodejs 2>/dev/null; then
+install_mocha
+exit 0
+else
+echo "INFO: Installing nodejs since you do not have it on your machine"
+echo "INFO: Adding key"
+#curl -sL https://deb.nodesource.com/setup_10.x | bash -
+echo "INFO: Done adding key"
+echo "INFO: Installing nodejs"
+#apt install nodejs -y
+echo "INFO: Done installing nodejs"
+install_mocha
+exit 0
+fi
 
 else
 echo "INFO: Your Linux OS is not yet supported"

@@ -1,9 +1,18 @@
-class GameSence {
-    constructor(game_canvas) {
+
+class GameScene {
+
+    constructor() {
         this.components = [];
-        this.game_canvas=game_canvas;
     }
-    getClickEelement(x, y) {
+    /**
+     *get Clicked Element or compoment in game sence.
+     *
+     * @param {number} x The x axis  coordinate
+     * @param {number} y The y axis  coordinate
+     * @returns compoment that be clicked or null if not be found
+     * @memberof GameScene
+     */
+    getClickedEelement(x, y) {
 
         for (var i = 0; i < this.components.length; i++) {
             component = this.components[i];
@@ -15,6 +24,13 @@ class GameSence {
         }
         return null;
     }
+    /**
+     *get  Element or compoment by thier ID in game sence.
+     *
+     * @param {string} id
+     * @returns compoment that be has the id or null if not be found
+     * @memberof GameScene
+     */
     getByID(id){
         for (var i = 0; i <  this.components.length; i++) {
             component = this.components[i];
@@ -24,6 +40,10 @@ class GameSence {
         }
         return null;
     }
+    /**
+     *draw this Scene
+     * @memberof GameScene
+     */
     updateFrame(){
         for (var i = 0; i < this.components.length; i++) {
             this.components[i].update();

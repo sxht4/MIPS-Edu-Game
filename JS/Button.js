@@ -1,30 +1,62 @@
+
+/**
+ *
+ *
+ * @class Button
+ * @extends {Component}
+ */
 class  Button extends Component
 {
 
-    //to do revise  with width and height
+    /**
+     *Creates an instance of Button.
+     * @param {string} id Name Id of component
+     * @param {(ImageData|string)} content The image or text in this component
+     * @param {number} x The x axis  coordinate
+     * @param {number} y The y axis  coordinate
+     * @param {number} width The width of this component in canvas
+     * @param {number} height The height of this component in canvas
+     * @memberof Button
+     */
     constructor (id,content,x,y,width,height){
 
         super(id,content,x,y,width,height,true);
 
     }
+    /**
+     * create a button instance by resource objcet
+     *
+     * @static
+     * @param {Obj in resource class } obj
+     * @returns instance
+     * @memberof Button
+     */
     static getButton(obj){
         console.log("new obj");
        return new Button(obj.id,obj.content,obj.x,obj.y,obj.content.width,obj.content.height,true);
 
     }
-    
-    static getButton2(name,img,x,y){
+    /**
+     *create a button instance with three parameters
+     *
+     * @static
+     * @param {Name Id of component} id
+     * @param {The image or text in this component } content
+     * @param {The x axis  coordinate} x
+     * @param {The y axis  coordinate} y
+     * @returns  button instance
+     * @memberof Button
+     */
+    static getButton2(id,content,x,y){
         console.log("call this");
-       return new Button(name,img,x,y,img.width,img.height,true);
+       return new Button(id,content,x,y,content.width,content.height,true);
     }
-    //update button postion 
+    /**
+     * update this Component for updateFrame function in GameScense
+     * @memberof Button
+     */
     update(){
         CTX.clearRect(this.x,this.y,this.content.width,this.content.height);
         CTX.drawImage(this.content, this.x,this.y);
     }
-    //call back 
-
-    
-
-
 }

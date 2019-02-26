@@ -18,9 +18,10 @@ class  Button extends Component
      * @param {number} height The height of this component in canvas
      * @memberof Button
      */
-    constructor (id,content,x,y,width,height){
+    constructor (id,content,x,y,width,height,event_controller){
 
         super(id,content,x,y,width,height,true);
+        this.event=event;
 
     }
     /**
@@ -58,5 +59,8 @@ class  Button extends Component
     update(){
         CTX.clearRect(this.x,this.y,this.content.width,this.content.height);
         CTX.drawImage(this.content, this.x,this.y);
+    }
+    excuteClick(){
+        this.event_controller.clickEvent();
     }
 }

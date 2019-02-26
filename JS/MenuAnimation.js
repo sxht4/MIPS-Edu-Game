@@ -1,6 +1,20 @@
+/**
+ * @class MenuAnimation
+ * @extends {Component}
+ */
 class MenuAnimation extends Component{
     
-    
+    /**
+     *Creates a text animation for menu.
+     * @param {string} id Name Id of component
+     * @param {(ImageData|string)} content The text content in this component
+     * @param {number} x The x axis  coordinate
+     * @param {number} y The y axis  coordinate
+     * @param {number} width The width of this component in canvas
+     * @param {number} height The height of this component in canvas
+     * @param {boolean} clickable If this component can be clicked
+     * @memberof MenuAnimation
+     */
     constructor(){
         var str="Mips Education Game";
         
@@ -9,13 +23,14 @@ class MenuAnimation extends Component{
         this.speedY = 0;    
         this.gravity = 0.1;
         this.gravitySpeed = 0;
-<<<<<<< HEAD
         this.bounce = 0.6;
-=======
-
->>>>>>> origin/development
     }
 
+    /**
+     * This function checks if text animation hit the bottom we set, if it does, a
+     * rebound motion will be made for it.   
+     * @memberof MenuAnimation
+     */
     hitBottom () {
 
         var rockbottom = 320/3 - this.height;
@@ -25,6 +40,11 @@ class MenuAnimation extends Component{
         }
 
     }
+
+    /**
+     * This function calculates x and y coordinate for text animation.   
+     * @memberof MenuAnimation
+     */
     move(){
 
         this.gravitySpeed += this.gravity;
@@ -34,6 +54,11 @@ class MenuAnimation extends Component{
 
     }
     
+
+    /**
+     * This function updates text animation's position in canvas.   
+     * @memberof MenuAnimation
+     */
     update(){
  	 
 

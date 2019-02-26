@@ -27,8 +27,8 @@ class  Button extends Component
      * create a button instance by resource objcet
      *
      * @static
-     * @param {Obj in resource class } obj
-     * @returns instance
+     * @param {Object} obj Obj in resource class
+     * @returns button instance
      * @memberof Button
      */
     static getButton(obj){
@@ -40,11 +40,11 @@ class  Button extends Component
      *create a button instance with three parameters
      *
      * @static
-     * @param {Name Id of component} id
-     * @param {The image or text in this component } content
-     * @param {The x axis  coordinate} x
-     * @param {The y axis  coordinate} y
-     * @returns  button instance
+     * @param {string} id Name Id of component
+     * @param {(ImageData|string)} content The image or text in this component 
+     * @param {number} x The x axis  coordinate
+     * @param {number} y The y axis  coordinate
+     * @returns button instance
      * @memberof Button
      */
     static getButton2(id,content,x,y){

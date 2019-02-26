@@ -3,26 +3,23 @@ class Event{
      /**
      * Creates an instance of Event.
      * @param {string} id Name Id of event
-     * @param {function} function Name of function
-     * @param {boolean} open If this event is opened
+     * @param {number} clickCount clickCount indicates how many times has this button has be clicked.  
      * @memberof Event
      */
 
-    constructor(id, func, open) {
+    constructor(id, clickCount) {
         this.id = id;
-        this.func = func;
-        this.open = open;
+  	this.clickCount = clickCount;
     }
 
      /**
-     * If the event is currently opened, then execute the event.
+     * All objects that extend event should overwrite this function.
      * @memberof Event
      */
 
-    execute(){
-        if(open == true){
-            this.func();
-     	}
+    excute()
+    {
+       console.log("WARNING: YOU FUCKED UP. WROTE YOUR OWN EXECUTION");
     }
 
 }

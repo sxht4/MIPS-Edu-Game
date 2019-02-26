@@ -1,8 +1,13 @@
 
 class GameScene {
-
+    /**
+     *Creates an instance of GameScene.
+     * @memberof GameScene
+     */
     constructor() {
+
         this.components = [];
+
     }
     /**
      *get Clicked Element or compoment in game sence.
@@ -12,10 +17,10 @@ class GameScene {
      * @returns compoment that be clicked or null if not be found
      * @memberof GameScene
      */
-    getClickedEelement(x, y) {
+    getClickedElement(x, y) {
 
         for (var i = 0; i < this.components.length; i++) {
-            component = this.components[i];
+           var component = this.components[i];
             if (x >= component.x && x <= component.x + component.width) {
                 if (y >= component.y && y <= component.y + component.height) {
                     return component;
@@ -49,5 +54,7 @@ class GameScene {
             this.components[i].update();
         }
     }
+
+
     
 }

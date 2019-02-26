@@ -1,0 +1,10 @@
+class Event{
+    constructor() {
+        
+    }
+    excute(){
+        
+
+    }
+
+}

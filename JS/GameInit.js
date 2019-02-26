@@ -3,7 +3,7 @@
  
 // global variables
 var CTX=undefined;
-var canvas=undefined;
+var GAME=undefined;
 
 function initGame() {
     var game=new Game(480,320,30);

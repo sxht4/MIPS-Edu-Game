@@ -6,7 +6,7 @@ class NewSenceEvents extends Event {
 
   
 
-    execute(){
+    excute(){
         CTX.clearRect(0, 0, 480, 320);
         GAME.addSence(this.new_sence);
     }

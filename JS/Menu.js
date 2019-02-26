@@ -19,9 +19,9 @@ class Menu extends GameScene {
      */
     initMenu() {
         console.log("init Menu");
-        var NewGameButton= Button.getButton(buttons[0]);
-        var ContinueButton= Button.getButton(buttons[1]);
-        var OptionsButton=Button.getButton(buttons[2]);
+        var NewGameButton= Button.getButton(RESOURCES.buttons[0]);
+        var ContinueButton= Button.getButton(RESOURCES.buttons[1]);
+        var OptionsButton=Button.getButton(RESOURCES.buttons[2]);
         this.components.push(NewGameButton);
         this.components.push(ContinueButton);
         this.components.push(OptionsButton);

@@ -34,19 +34,10 @@ class Component {
      * @memberof Component
      */
     update() {
+        
         CTX.clearRect(this.x, this.y,this.width,this.height);
         CTX.drawImage(this.content, this.x, this.y);
 
-    }
-
-    remove() {
-        delete this.id;
-        delete this.content;
-        delete this.x;
-        delete this.y;
-        delete this.height;
-        delete this.width;
-        delete this.clickable;
     }
 
 

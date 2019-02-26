@@ -1,8 +1,8 @@
 class EventController{
-    constructor(){
+    constructor(clickEvent,mouse_down_event){
 
-       this.click_event=new Event();
-       this.mouse_down_event=new Event();
+       this.click_event=clickEvent;
+       this.mouse_down_event=mouse_down_event; //click_event and mouse_down event are both event
 
     }
 

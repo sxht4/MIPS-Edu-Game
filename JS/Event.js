@@ -1,9 +1,9 @@
-class Event{
-    constructor() {
-        
+class Event {
+    constructor(id) {
+        this.id = id;
     }
-    excute(){
-        
+    excute() {
+
 
     }
 

@@ -87,7 +87,7 @@ class Game {
     }
     addSence(sence) {
 
-        this.game_sences.push(snece);
+        this.game_sences.push(sence);
 
     }
 }
@@ -95,7 +95,7 @@ function gameClick(event) {
     var x = event.offsetX;
     var y = event.offsetY;
     var element = GAME.getCurrentSence().getClickedElement(x, y);
-    if (element.clickable) {
+    if (element!=null&&element.clickable) {
         alert(element.id);
         element.excuteClick();
     }

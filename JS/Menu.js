@@ -4,9 +4,9 @@ class Menu extends GameScene {
      * @param {Object[]} game_images loaded image resource that will be used for init Menu
      * @memberof Menu
      */
-    constructor(game_images) {
+    constructor() {
         super();
-        this.game_images=game_images;
+       
         this.FPS=30;
         this.components=[];
         this.initMenu();
@@ -22,6 +22,9 @@ class Menu extends GameScene {
         var NewGameButton= Button.getButton(RESOURCES.buttons[0]);
         var ContinueButton= Button.getButton(RESOURCES.buttons[1]);
         var OptionsButton=Button.getButton(RESOURCES.buttons[2]);
+
+        NewGameButton.event_controller=new EventController(new NewSenceEvents(new selecthapterMenu()),new Event());
+
         this.components.push(NewGameButton);
         this.components.push(ContinueButton);
         this.components.push(OptionsButton);

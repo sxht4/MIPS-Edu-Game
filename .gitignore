@@ -1,1 +1,3 @@
-testScript/node_modules
+*.log
+**/node_modules/
+sth/

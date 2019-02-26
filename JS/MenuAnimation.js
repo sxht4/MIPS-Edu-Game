@@ -3,7 +3,6 @@ class MenuAnimation extends Component{
         var str="Mips Education Game";
         
         super("MenuAnimation",str,50,25,0,10,false);
-
         this.speedX = 0;
         this.speedY = 0;    
         this.gravity = 0.1;
@@ -28,11 +27,13 @@ class MenuAnimation extends Component{
     }
     
     update(){
+ 	 
 
-        this.move();
+        CTX.clearRect(this.x, this.y - 40, CTX.measureText("Mips Education Game").width, 49);
         CTX.font = "40px Arial";
-       // CTX.clearRect(this.x, this.y,CTX.measureText(this.content),this.height);
-        CTX.strokeText(this.content,this.x,this.y);
+        this.move();
+  
+        CTX.strokeText("Mips Education Game",this.x,this.y);
 
     }
 

@@ -6,8 +6,18 @@
  */
 class Component {
 
-  
-    constructor(id, content, x, y, width, height, clickable) {
+   /**
+    *Creates an instance of Component.
+    * @param {string} id Name Id of component
+    * @param {(ImageData|string)} content The image or text in this component
+    * @param {number} x The x axis  coordinate
+    * @param {number} y The y axis  coordinate
+    * @param {number} width The width of this component in canvas
+    * @param {number} height The height of this component in canvas
+    * @param {boolean} clickable if it can be clicked
+    * @memberof Component
+    */
+   constructor(id, content, x, y, width, height, clickable) {
         
         this.id = id;
         this.content = content;
@@ -19,7 +29,10 @@ class Component {
 
     }
 
-
+    /**
+     *update this Component for updateFrame function in GameScense
+     * @memberof Component
+     */
     update() {
         CTX.clearRect(this.x, this.y,this.width,this.height);
         CTX.drawImage(this.content, this.x, this.y);

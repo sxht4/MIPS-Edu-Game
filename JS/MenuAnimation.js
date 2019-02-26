@@ -1,4 +1,6 @@
 class MenuAnimation extends Component{
+    
+    
     constructor(){
         var str="Mips Education Game";
         
@@ -7,15 +9,21 @@ class MenuAnimation extends Component{
         this.speedY = 0;    
         this.gravity = 0.1;
         this.gravitySpeed = 0;
+<<<<<<< HEAD
         this.bounce = 0.6;
+=======
+
+>>>>>>> origin/development
     }
 
     hitBottom () {
+
         var rockbottom = 320/3 - this.height;
         if (this.y > rockbottom) {
             this.y = rockbottom;
             this.gravitySpeed = -(this.gravitySpeed * this.bounce);
         }
+
     }
     move(){
 

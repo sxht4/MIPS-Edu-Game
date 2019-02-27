@@ -1,4 +1,4 @@
-class Game {
+ class Game {
     /**
      *Creates an instance of Game.
      * @param {number} width width of the game canvas

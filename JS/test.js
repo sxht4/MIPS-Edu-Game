@@ -1,3 +1,7 @@
+import "./Game";
+
+
+
 var assert = require('assert');
 //Author: Hanzhang Bai
 //26 Feb 2019
@@ -11,8 +15,9 @@ describe('Basic Mocha String Test: Testing whether mocha and chai works or not',
 });
 describe('Game.js Unit Tests', function () {
     it('should return a correct frame number, which is 30', function () {
-        var someGame = Game(320,480,30);
-        assert.equal(this.FPS, 30);
+
+        var someGame =game.Game(320,480,30);
+        assert.equal(someGame.FPS, 30);
        });
     it('Game scene length should be 1', function () {
         var someGame = Game(320,480,30);

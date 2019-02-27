@@ -34,8 +34,12 @@ Here is the raw data
 
 `
   "devDependencies": {
+   
     "chai": "^4.2.0",
+
     "mocha": "^6.0.2",
+    
     "mocha-simple-html-reporter": "^1.1.0"
+  
   }
 `

@@ -29,17 +29,3 @@ Since it is OS independent, it should be able to debug on both Linux and Windows
 For more details please visit [here](https://github.com/sxht4/MIPS-Edu-Game/tree/hbai/instructions)
 
 As `package.json` suggests, you will need to have `mocha`, `chai`, and `mocha-simple-http-reporter` in order to start debugging and using unit tests
-
-Here is the raw data
-
-`
-  "devDependencies": {
-   
-    "chai": "^4.2.0",
-
-    "mocha": "^6.0.2",
-    
-    "mocha-simple-html-reporter": "^1.1.0"
-  
-  }
-`

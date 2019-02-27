@@ -53,7 +53,7 @@ echo "No"
 echo "INFO: Installing curl since you do not have it on your machine"
 yum install curl -y
 fi
-if hash nodejs 2>/dev/null; then
+if hash npm 2>/dev/null; then
 install_mocha
 exit 0
 else
@@ -103,7 +103,8 @@ echo -e "INFO: node version: \c"
 node -v
 npm install -g npm
 npm install -g mocha
-npm install --save-dev mocha-simple-html-reporter
+npm install -g chai
+npm install -g mocha-simple-html-reporter
 npm install request --save
 echo "INFO: Done installing 'mocha', 'mocha-simple-html-reporter'"
 }

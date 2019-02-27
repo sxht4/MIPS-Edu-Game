@@ -26,6 +26,8 @@ Google Chrome + NPM + Mocha
 
 Since it is OS independent, it should be able to debug on both Linux and Windows 10
 
+For more details please visit [here](https://github.com/sxht4/MIPS-Edu-Game/tree/hbai/instructions)
+
 # Before choosing MIPS Educational Game in this project
 ## Ideas
 * MIPS educational game (Provided by Dr. Hartloff, and Adapted by Sai Cao)

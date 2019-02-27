@@ -57,6 +57,20 @@ class Game {
 
         }
 
+        for (let j = 0; j < RESOURCES.game_UI_button.length; j++) {
+            var img = new Image();
+            img.onload = function () {
+                console.log("loading image " + RESOURCES.game_UI_button[j].id);
+                if (count == end) {
+                    self.start();
+                }
+                count++;
+            }
+            img.src = RESOURCES.game_UI_button[j].src;
+            RESOURCES.game_UI_button[j].content = img;
+
+        }
+
 
 
         this.game_canvas.addEventListener("click", gameClick);

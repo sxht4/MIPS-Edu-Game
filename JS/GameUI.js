@@ -8,5 +8,7 @@ class GameUI extends GameScene{
 
     initMenu(){
         console.log("init GaneUI Menu");
+        var gameUIButton= Button.getButton(RESOURCES.game_UI_button[0]);
+        this.components.push(gameUIButton);
     }
 }

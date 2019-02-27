@@ -1,7 +1,6 @@
 class Menu extends GameScene {
     /**
      *Creates an instance of Menu.
-     * @param {Object[]} game_images loaded image resource that will be used for init Menu
      * @memberof Menu
      */
     constructor() {

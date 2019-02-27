@@ -8,6 +8,7 @@ var RESOURCES = {
     ],
     select_chapter_button: [{ content: null, id: "Chapter1Button", src: "Assets/select_chapter_menu/chapter1.png", x: 10, y: 10 },
     
-    ]
+    ],
+    game_UI_button: [{ content: null, id: "gameUIButton", src: "Assets/game_UI/game_UI.jpg", x: 0, y: 0}]
 }
 

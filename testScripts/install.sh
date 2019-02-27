@@ -1,8 +1,9 @@
 #!/bin/bash
 dt=$(date '+%d %h %Y %H:%M:%S');
 echo "INFO: Script started at $dt"
-echo "INFO: Getting info about your OS"
+echo -e "INFO: Getting info about your OS"
 unameOut="$(uname -s)"
+echo " done"
 echo -e "INFO: Are you running this script as root or sudo? \c"
 if [[ $EUID -ne 0 ]]; then
    echo "No"
@@ -13,7 +14,25 @@ echo "Yes"
 fi
 linux(){
 OSID=$(cat /etc/os-release | grep -w "ID")
-if [ "$OSID" = "ID=ubuntu" ] || [ "$OSID" = "ID=debian" ]; then
+OSLIKE=$(cat /etc/os-release | grep -w "ID_LIKE")
+if [ "$OSID" = "ID=ubuntu" ] || [ "$OSID" = "ID=debian" ] || [ "$OSLIKE" = "ID_LIKE=debian" ]; then
+echo "INFO: Starting installer..."
+if [ "$1" = "--disable-timer" ]; then
+echo "INFO: Timer disabled"
+else
+echo "INFO: Counting"
+echo -e "5\c"
+sleep 1
+echo -e "..4\c"
+sleep 1
+echo -e "..3\c"
+sleep 1
+echo -e "..2\c"
+sleep 1
+echo -e "..1\c"
+sleep 1
+echo -e "..0"
+fi
 echo "INFO: Performing necessary software update"
 apt update
 apt upgrade -y
@@ -75,8 +94,19 @@ fi
 }
 function macOS(){
 echo "WARNING: Your machine is running macOS, and support is currently in beta"
-echo "INFO: Installing brew in 10 seconds"
-sleep 10
+echo "INFO: Installing brew in 5 seconds"
+echo "INFO: Counting"
+echo -e "5\c"
+sleep 1
+echo -e "..4\c"
+sleep 1
+echo -e "..3\c"
+sleep 1
+echo -e "..2\c"
+sleep 1
+echo -e "..1\c"
+sleep 1
+echo -e "..0"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo "INFO: Begin pre-installation check"
 brew doctor

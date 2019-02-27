@@ -1,5 +1,6 @@
 var assert = require('assert');
 //Author: Hanzhang Bai
+//26 Feb 2019
 describe('Basic Mocha String Test: Testing whether mocha and chai works or not', function () {
  it('should return number of charachters in a string', function () {
         assert.equal("Hello".length, 5);

@@ -135,6 +135,10 @@ npm install -g npm
 npm install -g mocha
 npm install -g chai
 npm install -g mocha-simple-html-reporter
+npm install -g babel-core
+npm install -g babel-preset-es2015
+npm install -g babel-preset-react
+npm install -g browserify
 npm install request --save
 echo "INFO: Done installing 'mocha', 'mocha-simple-html-reporter'"
 }

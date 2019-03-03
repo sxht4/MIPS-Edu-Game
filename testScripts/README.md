@@ -4,7 +4,30 @@ Author: Hanzhang Bai
 
 Email address: `hbai [at] buffalo [dot] edu`
 
-Under development since I need to understand these documentation. I will put a few demos in this README when I finish setting them up.
+~~Under development since I need to understand these documentation. I will put a few demos in this README when I finish setting them up.~~
+
+## Writing your first test 
+1.export your test class or function or varibles in the file. 
+
+exmpale: 
+
+```javascript
+class Foo {
+}
+module.exports=Foo; 
+```
+
+
+
+2. in the test script  
+
+```javascript
+var Foo= require(path to your test class): 
+```
+
+3. start test in the project index with npm test 
+
+You can modify the scirpt attribute in package.json to change script ran by npm test. 
 
 # Getting Started on Mocha Unit Test
 
@@ -38,13 +61,4 @@ Use the installation script and run with `sudo ./install.sh` unless you are root
 If you are root, run with `./install.sh` instead
 
 Unlike Linux OSes, it will install `brew` instead as a pre-requisite. 
-### Start a test 
-1.export your test class or function or varibles in the file. 
-exmpale: 
-class Foo { 
-} 
-module.exports=Foo; 
-2. in the test script  
-var Foo= require(path to your test class): 
-3. start test in the project index with npm test 
-   you can modify the scirpt attribute in package.json to change script ran by npm test. 
+

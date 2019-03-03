@@ -6,7 +6,7 @@ Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
 Last updated on 21 February 2019
 
-Website: https://cse442-project.miku.hbai.me
+Website: https://testbench.cse442-project.miku.hbai.me
 
 ~~Project webpage will be available soon! Stay tuned!~~
 
@@ -29,3 +29,10 @@ Since it is OS independent, it should be able to debug on both Linux and Windows
 For more details please visit [here](https://github.com/sxht4/MIPS-Edu-Game/tree/hbai/instructions)
 
 As `package.json` suggests, you will need to have `mocha`, `chai`, and `mocha-simple-http-reporter` in order to start debugging and using unit tests
+
+Use `install.sh` under testScripts folder
+
+# Deploy our project
+If this is released to the end user, use `deploy.sh`
+
+However, if it is internal testing, just use `install.sh --deployment-only` , where `install.sh` is under testScripts folder

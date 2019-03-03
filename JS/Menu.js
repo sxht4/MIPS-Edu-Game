@@ -22,7 +22,7 @@ class Menu extends GameScene {
         var ContinueButton= Button.getButton(RESOURCES.buttons[1]);
         var OptionsButton=Button.getButton(RESOURCES.buttons[2]);
 
-        NewGameButton.event_controller=new EventController(new NewSenceEvents(new selecthapterMenu()),new Event());
+        NewGameButton.event_controller=new EventController(new NewSenceEvents(new SelectChapterMenu()),new Event());
 
         this.components.push(NewGameButton);
         this.components.push(ContinueButton);

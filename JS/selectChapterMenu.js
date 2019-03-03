@@ -1,4 +1,4 @@
-class selecthapterMenu extends GameScene{
+class SelectChapterMenu extends GameScene{
     constructor() {
         super();
         this.FPS=30;

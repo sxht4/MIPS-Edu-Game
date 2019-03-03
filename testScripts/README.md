@@ -5,7 +5,7 @@ Author: Hanzhang Bai and Sai Cao
 Updated on 03 March 2019
 
 ## Writing your first test case
-1.Export your test class, function, or varibles in the file. 
+1. Export your test class, function, or varibles in the file. 
 
 Exmpale: 
 
@@ -23,7 +23,7 @@ var Foo= require(path to your test class):
 
 3. Start test in the project index with npm test 
 
-You can modify the scirpt attribute in `package.json` to change script run by npm test. 
+-> You can modify the scirpt attribute in `package.json` to change script run by npm test. 
 
 # Getting Started on Mocha Unit Test
 

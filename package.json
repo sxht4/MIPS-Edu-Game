@@ -1,0 +1,29 @@
+{
+  "name": "mips-edu-game",
+  "version": "1.0.0",
+  "description": "MIPS Educational Game Demo Pre-Alpha",
+  "main": "./testScripts/test.js",
+  "scripts": {
+    "test": "mocha ./testScripts/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxht4/MIPS-Edu-Game.git"
+  },
+  "keywords": [
+    "MIPS",
+    "CSE341",
+    "education"
+  ],
+  "author": "Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sxht4/MIPS-Edu-Game/issues"
+  },
+  "homepage": "https://github.com/sxht4/MIPS-Edu-Game#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "mocha-simple-html-reporter": "^1.1.0"
+  }
+}

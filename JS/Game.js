@@ -1,4 +1,5 @@
-class Game {
+
+ class Game {
     /**
      *Creates an instance of Game.
      * @param {number} width width of the game canvas
@@ -8,15 +9,13 @@ class Game {
      */
     constructor(width, height, FPS) {
         console.log("create game instance");
-        this.game_canvas = document.getElementById('gameCanvas');
-        this.game_canvas.width = width;
-        this.game_canvas.height = height;
+  
         // all Game sence contain in this array.
         this.game_sences = [];
         // the current sence shown by game.
         this.current_sence = this.game_sences.length;
         this.FPS = FPS;
-        CTX = this.game_canvas.getContext("2d");
+        
     }
     /**
      *load Assets for game
@@ -73,7 +72,7 @@ class Game {
 
 
 
-        this.game_canvas.addEventListener("click", gameClick);
+    
     }
     /**
      * run the game
@@ -114,3 +113,4 @@ function gameClick(event) {
         element.excuteClick();
     }
 }
+module.exports=Game;

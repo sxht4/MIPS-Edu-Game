@@ -1,10 +1,29 @@
 # Unit Test Scripts Examples
 
-Author: Hanzhang Bai
+Author: Hanzhang Bai and Sai Cao
 
-Email address: `hbai [at] buffalo [dot] edu`
+Updated on 03 March 2019
 
-Under development since I need to understand these documentation. I will put a few demos in this README when I finish setting them up.
+## Writing your first test case
+1. Export your test class, function, or varibles in the file. 
+
+Exmpale: 
+
+```javascript
+class Foo {
+}
+module.exports=Foo; 
+```
+
+2. In the test script  
+
+```javascript
+var Foo= require(path to your test class): 
+```
+
+3. Start test in the project index with npm test 
+
+-> You can modify the scirpt attribute in `package.json` to change script run by npm test. 
 
 # Getting Started on Mocha Unit Test
 
@@ -37,4 +56,5 @@ Use the installation script and run with `sudo ./install.sh` unless you are root
 
 If you are root, run with `./install.sh` instead
 
-Unlike Linux OSes, it will install `brew` instead as a pre-requisite.
+Unlike Linux OSes, it will install `brew` instead as a pre-requisite. 
+

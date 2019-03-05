@@ -1,3 +1,4 @@
+Event=require('../JS/Event');
 class NewSenceEvents extends Event {
     /**
      *Creates an instance of NewSenceEvents.
@@ -17,3 +18,5 @@ class NewSenceEvents extends Event {
     }
    
 }
+
+module.exports=NewSenceEvents;

@@ -1,4 +1,6 @@
-
+var Component=require('./Component');
+EventController=require('./EventController');
+Event=require('./Event');
 /**
  *
  *
@@ -21,7 +23,7 @@ class  Button extends Component
     constructor (id,content,x,y,width,height,event_controller){
 
         super(id,content,x,y,width,height,true);
-        this.event=event;
+        //this.event=event;
 
     }
     /**
@@ -64,3 +66,5 @@ class  Button extends Component
         this.event_controller.clickEvent();
     }
 }
+
+module.exports=Button;

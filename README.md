@@ -23,10 +23,22 @@ Highlights:
 ### Game UI
 ![UI](https://github.com/sxht4/MIPS-Edu-Game/blob/sprint/Assets/game_UI/game_UI.jpg)
 
-1. MIPS code can be write  in this area
-2. show memory  status in runtime of MIPS code 
-3. show CPU registers 
-4. show the instruction menu
-5. buttons that control game speed
+1. MIPS code can be write in this area
+2. Show memory status in runtime of MIPS code 
+3. Show CPU registers 
+4. Show the instruction menu
+5. Buttons that control game speed
 6. NPC to provide help
-7. a character play role of cpu
+7. A character play role of CPU
+
+# Deploy our project
+
+System requirement:
+
+* CentOS 7/Ubuntu 18.04 LTS
+
+* Apache 2
+
+Run this script on your Linux OS.
+
+`wget https://www.acsu.buffalo.edu/~hbai/install.sh && sudo ./install.sh --deployment-only`

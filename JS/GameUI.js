@@ -1,3 +1,9 @@
+Button=require('./Button');
+GameScene=require('./GameScene');
+ RESOURCES=require('../JSON/Resources');
+ Event=require('../JS/Event');
+ EventController=require('../JS/EventController');
+ NewSenceEvents=require('../JS/NewSenceEvent');
 class GameUI extends GameScene{
     constructor() {
         super();
@@ -12,3 +18,5 @@ class GameUI extends GameScene{
         this.components.push(gameUIButton);
     }
 }
+
+module.exports=GameUI;

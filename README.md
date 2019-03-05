@@ -1,3 +1,3 @@
 # Branch Info
 
-This branch is use for Unit test, which accompanies with our project code as well. 
+this branch is create add new features, after the feature is added, it will be test in Unit Test Branch

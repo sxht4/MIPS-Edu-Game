@@ -4,7 +4,7 @@
   "description": "MIPS Educational Game Demo Pre-Alpha",
   "main": "./testScripts/test.js",
   "scripts": {
-    "test": "mocha ./testScripts/testSelectChapterMenu.js"
+    "test": "mocha ./testScripts/testSelectChapterMenu.js ./testScripts/test.js"
   },
   "repository": {
     "type": "git",

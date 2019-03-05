@@ -1,6 +1,6 @@
-# Unit Test Scripts Examples
+# Unit Test Scripts Examples and Getting Started
 
-Author: Hanzhang Bai and Sai Cao
+Authors: Hanzhang Bai and Sai Cao
 
 Updated on 03 March 2019
 
@@ -21,7 +21,7 @@ module.exports=Foo;
 var Foo= require(path to your test class): 
 ```
 
-3. Start test in the project index with npm test 
+3. Start test in the project index with `npm test` 
 
 -> You can modify the scirpt attribute in `package.json` to change script run by npm test. 
 

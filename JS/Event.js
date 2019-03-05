@@ -1,3 +1,8 @@
+/**
+ * all events in game will extends this class
+ *
+ * @class Event
+ */
 class Event{
 
      /**
@@ -9,7 +14,7 @@ class Event{
 
     constructor(id, clickCount) {
         this.id = id;
-  	this.clickCount = clickCount;
+  	    this.clickCount = clickCount;
     }
 
      /**
@@ -19,7 +24,7 @@ class Event{
 
     excute()
     {
-       console.log("WARNING: YOU FUCKED UP. WROTE YOUR OWN EXECUTION");
+      throw "null event";
     }
 
 }

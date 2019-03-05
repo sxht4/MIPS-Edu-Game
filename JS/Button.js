@@ -21,7 +21,7 @@ class  Button extends Component
     constructor (id,content,x,y,width,height,event_controller){
 
         super(id,content,x,y,width,height,true);
-        this.event=event;
+
 
     }
     /**
@@ -33,7 +33,6 @@ class  Button extends Component
      * @memberof Button
      */
     static getButton(obj){
-        console.log("new obj");
        return new Button(obj.id,obj.content,obj.x,obj.y,obj.content.width,obj.content.height,true);
 
     }
@@ -49,7 +48,7 @@ class  Button extends Component
      * @memberof Button
      */
     static getButton2(id,content,x,y){
-        console.log("call this");
+
        return new Button(id,content,x,y,content.width,content.height,true);
     }
     /**

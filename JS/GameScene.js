@@ -1,4 +1,8 @@
-
+/**
+ *all the Scene for this game will extend this class 
+ *ex:Menu,SelcetChapterMenu
+ * @class GameScene
+ */
 class GameScene {
     /**
      *Creates an instance of GameScene.
@@ -58,4 +62,3 @@ class GameScene {
 
     
 }
-module.exports=GameScene;

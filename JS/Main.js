@@ -2,9 +2,10 @@
 // 2 10 2019
  
 // global variables
+//Context of game_canvas
 var CTX=undefined;
 var GAME=undefined;
-module.exports=Game;
+
 function main() {
     game_canvas = document.getElementById('gameCanvas');
     var game=new Game(game_canvas.width,game_canvas.height,30);

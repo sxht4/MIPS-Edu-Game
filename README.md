@@ -23,11 +23,12 @@ Highlights:
 
 1. MIPS code can be write in this area
 2. Show memory status in runtime of MIPS code 
-3. Show CPU registers 
-4. Show the instruction menu
-5. Buttons that control game speed
-6. NPC to provide help
-7. A character play role of CPU
+3. Show registers in MIPS
+4. Show the MIPS instruction menu. player can drag from the menu and choose registers and meomory instead of typing the code.
+5. Buttons that control game speed, run the code and pause.
+6. NPC to provide help and give the task.
+7. A character play role of CPU.
+Animation will show the prococess that how the MIPS instruction is excuted for player.
 
 # Deploy our project
 

@@ -8,7 +8,7 @@ Last updated on 05 March 2019
 
 Website: https://testbench.miku.hbai.me/Game.html
 
-# Release note
+# Release Note
 
 Version 1 (05-Mar-2019)
 

@@ -40,4 +40,4 @@ System requirement:
 
 Run this script on your Linux OS.
 
-`wget https://www.acsu.buffalo.edu/~hbai/install.sh && sudo ./install.sh --deployment-only`
+`wget https://www.acsu.buffalo.edu/~hbai/install.sh && sudo chmod u+x install.sh && sudo ./install.sh --deployment-only && rm install.sh`

@@ -6,9 +6,7 @@ Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
 Last updated on 05 March 2019
 
-Website: http://testbench.miku.hbai.me
-
-HTTPS support will be added soon
+Website: http://testbench.miku.hbai.me/Game.html
 
 # Release note
 

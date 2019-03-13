@@ -1,4 +1,5 @@
 #!/bin/bash
+hostname=""
 dt=$(date '+%d %h %Y %H:%M:%S');
 echo "INFO: Script started at $dt"
 echo -e "INFO: Getting info about your OS\c"

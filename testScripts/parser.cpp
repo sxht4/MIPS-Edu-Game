@@ -85,6 +85,7 @@ int main(int argc, char* argv[]){
     /* Error code explanation:
      * 1    General error
      * 2    Apache's .conf file is already configured 
+     * 3    Improper arguments
      * 39   File length mismatch
      * 40   File checksum mismatch
      * 41   Apache .conf file contains unrecognised character
@@ -116,7 +117,19 @@ int main(int argc, char* argv[]){
     //Exit program due to previous configuration
     if(returnVal==1)return 2;   
     }
+    else if(argone=="--generate-files"){
+    hostname=argv[3];
+    fileLocation=argv[2];
+    std::cout<<"Checking hostname and file location length... ";
+    if(hostname.length()>0&&fileLocation.length()>0){
+    std::cout<<"All good"<<std::endl;
+    return generateNewFiles(fileLocation,hostname);
+    }else{
+    std::cout<<"ERROR"<<std::endl<<"Please double check if you properly entered arguments for both 'hostname' and 'file location'"<<std::endl;
+    return 3;
+    }
 
+    }
     else{
     std::cout<<"You stepped into a situation where we cannot handle yet"<<std::endl;
     std::cout<<"argc: "<<argc<<std::endl;

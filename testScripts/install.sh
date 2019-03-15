@@ -1,5 +1,7 @@
 #!/bin/bash
+# User configs must be done here!
 hostname=""
+ssl="false"
 dt=$(date '+%d %h %Y %H:%M:%S');
 echo "INFO: Script started at $dt"
 echo -e "INFO: Getting info about your OS\c"
@@ -191,6 +193,52 @@ case "${unameOut}" in
     MINGW*)     mingw;;
     *)          others;;
 esac
+}
+function deploy_linux(){
+if [ "$OSID" = "ID=ubuntu" ] || [ "$OSID" = "ID=debian" ] || [ "$OSLIKE" = "ID_LIKE=debian" ]; then
+echo "INFO: Your Linux distribution is Debian/Ubuntu"
+apt update -y
+apt upgrade -y
+echo "INFO: Installing Apache"
+apt install apache2 -y
+echo "INFO: Downloading our project..."
+wget https://www.acsu.buffalo.edu/~hbai/target.tar
+echo "INFO: Downloading parser..."
+wget https://www.acsu.buffalo.edu/~hbai/parseoptimised
+echo "INFO: Generating files..."
+./parseoptimised --generate-files sample.conf $hostname
+echo "INFO: Making sure your Apache is ready to go"
+./parseoptimised --parse sampleConfig.conf
+echo "INFO: Extracting our project..."
+tar -xvf target.tar -C /etc/www/$hostname/html/
+echo "INFO: Cleaning up..."
+rm -rf target.tar
+rm -rf parseoptimised
+elif [ '$OSID" = "ID="centos"' ] || [ '$OSID" = "ID="rhel"' ]; then
+echo "INFO: Your Linux distribution is CentOS or Red Hat"
+yum update -y
+yum install httpd
+echo "INFO: Downloading our project..."
+wget https://www.acsu.buffalo.edu/~hbai/target.tar
+echo "INFO: Downloading parser..."
+wget https://www.acsu.buffalo.edu/~hbai/parseoptimised
+echo "INFO: Generating files..."
+./parseoptimised --generate-files sample.conf $hostname
+echo "INFO: Making sure your Apache is ready to go"
+./parseoptimised --parse sampleConfig.conf
+echo "INFO: Extracting our project..."
+tar -xvf target.tar -C /etc/www/$hostname/html/
+echo "INFO: Making sure user has access to these files"
+chmod 755 -R /etc/www/
+echo "INFO: Setting up firewalld..."
+echo "INFO: Setting up SELinux..."
+
+echo "INFO: Cleaning up..."
+rm -rf target.tar
+rm -rf parseoptimised
+else
+echo "INFO: Your Linux distribution is not supported yet"
+fi
 }
 if [ "$1" = "--post-installation-only" ]; then
 post_installation

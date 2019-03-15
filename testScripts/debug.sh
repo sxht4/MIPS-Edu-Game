@@ -24,7 +24,8 @@ echo "******************************************"
 echo "Process exited with exit code $?"
 echo "INFO: Generate new file mode for this program. DRY RUN"
 echo "******************************************"
-
+./$1 --generate-files sample.conf mikudayo.hbai.me
+echo "Process exited with exit code $?"
 }
 echo "Compiling without optimisation..."
 STARTTIMEC=`date +%s.%N`

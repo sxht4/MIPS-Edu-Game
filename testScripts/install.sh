@@ -1,4 +1,8 @@
 #!/bin/bash
+# Author: Hanzhang Bai
+# Last updates 15 Mar 2019
+# Copyright sxht4(2019) under MIT Licence
+
 # User configs must be done here!
 hostname=""
 ssl="false"

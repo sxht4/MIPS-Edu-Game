@@ -4,7 +4,8 @@
 #include <vector>
 /*
  * Author: Hanzhang Bai
- * Last updates at 13 Mar 2019
+ * Last updates at 15 Mar 2019
+ * Copyright sxht4(2019) under MIT Licence
  */
 //These global variables are indicating status of this program
 bool quiet=false;

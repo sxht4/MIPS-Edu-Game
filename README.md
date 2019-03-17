@@ -1,3 +1,4 @@
 # Branch Info
-develop code panel in MIPS GAME
+This Branch is created for improving Game Graphics and UI appearance 
+
 

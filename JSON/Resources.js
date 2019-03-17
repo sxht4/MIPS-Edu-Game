@@ -1,6 +1,6 @@
 // this could be rewrited as JSON 
 // load information for Menu Buttons
-
+var SOUNDS=undefined;
 var RESOURCES = {
     buttons: [{ content: null, id: "NewGameButton", src: "Assets/menu/NewGameButton.jpg", x: 180, y: 200 },
     { content: null, id: "ContinueButton", src: "Assets/menu/ContinueButton.jpg", x: 180, y: 238 },
@@ -11,4 +11,5 @@ var RESOURCES = {
     ],
     game_UI_button: [{ content: null, id: "gameUIButton", src: "Assets/game_UI/game_UI.jpg", x: 0, y: 0}]
 }
+
 

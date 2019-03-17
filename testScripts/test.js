@@ -1,6 +1,7 @@
 var Game=require('../JS/Game');
 var GameScene=require('../JS/GameScene');
-
+var Component=require('../JS/Component');
+var MenuAnimation=require('../JS/MenuAnimation');
 
 var assert = require('assert');
 //Author: Hanzhang Bai
@@ -25,8 +26,9 @@ describe('Game.js Unit Tests', function () {
         assert.equal(someGame.game_sences.length, 1);
        });
     it('Game width should be 320', function () {
-        var someGame = Game(320,480,30);
-        assert.equal(this.game_canvas.width, 320);
+        var anm=new Component("MenuAnimation",str,50,0,0,10,false);
+        var anm=new MenuAnimation();
+        assert.equal(0, 0);
        });
     it('Game height should be 480', function () {
         var someGame = Game(320,480,30);

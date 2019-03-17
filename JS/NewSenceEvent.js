@@ -11,7 +11,8 @@ class NewSenceEvents extends Event {
 
   
 
-    excute(){
+    excute(x,y){
+        SOUNDS.click.play();
         CTX.clearRect(0, 0, 480, 320);
         GAME.addSence(this.new_sence);
     }

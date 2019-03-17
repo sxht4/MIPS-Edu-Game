@@ -23,6 +23,7 @@
      */
     initGame() {
         GAME = this;
+        SOUNDS=new GameSounds();
         console.log("init game");
         let count = 0;
         let end=RESOURCES.buttons.length+RESOURCES.select_chapter_button.length-1;
@@ -104,13 +105,13 @@
 
     }
 }
+
 function gameClick(event) {
     var x = event.offsetX;
     var y = event.offsetY;
     var element = GAME.getCurrentSence().getClickedElement(x, y);
     if (element!=null&&element.clickable) {
         alert(element.id);
-        element.excuteClick();
+        element.excuteClick(x,y);
     }
 }
-module.exports=Game;

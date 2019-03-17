@@ -110,7 +110,6 @@ function gameClick(event) {
     var element = GAME.getCurrentSence().getClickedElement(x, y);
     if (element!=null&&element.clickable) {
         alert(element.id);
-        element.excuteClick();
+        element.excuteClick(x,y);
     }
 }
-module.exports=Game;

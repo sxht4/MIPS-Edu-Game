@@ -2,6 +2,7 @@
  * @class MenuAnimation
  * @extends {Component}
  */
+
 class MenuAnimation extends Component{
     
     /**

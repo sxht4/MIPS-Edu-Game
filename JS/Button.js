@@ -60,7 +60,7 @@ class  Button extends Component
         CTX.clearRect(this.x,this.y,this.content.width,this.content.height);
         CTX.drawImage(this.content, this.x,this.y);
     }
-    excuteClick(){
-        this.event_controller.clickEvent();
+    excuteClick(x,y){
+        this.event_controller.clickEvent(x,y);
     }
 }

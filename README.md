@@ -19,7 +19,7 @@ Highlights:
 * Working buttons
 
 ### Game UI
-![UI](https://github.com/sxht4/MIPS-Edu-Game/blob/sprint/Assets/game_UI/game_UI.jpg)
+![UI](https://github.com/sxht4/MIPS-Edu-Game/blob/master/Assets/game_UI/Game%20UI.png)
 
 1. MIPS code can be write in this area
 2. Show memory status in runtime of MIPS code 

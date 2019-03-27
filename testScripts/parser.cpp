@@ -42,7 +42,7 @@ for(int i=0;i<containers.size();i++){
         std::cout<<"Reading has been terminated due to your previous config of '"<<newConfig<<"'"<<std::endl;
         std::cout<<"We believe there is no need to configure this step for you"<<std::endl;
         infile.close();
-        return 1;
+        return 2;
         }
     }
 }
@@ -114,9 +114,7 @@ int main(int argc, char* argv[]){
     std::cout<<"Apache parser, version 1.0"<<std::endl<<"Author: Hanzhang Bai"<<std::endl;
     std::cout<<"We as SXHT4 would like to welcome you to use our self-deployment system"<<std::endl;
     std::cout<<"Starting parser..."<<std::endl;
-    int returnVal=parseApache(fileLocation);
-    //Exit program due to previous configuration
-    if(returnVal==1)return 2;   
+    return parseApache(fileLocation);   
     }
     else if(argone=="--generate-files"){
     hostname=argv[3];

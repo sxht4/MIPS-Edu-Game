@@ -69,4 +69,4 @@ Definitely run `debug.sh` first, since that's where my unit tests are.
 
 ### Machine setup
 
-Ubuntu 18.04 LTS with C++11
+Ubuntu 18.04 LTS with default `g++`

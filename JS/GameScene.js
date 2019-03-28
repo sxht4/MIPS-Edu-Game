@@ -6,6 +6,7 @@ class GameScene {
      */
     constructor() {
         this.layers = [];
+        this.layers.push(new Layer());
 
     }
   
@@ -18,10 +19,11 @@ class GameScene {
      * @memberof GameScene
      */
     addComponent(component,index ){
-
+        console.log(index);
         var size=this.layers.length;
-        if(indedx=-1){
+        if(index==-1){
             this.layers[size-1].addComponent(component);
+            return;
         }
         if( index>size-1&&index<-1){
             throw 'out of bound fail to add component @'+component.id+' at '+index;
@@ -73,7 +75,7 @@ class GameScene {
      */
     updateFrame(){
 
-        for (var i = 0; i < this.components.length; i++) {
+        for (var i = 0; i < this.layers.length; i++) {
             this.layers[i].updateLayer();
         }
 

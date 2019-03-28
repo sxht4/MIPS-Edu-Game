@@ -1,3 +1,5 @@
+
+
 class SelectChapterMenu extends GameScene{
     constructor() {
         super();
@@ -12,7 +14,7 @@ class SelectChapterMenu extends GameScene{
         var chapter1Button= Button.getButton(RESOURCES.select_chapter_button[0]);
 
         chapter1Button.event_controller=new EventController(new NewSenceEvents(new GameUI()), new Event());
-        this.components.push(chapter1Button);
+        this.addComponent(chapter1Button,-1);
         console.log("finish loadding selectChapterButtons");
         //this.components.push(new MenuAnimation());
     }

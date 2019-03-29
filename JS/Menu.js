@@ -1,3 +1,9 @@
+/**
+ * @version 3/29/2019
+ * @author Sai Cao
+ * @class Menu
+ * @extends {GameScene}
+ */
 class Menu extends GameScene {
     /**
      *Creates an instance of Menu.

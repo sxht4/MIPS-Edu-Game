@@ -17,7 +17,7 @@ class Event{
      * @memberof Event
      */
 
-    excute()
+    excute(x,y)
     {
        console.log("WARNING: YOU FUCKED UP. WROTE YOUR OWN EXECUTION");
     }

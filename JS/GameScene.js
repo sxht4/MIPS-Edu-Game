@@ -5,8 +5,31 @@ class GameScene {
      * @memberof GameScene
      */
     constructor() {
+        this.layers = [];
+        this.layers.push(new Layer());
 
-        this.components = [];
+    }
+  
+
+    /**
+     * add Component to this Game Sence
+     *
+     * @param {Object} component
+     * @param {number} index the layer index to be added, -1 to add top layer
+     * @memberof GameScene
+     */
+    addComponent(component,index ){
+        console.log(index);
+        var size=this.layers.length;
+        if(index==-1){
+            this.layers[size-1].addComponent(component);
+            return;
+        }
+        if( index>size-1&&index<-1){
+            throw 'out of bound fail to add component @'+component.id+' at '+index;
+        }else{
+            this.layers[index].addComponent(component);
+        }
 
     }
     /**
@@ -19,15 +42,14 @@ class GameScene {
      */
     getClickedElement(x, y) {
 
-        for (var i = 0; i < this.components.length; i++) {
-           var component = this.components[i];
-            if (x >= component.x && x <= component.x + component.width) {
-                if (y >= component.y && y <= component.y + component.height) {
-                    return component;
-                }
+        for (var i = 0; i < this.layers.length; i++) {
+           var component = this.layers[i].getClickedElement(x,y);
+            if (component!=null) {
+                return component;
             }
         }
         return null;
+
     }
     /**
      *get  Element or compoment by thier ID in game sence.
@@ -37,25 +59,26 @@ class GameScene {
      * @memberof GameScene
      */
     getByID(id){
+
         for (var i = 0; i <  this.components.length; i++) {
-            component = this.components[i];
-            if (id ===component.ID) {
-                    return component;
+            component = this.layers[i].getByID(id);
+            if (component!=null) {
+                return component;
             }
         }
         return null;
+
     }
     /**
      *draw this Scene
      * @memberof GameScene
      */
     updateFrame(){
-        for (var i = 0; i < this.components.length; i++) {
-            this.components[i].update();
+
+        for (var i = 0; i < this.layers.length; i++) {
+            this.layers[i].updateLayer();
         }
+
     }
-
-
     
 }
-module.exports=GameScene;

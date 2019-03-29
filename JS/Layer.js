@@ -1,4 +1,9 @@
-
+/**
+ * a part of game scene for mulitlayered feature
+ * @version 3/29/2019
+ * @author Sai Cao
+ * @class Layer
+ */
 class Layer {
     /**
      *Creates an instance of Layer in GameSence.
@@ -9,8 +14,15 @@ class Layer {
         this.components = [];
 
     }
-    addComponent(compoment){
-        this.components.push(compoment);
+    /**
+     *
+     *add a component into this layer.
+     * @param {Component} component
+     * @memberof Layer
+     */
+    addComponent(component){
+        
+        this.components.push(component);
     }
     /**
      *get Clicked Element or compoment in this Layer.

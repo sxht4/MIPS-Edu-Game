@@ -1,7 +1,7 @@
 
 /**
- *
- *
+ * @version 3/29/2019
+ * @author Sai Cao
  * @class Button
  * @extends {Component}
  */

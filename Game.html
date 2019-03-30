@@ -11,9 +11,18 @@
     <div id="screen"> 
         <h1>MIPS Educational Game</h1>
         <canvas id="gameCanvas" width="480" height="320" ></canvas>   
-        <p id=description>This is pre-alpha stage of developmental demo. We will add a description in the future.</p> 
-
+        <p id=description>This is pre-alpha stage of developmental demo. We will add a description in the future. 
+        <button onclick="getUserAgent()">Browser Info</button></p>
+        <p id=useragent></p>
     </div>
+    <script>
+        function getUserAgent() {
+          var x = "Your browser: " + navigator.userAgent;
+          document.getElementById("useragent").innerHTML = x;
+        }
+    </script>
+
+    <script type="text/javascript" src="./JS/Interpreter/Interpreter.js"></script>  
     <script type="text/javascript" src="./JS/GameScene.js"></script>  
     <script type="text/javascript" src="./JS/Component.js"></script> 
     <script type="text/javascript" src="./JS/Button.js"></script> 

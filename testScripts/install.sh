@@ -1,11 +1,12 @@
 #!/bin/bash
 # Author: Hanzhang Bai
-# Last updates 15 Mar 2019
+# Last updates 30 Mar 2019
 # Copyright sxht4(2019) under MIT Licence
 
 # User configs must be done here!
 hostname=""
-ssl="false"
+ssl=false
+# End of user configs
 dt=$(date '+%d %h %Y %H:%M:%S');
 echo "INFO: Script started at $dt"
 echo -e "INFO: Getting info about your OS\c"
@@ -215,6 +216,9 @@ echo "INFO: Making sure your Apache is ready to go"
 ./parseoptimised --parse sampleConfig.conf
 echo "INFO: Extracting our project..."
 tar -xvf target.tar -C /etc/www/$hostname/html/
+echo "INFO: Starting Apache, and create apache at the boot time"
+systemctl start httpd
+systemctl enable httpd
 echo "INFO: Cleaning up..."
 rm -rf target.tar
 rm -rf parseoptimised
@@ -222,6 +226,8 @@ elif [ '$OSID" = "ID="centos"' ] || [ '$OSID" = "ID="rhel"' ]; then
 echo "INFO: Your Linux distribution is CentOS or Red Hat"
 yum update -y
 yum install httpd
+echo "INFO: Setting up SELinux..."
+setsebool -P httpd_unified 1
 echo "INFO: Downloading our project..."
 wget https://www.acsu.buffalo.edu/~hbai/target.tar
 echo "INFO: Downloading parser..."
@@ -234,9 +240,14 @@ echo "INFO: Extracting our project..."
 tar -xvf target.tar -C /etc/www/$hostname/html/
 echo "INFO: Making sure user has access to these files"
 chmod 755 -R /etc/www/
-echo "INFO: Setting up firewalld..."
+echo -e "INFO: Setting up firewalld...\c"
+firewall-cmd --permanent --zone=public --add-service=http
+firewall-cmd --reload
 echo "INFO: Setting up SELinux..."
-
+setsebool -P httpd_unified 1
+echo "INFO: Starting Apache, and create apache at the boot time"
+systemctl start httpd
+systemctl enable httpd
 echo "INFO: Cleaning up..."
 rm -rf target.tar
 rm -rf parseoptimised

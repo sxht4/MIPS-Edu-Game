@@ -11,8 +11,8 @@ var GAME_CANVAS =undefined
  */
 function main() {
     game_canvas = document.getElementById('gameCanvas');
-    var game=new Game(game_canvas.width,game_canvas.height,30);
-    game.run();
+    GAME=new Game(game_canvas.width,game_canvas.height,30);
+    GAME.run();
     CTX =game_canvas.getContext("2d");
     game_canvas.addEventListener("click", gameClick);
     GAME_CANVAS=game_canvas;

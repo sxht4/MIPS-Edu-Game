@@ -30,7 +30,7 @@ class GameScene {
      * @memberof GameScene
      */
     addComponent(component,index ){
-        console.log(index);
+        
         var size=this.layers.length;
         if(index==-1){
             this.layers[size-1].addComponent(component);

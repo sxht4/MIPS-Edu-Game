@@ -11,8 +11,7 @@ class SelectChapterMenu extends GameScene{
     initMenu(){
         //CTX.clearRect(0, 0, 480, 320);
         console.log("create select game menu");
-        var chapter1Button= Button.getButton(RESOURCES.select_chapter_button[0]);
-
+        var chapter1Button= Button.getButton('Chapter_1_Button',185,210,0,0,'Chapter 1');
         chapter1Button.event_controller=new EventController(new NewSenceEvents(new GameUI()), new Event());
         this.addComponent(chapter1Button,-1);
         console.log("finish loadding selectChapterButtons");

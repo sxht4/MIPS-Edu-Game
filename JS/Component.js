@@ -36,7 +36,6 @@ class Component {
      */
     update() {
         
-        CTX.clearRect(this.x, this.y,this.width,this.height);
         CTX.drawImage(this.content, this.x, this.y);
 
     }

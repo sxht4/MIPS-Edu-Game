@@ -63,8 +63,8 @@ class MenuAnimation extends Component{
     update(){
  	 
 
-        CTX.clearRect(this.x, this.y, CTX.measureText("Mips Education Game").width, 49);
         CTX.font = "40px Arial";
+        CTX.strokeStyle = "white";
         this.move();
   
         CTX.strokeText("Mips Education Game",this.x,this.y+40);

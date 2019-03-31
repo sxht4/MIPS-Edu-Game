@@ -1,0 +1,42 @@
+// this could be rewrited as JSON 
+// load information for Menu Buttons
+var SOUNDS = undefined;
+var RESOURCES = {
+    buttons:
+        [
+            {
+                content: null,
+                id: 'button_sprites_grey',
+                sprites: [[0, 0, 8, 8], [0, 42, 80, 119], [100, 100, 86, 86], [29, 29, 30, 29]],
+                src: 'Assets/buttons/Button1_grey.png'
+            },
+            {
+                content: null, id: 'button_sprites_green', ontent: null,
+                id: 'button_sprites_grey',
+                sprites: [[0, 0, 8, 8], [0, 42, 80, 119], [100, 100, 86, 86], [29, 29, 30, 29]],
+                src: 'Assets/buttons/Button1_green.png'
+            }
+        ],
+
+    CPU_sprites: [{ content: null, id: "CPU_sprites", src: "Assets/CPU/CPU_Sprite_Sheet.png", x: 0, y: 0 }],
+    MenuBackGround:
+        [
+            {
+                content: null, id: 'Big Planet', ontent: null,
+                id: 'Big Planet',
+                sprites: null,
+                src: 'Assets/menu/Big Planet.png'
+            },
+            {
+                content: null, id: 'button_sprites_green', ontent: null,
+                id: 'Stars',
+                sprites:null,
+                src: 'Assets/menu/Stars.png'
+            }
+        ]
+}
+
+
+
+
+

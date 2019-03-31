@@ -1,4 +1,8 @@
-
+/**
+ * @version 2019/3/29
+ * @author Sai Cao
+ * @class GameScene
+ */
 class GameScene {
     /**
      *Creates an instance of GameScene.
@@ -9,8 +13,15 @@ class GameScene {
         this.layers.push(new Layer());
 
     }
-  
-
+    /**
+     * append a layer to this Scene
+     *
+     * @memberof GameScene
+     */
+    addLayer(){
+        
+        this.layers.push(new Layer());
+    }
     /**
      * add Component to this Game Sence
      *
@@ -42,7 +53,7 @@ class GameScene {
      */
     getClickedElement(x, y) {
 
-        for (var i = 0; i < this.layers.length; i++) {
+        for (var i = this.layers.length-1; i >=0 ; i++) {
            var component = this.layers[i].getClickedElement(x,y);
             if (component!=null) {
                 return component;

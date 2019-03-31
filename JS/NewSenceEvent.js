@@ -10,7 +10,13 @@ class NewSenceEvents extends Event {
     }
 
   
-
+    /**
+     *
+     * excute to add GameSence for game
+     * @param {number} x
+     * @param {number} y
+     * @memberof NewSenceEvents
+     */
     excute(x,y){
         CTX.clearRect(0, 0, 480, 320);
         GAME.addSence(this.new_sence);

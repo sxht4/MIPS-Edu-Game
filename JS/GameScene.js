@@ -1,4 +1,8 @@
-
+/**
+ * @version 2019/3/29
+ * @author Sai Cao
+ * @class GameScene
+ */
 class GameScene {
     /**
      *Creates an instance of GameScene.
@@ -6,10 +10,18 @@ class GameScene {
      */
     constructor() {
         this.layers = [];
+        this.layers.push(new Layer());
 
     }
-  
-
+    /**
+     * append a layer to this Scene
+     *
+     * @memberof GameScene
+     */
+    addLayer(){
+        
+        this.layers.push(new Layer());
+    }
     /**
      * add Component to this Game Sence
      *
@@ -18,10 +30,11 @@ class GameScene {
      * @memberof GameScene
      */
     addComponent(component,index ){
-
+        console.log(index);
         var size=this.layers.length;
-        if(indedx=-1){
+        if(index==-1){
             this.layers[size-1].addComponent(component);
+            return;
         }
         if( index>size-1&&index<-1){
             throw 'out of bound fail to add component @'+component.id+' at '+index;
@@ -40,7 +53,7 @@ class GameScene {
      */
     getClickedElement(x, y) {
 
-        for (var i = 0; i < this.layers.length; i++) {
+        for (var i = this.layers.length-1; i >=0 ; i++) {
            var component = this.layers[i].getClickedElement(x,y);
             if (component!=null) {
                 return component;
@@ -73,7 +86,7 @@ class GameScene {
      */
     updateFrame(){
 
-        for (var i = 0; i < this.components.length; i++) {
+        for (var i = 0; i < this.layers.length; i++) {
             this.layers[i].updateLayer();
         }
 

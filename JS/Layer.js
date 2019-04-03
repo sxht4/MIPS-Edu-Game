@@ -10,7 +10,6 @@ class Layer {
      * @memberof Layer
      */
     constructor() {
-        
         this.components = [];
 
     }

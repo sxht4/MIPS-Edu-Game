@@ -91,7 +91,9 @@ class Button extends Component {
     excuteClick(x, y) {
         this.event_controller.clickEvent(x, y);
     }
-
+    excuteLongPress(x,y){
+        this.event_controller.mouseDownEvent(x,y);
+    }
 
     drawSprite(color, index) {
 

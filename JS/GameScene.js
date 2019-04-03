@@ -30,7 +30,7 @@ class GameScene {
      * @memberof GameScene
      */
     addComponent(component,index ){
-        console.log(index);
+        
         var size=this.layers.length;
         if(index==-1){
             this.layers[size-1].addComponent(component);
@@ -53,7 +53,7 @@ class GameScene {
      */
     getClickedElement(x, y) {
 
-        for (var i = this.layers.length-1; i >=0 ; i++) {
+        for (var i = this.layers.length-1; i >=0 ; i--) {
            var component = this.layers[i].getClickedElement(x,y);
             if (component!=null) {
                 return component;

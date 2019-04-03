@@ -1,3 +1,9 @@
+/**
+ *
+ *  strat menu of Game
+ * @class Menu
+ * @extends {GameScene}
+ */
 class Menu extends GameScene {
     /**
      *Creates an instance of Menu.
@@ -23,9 +29,9 @@ class Menu extends GameScene {
         this.addComponent(new MenuBackGround(),-1);
         this.addLayer();
         
-        var NewGameButton= Button.getButton('New_Game_Button',185,210,0,0,'New GAME');
+        var NewGameButton= Button.getButton('New_Game_Button',185,210,0,0,'NEW GAME');
         var ContinueButton= Button.getButton('New_Game_Button',185,245,0,0,'OPTION');
-        var OptionsButton= Button.getButton('New_Game_Button',185,280,0,0,'New GAME');
+        var OptionsButton= Button.getButton('about_us',185,280,0,0,'ABOUT US');
 
         NewGameButton.event_controller=new EventController(new NewSenceEvents(new SelectChapterMenu()),new Event());
 

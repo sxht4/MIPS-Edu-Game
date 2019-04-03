@@ -11,7 +11,7 @@ var RESOURCES = {
                 src: 'Assets/buttons/Button1_grey.png'
             },
             {
-                content: null, id: 'button_sprites_green', ontent: null,
+                content: null,
                 id: 'button_sprites_grey',
                 sprites: [[0, 0, 8, 8], [0, 42, 80, 119], [100, 100, 86, 86], [29, 29, 30, 29]],
                 src: 'Assets/buttons/Button1_green.png'
@@ -22,16 +22,23 @@ var RESOURCES = {
     MenuBackGround:
         [
             {
-                content: null, id: 'Big Planet', ontent: null,
+                content: null,
                 id: 'Big Planet',
                 sprites: null,
                 src: 'Assets/menu/Big Planet.png'
             },
             {
-                content: null, id: 'button_sprites_green', ontent: null,
+                content: null,
                 id: 'Stars',
                 sprites:null,
                 src: 'Assets/menu/Stars.png'
+            },
+            {
+                content: null,
+                id: 'paper_full',
+                sprites:null,
+                src: "Assets/menu/paper_full.png"
+
             }
         ]
 }

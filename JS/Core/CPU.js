@@ -1,5 +1,11 @@
 const CPU_CONST = { STATIC: 0, UP: 4, DOWN: 1, LEFT: 3, RIGHT: 2, START_MOVE: 5, CARRAY:-1  };
-
+/**
+ *
+ * 
+ * @class CPU
+ * @extends {Component}
+ * @author Sai Cao
+ */
 class CPU extends Component {
     constructor() {
         super('CPU', null, 220, 0, 32, 32, true);
@@ -10,16 +16,30 @@ class CPU extends Component {
         this.callback = undefined;
         this.interval = null;
         this.updateIndex = 0;
+        this.animation_speed=4;
+        this.frame_count=0;
     }
-
-    moveTo(x, y, callback) {
+    /**
+     *
+     *
+     * @param {number} x
+     * @param {number} y
+     * @memberof CPU
+     */
+    moveTo(x, y) {
 
         this.destination.x = x;
         this.destination.y = y;
         this.state = CPU_CONST.START_MOVE;
-        this.doNext(CPU_CONST.STATIC, callback);
+       
 
     }
+    /**
+     *
+     * call before each frame to update x,y
+     * @returns
+     * @memberof CPU
+     */
     move() {
         var distanceX = this.destination.x - this.x;
 
@@ -62,19 +82,38 @@ class CPU extends Component {
 
     }
 
-
+    /**
+     *
+     * make this component move up with distance speed
+     * @memberof CPU
+     */
     moveUp() {
         this.state = CPU_CONST.UP;
         this.y = this.y - this.speedY;
     }
+     /**
+     *
+     * make this component move Right with distance speed
+     * @memberof CPU
+     */
     moveRight() {
         this.state = CPU_CONST.RIGHT;
         this.x = this.x + this.speedX;
     }
+     /**
+     *
+     * make this component move Left with distance speed
+     * @memberof CPU
+     */
     moveLeft() {
         this.state = CPU_CONST.LEFT;
         this.x = this.x - this.speedX;
     }
+    /**
+     *
+     * make this component move Down with distance speed
+     * @memberof CPU
+     */
     moveDown() {
         this.state = CPU_CONST.DOWN;
         this.y = this.y + this.speedY;
@@ -102,19 +141,29 @@ class CPU extends Component {
         this.drawSprite();
 
     }
-
+    /**
+     *cho0se wich sprite should be draw in sprite sheet
+     *
+     * @memberof CPU
+     */
     drawSprite() {
-        if (this.updateIndex >= 2) {
-            this.updateIndex = 0;
+        if ( this.frame_count >= this.animation_speed) {
+            this.frame_count=0;
+            this.updateIndex++;
+            if(this.updateIndex>1){
+                this.updateIndex=0;
+            }
+                
         }
+
         CTX.drawImage(RESOURCES.CPU_sprites[0].content,
             this.updateIndex * this.width, this.height * this.state,
             this.width, this.height,
             this.x, this.y,
             this.width, this.height);
-        this.updateIndex++;
+        
 
-
+            this.frame_count++;
     }
 
 

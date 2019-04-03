@@ -1,12 +1,11 @@
 
 /**
- * @version 3/29/2019
- * @author Sai Cao
+ *
+ *
  * @class Button
  * @extends {Component}
  */
-class  Button extends Component
-{
+class Button extends Component {
 
     /**
      *Creates an instance of Button.
@@ -17,11 +16,20 @@ class  Button extends Component
      * @param {number} width The width of this component in canvas
      * @param {number} height The height of this component in canvas
      * @memberof Button
+     * 
      */
-    constructor (id,content,x,y,width,height,event_controller){
+    constructor(id, content, x, y, width, height, text, font, color, sprite_index) {
 
-        super(id,content,x,y,width,height,true);
-        this.event=event;
+        super(id, content, x, y, width, height, true);
+        this.click_event = event;
+        this.color = color;
+        this.sprite_index = sprite_index;
+        this.text = text;
+        this.font = font;
+        this.click_event = new Event();
+        this.longpress_event = new Event();
+
+
 
     }
     /**
@@ -32,35 +40,68 @@ class  Button extends Component
      * @returns button instance
      * @memberof Button
      */
-    static getButton(obj){
-        console.log("new obj");
-       return new Button(obj.id,obj.content,obj.x,obj.y,obj.content.width,obj.content.height,true);
+    static getButton(id, x, y, color, index, text) {
+        var buttons = RESOURCES.buttons[color];
+      
+        var retval = new Button(id, buttons.content, x, y, buttons.sprites[2][index], buttons.sprites[3][index], text, { size: 12, type: 'Arial' }, color, index);
+        return retval;
 
     }
     /**
-     *create a button instance with three parameters
      *
-     * @static
-     * @param {string} id Name Id of component
-     * @param {(ImageData|string)} content The image or text in this component 
-     * @param {number} x The x axis  coordinate
-     * @param {number} y The y axis  coordinate
-     * @returns button instance
+     *
+     * @param {*} event
      * @memberof Button
      */
-    static getButton2(id,content,x,y){
-        console.log("call this");
-       return new Button(id,content,x,y,content.width,content.height,true);
+    addClickEvent(event) {
+
+        this.click_event = event;
+
+
     }
+    /**
+     *
+     *
+     * @param {*} event
+     * @memberof Button
+     */
+    addLongPressEvent(event) {
+        this.longpress_event = event;
+    }
+
     /**
      * update this Component for updateFrame function in GameScense
      * @memberof Button
      */
-    update(){
-        CTX.clearRect(this.x,this.y,this.content.width,this.content.height);
-        CTX.drawImage(this.content, this.x,this.y);
+    update() {
+        CTX.font = this.font.size + 'px ' + this.font.type;
+        CTX.fillStyle = "white";
+        var textWidth = CTX.measureText(this.text).width;
+       // console.log(textWidth);
+        var TextX = this.x+((this.width - textWidth) / 2);
+      //  console.log(TextX);
+        var TextY = this.y+((this.height - this.font.size) / 2)+this.font.size;
+        this.drawSprite(this.color, this.sprite_index);
+        CTX.fillText(this.text, Math.floor(TextX), Math.floor(TextY));
+      
+      
+        
+
     }
-    excuteClick(x,y){
-        this.event_controller.clickEvent(x,y);
+    excuteClick(x, y) {
+        this.event_controller.clickEvent(x, y);
+    }
+
+
+    drawSprite(color, index) {
+
+        CTX.drawImage(RESOURCES.buttons[color].content,
+            RESOURCES.buttons[color].sprites [0] [index], RESOURCES.buttons[color].sprites[1][index],
+            this.width, this.height,
+            this.x, this.y,
+            this.width, this.height);
+           
+
+
     }
 }

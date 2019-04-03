@@ -16,6 +16,9 @@ rm -rf parseoptimised
 fi
 run(){
 echo "INFO: Running as '$1'"
+echo "INFO: If user did not enter any input"
+echo "******************************************"
+./$1
 echo "INFO: Getting info for this program"
 echo "******************************************"
 ./$1 --info

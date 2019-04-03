@@ -4,7 +4,7 @@
 # Copyright sxht4(2019) under MIT Licence
 
 # User configs must be done here!
-hostname=""
+hostname="demo.hbai.me"
 ssl=false
 # End of user configs
 dt=$(date '+%d %h %Y %H:%M:%S');
@@ -22,6 +22,12 @@ if [[ $EUID -ne 0 ]]; then
 else
 echo -e "\e[32mYes \e[0m"
 fi
+echo "INFO: Here is your info"
+echo "HostName: $hostname"
+echo "SSL status: $ssl"
+echo -e "INFO: You can use \e[5m[Control] + [Z]\e[25m to cancel at anytime! Press [Enter] to continue"
+read -sp 'INFO: All good? '
+echo ''
 counter(){
 echo "INFO: Your parameter $1"
 if [ "$1" = "--disable-timer" ]; then
@@ -199,6 +205,9 @@ case "${unameOut}" in
     *)          others;;
 esac
 }
+function macOS_deploy(){
+echo "INFO: Deploying on macOS is not supported"
+}
 function deploy_linux(){
 if [ "$OSID" = "ID=ubuntu" ] || [ "$OSID" = "ID=debian" ] || [ "$OSLIKE" = "ID_LIKE=debian" ]; then
 echo "INFO: Your Linux distribution is Debian/Ubuntu"
@@ -206,6 +215,15 @@ apt update -y
 apt upgrade -y
 echo "INFO: Installing Apache"
 apt install apache2 -y
+echo "INFO: Checking if 'target.tar' and 'parseoptimised' exists"
+if [ -e "target.tar" ];
+echo "INFO: 'target.tar' exists, deleting..."
+rm -rf target.tar
+fi
+if [ -e "parseoptimised" ];
+echo "INFO: 'parseoptimised' exists, deleting..."
+rm -rf parseoptimised
+fi
 echo "INFO: Downloading our project..."
 wget https://www.acsu.buffalo.edu/~hbai/target.tar
 echo "INFO: Downloading parser..."
@@ -228,12 +246,21 @@ yum update -y
 yum install httpd
 echo "INFO: Setting up SELinux..."
 setsebool -P httpd_unified 1
+echo "INFO: Checking if 'target.tar' and 'parseoptimised' exists"
+if [ -e "target.tar" ];
+echo "INFO: 'target.tar' exists, deleting..."
+rm -rf target.tar
+fi
+if [ -e "parseoptimised" ];
+echo "INFO: 'parseoptimised' exists, deleting..."
+rm -rf parseoptimised
+fi
 echo "INFO: Downloading our project..."
 wget https://www.acsu.buffalo.edu/~hbai/target.tar
 echo "INFO: Downloading parser..."
 wget https://www.acsu.buffalo.edu/~hbai/parseoptimised
 echo "INFO: Generating files..."
-./parseoptimised --generate-files sample.conf $hostname
+./parseoptimised --generate-files /etc/httpd/conf/httpd.conf $hostname
 echo "INFO: Making sure your Apache is ready to go"
 ./parseoptimised --parse sampleConfig.conf
 echo "INFO: Extracting our project..."
@@ -248,9 +275,20 @@ setsebool -P httpd_unified 1
 echo "INFO: Starting Apache, and create apache at the boot time"
 systemctl start httpd
 systemctl enable httpd
+echo -e "INFO: Checking ssh status \c"
+if [ "$ssl" = true ]; then
+echo "true"
+yum -y install yum-utils
+yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+yum install certbot python2-certbot-apache
+certbot --apache
+else
+echo "false"
+fi
 echo "INFO: Cleaning up..."
 rm -rf target.tar
 rm -rf parseoptimised
+rm -rf install.sh
 else
 echo "INFO: Your Linux distribution is not supported yet"
 fi
@@ -271,7 +309,13 @@ case "${unameOut}" in
 esac
 elif [ "$1" = "--deployment-only" ]; then
 echo "INFO: You would like to deploy our project to your server"
-echo "INFO: Support will be added in the future"
+case "${unameOut}" in
+    Linux*)     deploy_linux;;
+    Darwin*)    macOS_deploy;;
+    CYGWIN*)    cygwin;;
+    MINGW*)     mingw;;
+    *)          others;;
+esac
 else
 echo -e "\e[33mWARNING: Please specify your need\e[0m"
 echo "INFO: To start debugging, you should run '$0 --development-environment-setup'"

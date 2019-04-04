@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author: Hanzhang Bai
-# Last updates 30 Mar 2019
+# Last updates 04 Apr 2019
 # Copyright sxht4(2019) under MIT Licence
 
 # User configs must be done here!
@@ -22,12 +22,15 @@ if [[ $EUID -ne 0 ]]; then
 else
 echo -e "\e[32mYes \e[0m"
 fi
+echo "***********************************"
 echo "INFO: Here is your info"
 echo "HostName: $hostname"
 echo "SSL status: $ssl"
-echo -e "INFO: You can use \e[5m[Control] + [Z]\e[25m to cancel at anytime! Press [Enter] to continue"
+echo -e "INFO: You can use \e[5m[Control] + [Z]\e[25m to cancel now! Press [Enter] to continue"
 read -sp 'INFO: All good? '
 echo ''
+echo "***********************************"
+
 counter(){
 echo "INFO: Your parameter $1"
 if [ "$1" = "--disable-timer" ]; then
@@ -216,14 +219,10 @@ apt upgrade -y
 echo "INFO: Installing Apache"
 apt install apache2 -y
 echo "INFO: Checking if 'target.tar' and 'parseoptimised' exists"
-if [ -e "target.tar" ];
-echo "INFO: 'target.tar' exists, deleting..."
+#echo "INFO: 'target.tar' exists, deleting..."
 rm -rf target.tar
-fi
-if [ -e "parseoptimised" ];
-echo "INFO: 'parseoptimised' exists, deleting..."
+#echo "INFO: 'parseoptimised' exists, deleting..."
 rm -rf parseoptimised
-fi
 exit 0
 echo "INFO: Downloading our project..."
 wget https://www.acsu.buffalo.edu/~hbai/target.tar
@@ -234,7 +233,7 @@ echo "INFO: Generating files..."
 echo "INFO: Making sure your Apache is ready to go"
 ./parseoptimised --parse sampleConfig.conf
 echo "INFO: Extracting our project..."
-tar -xvf target.tar -C /etc/www/$hostname/html/
+tar -xvf target.tar -C /var/www/$hostname/html/
 echo "INFO: Starting Apache, and create apache at the boot time"
 systemctl start httpd
 systemctl enable httpd
@@ -252,14 +251,10 @@ mkdir -p /var/www/$hostname/html
 echo "INFO: Setting up SELinux..."
 setsebool -P httpd_unified 1
 echo "INFO: Checking if 'target.tar' and 'parseoptimised' exists"
-if [ -e "target.tar" ];
-echo "INFO: 'target.tar' exists, deleting..."
+#echo "INFO: 'target.tar' exists, deleting..."
 rm -rf target.tar
-fi
-if [ -e "parseoptimised" ];
-echo "INFO: 'parseoptimised' exists, deleting..."
+#echo "INFO: 'parseoptimised' exists, deleting..."
 rm -rf parseoptimised
-fi
 
 echo "INFO: Downloading our project..."
 wget https://github.com/sxht4/Release/raw/sprint_1/target.tar
@@ -273,9 +268,9 @@ ln -s /etc/httpd/sites-available/$hostname.conf /etc/httpd/sites-enabled/$hostna
 echo "INFO: Making sure your Apache is ready to go"
 ./parseoptimised --parse /etc/httpd/conf/httpd.conf
 echo "INFO: Extracting our project..."
-tar -xvf target.tar -C /etc/httpd/$hostname/html/
+tar -xvf target.tar -C /var/www/$hostname/html/
 echo "INFO: Making sure user has access to these files"
-chmod 755 -R /etc/httpd/
+chmod 755 -R /var/www/
 echo -e "INFO: Setting up firewalld? \c"
 firewall-cmd --permanent --zone=public --add-service=http
 echo -e "INFO: Reloading firewalld settings? \c"
@@ -285,7 +280,7 @@ setsebool -P httpd_unified 1
 echo "INFO: Starting Apache, and create apache at the boot time"
 systemctl start httpd
 systemctl enable httpd
-echo -e "INFO: Checking ssh status \c"
+echo -e "INFO: Checking SSL status \c"
 if [ "$ssl" = true ]; then
 echo "true"
 yum -y install yum-utils

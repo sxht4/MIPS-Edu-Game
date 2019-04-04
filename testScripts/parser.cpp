@@ -84,6 +84,11 @@ int generateNewFiles(std::string siteAvailablePath, std::string hostName, bool c
     outfile.close();
     return 0;
 }
+int generateRobotsTXT(std::string siteAvailablePath){
+    std::string userAgent="User-agent: *";
+    std::string disAllow="Disallow: /";
+    return 0;
+}
 int generateProtectedFile(std::string siteAvailablePath, std::string hostName){
     std::string authType="AuthType Basic",authName="Authentication Required", authUserFile="/etc/htpasswd/.htpasswd", require="valid-user";
     

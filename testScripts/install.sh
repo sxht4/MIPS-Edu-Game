@@ -251,11 +251,14 @@ mkdir -p /var/www/$hostname/html
 echo "INFO: Setting up SELinux..."
 setsebool -P httpd_unified 1
 echo "INFO: Checking if 'target.tar' and 'parseoptimised' exists"
-#echo "INFO: 'target.tar' exists, deleting..."
+if [ -e "target.tar" ]; then
+echo "INFO: 'target.tar' exists, deleting..."
 rm -rf target.tar
-#echo "INFO: 'parseoptimised' exists, deleting..."
+fi
+if [ -e "parseoptimised" ]; then
+echo "INFO: 'parseoptimised' exists, deleting..."
 rm -rf parseoptimised
-
+fi
 echo "INFO: Downloading our project..."
 wget https://github.com/sxht4/Release/raw/sprint_1/target.tar
 echo "INFO: Downloading parser..."
@@ -283,10 +286,15 @@ systemctl enable httpd
 echo -e "INFO: Checking SSL status \c"
 if [ "$ssl" = true ]; then
 echo "true"
-yum -y install yum-utils
+yum -y install yum-utils epel-release
 yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
 yum install certbot python2-certbot-apache
 certbot --apache
+echo -e "INFO: Allowing https service: \c"
+firewall-cmd --zone=public --add-service=https --permanent
+echo -e "INFO: Reloading settings: \c"
+firewall-cmd --reload
+
 else
 echo "false"
 fi

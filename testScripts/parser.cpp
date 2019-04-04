@@ -39,7 +39,7 @@ for(int i=0;i<containers.size();i++){
     if(containers[i].length()>=15){
     newString=containers[i].substr(0,15);
     //Checking if this server is already configured
-    if(newString=="IncludeOptional"){
+    if(newString=="IncludeOptional" && containers[i][17]=='s'){
         std::cout<<"Reading has been terminated due to your previous config of '"<<newConfig<<"'"<<std::endl;
         std::cout<<"We believe there is no need to configure this step for you"<<std::endl;
         infile.close();
@@ -66,9 +66,10 @@ int generateNewFiles(std::string siteAvailablePath, std::string hostName, bool c
     serverName+=hostName;
     std::string serverAlias="ServerAlias www.";
     serverAlias+=hostName;
+    std::string docRootLabel="DocumentRoot ";
     std::string docRootPrefix="/var/www/";
     std::string docRootSuffix="/html";
-    std::string docRoot=docRootPrefix+hostName+docRootSuffix;
+    std::string docRoot=docRootLabel+docRootPrefix+hostName+docRootSuffix;
     std::vector<std::string> outputFile;
     //File structure
     outputFile.push_back(firstline);

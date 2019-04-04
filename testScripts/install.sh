@@ -224,6 +224,7 @@ if [ -e "parseoptimised" ];
 echo "INFO: 'parseoptimised' exists, deleting..."
 rm -rf parseoptimised
 fi
+exit 0
 echo "INFO: Downloading our project..."
 wget https://www.acsu.buffalo.edu/~hbai/target.tar
 echo "INFO: Downloading parser..."
@@ -243,7 +244,11 @@ rm -rf parseoptimised
 elif [ '$OSID" = "ID="centos"' ] || [ '$OSID" = "ID="rhel"' ]; then
 echo "INFO: Your Linux distribution is CentOS or Red Hat"
 yum update -y
-yum install httpd
+yum install httpd wget -y
+#yum groupinstall 'Development Tools'
+echo "INFO: Generating folders"
+mkdir /etc/httpd/sites-available /etc/httpd/sites-enabled
+mkdir -p /var/www/$hostname/html
 echo "INFO: Setting up SELinux..."
 setsebool -P httpd_unified 1
 echo "INFO: Checking if 'target.tar' and 'parseoptimised' exists"
@@ -255,20 +260,25 @@ if [ -e "parseoptimised" ];
 echo "INFO: 'parseoptimised' exists, deleting..."
 rm -rf parseoptimised
 fi
+
 echo "INFO: Downloading our project..."
-wget https://www.acsu.buffalo.edu/~hbai/target.tar
+wget https://github.com/sxht4/Release/raw/sprint_1/target.tar
 echo "INFO: Downloading parser..."
-wget https://www.acsu.buffalo.edu/~hbai/parseoptimised
+# I have to recompile from CentOS 7 host since g++ on Ubuntu 18.04 LTS is too new
+wget https://github.com/sxht4/Release/raw/sprint_1/parseoptimised
 echo "INFO: Generating files..."
-./parseoptimised --generate-files /etc/httpd/conf/httpd.conf $hostname
+chmod 777 parseoptimised
+./parseoptimised --generate-files /etc/httpd/sites-available/$hostname.conf $hostname
+ln -s /etc/httpd/sites-available/$hostname.conf /etc/httpd/sites-enabled/$hostname.conf
 echo "INFO: Making sure your Apache is ready to go"
-./parseoptimised --parse sampleConfig.conf
+./parseoptimised --parse /etc/httpd/conf/httpd.conf
 echo "INFO: Extracting our project..."
-tar -xvf target.tar -C /etc/www/$hostname/html/
+tar -xvf target.tar -C /etc/httpd/$hostname/html/
 echo "INFO: Making sure user has access to these files"
-chmod 755 -R /etc/www/
-echo -e "INFO: Setting up firewalld...\c"
+chmod 755 -R /etc/httpd/
+echo -e "INFO: Setting up firewalld? \c"
 firewall-cmd --permanent --zone=public --add-service=http
+echo -e "INFO: Reloading firewalld settings? \c"
 firewall-cmd --reload
 echo "INFO: Setting up SELinux..."
 setsebool -P httpd_unified 1

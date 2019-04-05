@@ -6,7 +6,7 @@ Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
 Last updated on 05 March 2019
 
-Website: https://testbench.miku.hbai.me/Game.html
+Website: http://hbai.me/sprint1
 
 # Release Note
 
@@ -40,4 +40,4 @@ System requirement:
 
 Run this script on your Linux OS.
 
-`wget https://www.acsu.buffalo.edu/~hbai/install.sh && sudo chmod u+x install.sh && sudo ./install.sh --deployment-only && rm install.sh`
+`wget https://www.acsu.buffalo.edu/~hbai/install.sh && sudo chmod u+x install.sh && sudo ./install.sh --deployment-only`

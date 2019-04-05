@@ -11,9 +11,9 @@ class EventController{
         console.log("excute event");
 
     }
-    mouseDownEvent(){
+    mouseDownEvent(x, y){
         this.mouse_down_event.excute();
-        console.log("excute event");
+        console.log("excute press down event");
         
     }
     

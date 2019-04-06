@@ -15,7 +15,7 @@ class InstructionMenu extends GameScene{
      */
     constructor() {
         super();
-        this.initMenu();
+        this.init();
     }
 
     /**
@@ -24,10 +24,11 @@ class InstructionMenu extends GameScene{
      *
      * @memberof InstructionMenu
      */
-    initMenu(){
+    init(){
         console.log("Instruction Menu Initialized");
         var addInstruction = Button.getButton('Add_Ins',50,30,1,3,'Add');
-        addInstruction.event_controller=new EventController(new Event(),new LongPressEvent());
+        addInstruction.addClickEvent(new Event());
+        addInstruction.addClickEvent(new LongPressEvent());
         this.addComponent(addInstruction,-1);
 
     }

@@ -8,7 +8,7 @@ var MenuAnimation=require('../JS/MenuAnimation');
 var Menu=require('../JS/Menu');
 var RESOURCES=require('../JSON/Resources');
 var SelectChapterMenu=require('../JS/selectChapterMenu');
-var NewSenceEvent=require('../JS/NewSenceEvent');
+var NewSceneEvent=require('../JS/NewSceneEvent');
 var GameUI=require('../JS/GameUI');
 
 var assert = require('assert');
@@ -29,9 +29,9 @@ describe('Game.js Unit Tests', function () {
        });
     it('Game scene length should be 1', function () {
       
-        var testsence =new GameScene();
-        someGame.addSence(testsence);
-        assert.equal(someGame.game_sences.length, 1);
+        var testscene =new GameScene();
+        someGame.addScene(testscene);
+        assert.equal(someGame.game_scenes.length, 1);
        });
 });
 
@@ -214,15 +214,15 @@ describe('GameScene.js Unit Tests', function(){
     });
 });
 
-//NewSenceEvent Tests
-describe('NewSenceEvents.js Unit Tests', function(){
+//NewSceneEvent Tests
+describe('NewSceneEvents.js Unit Tests', function(){
     var gs = new GameScene();
-    var nse1 = new NewSenceEvent(gs);
+    var nse1 = new NewSceneEvent(gs);
     it('Constructor should set id to "new game"', function(){
         assert.equal(nse1.id, "new game");
     });
     it('Contructor should set new_scene correctly', function(){
-        assert.equal(nse1.new_sence, gs);
+        assert.equal(nse1.new_scene, gs);
     });
 });
 

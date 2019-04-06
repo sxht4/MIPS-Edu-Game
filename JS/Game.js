@@ -73,3 +73,40 @@ function gameClick(event) {
         element.excuteClick(x,y);
     }
 }
+
+// timer is a valuable that will be used in longPress, it determine how long a element need to be pressed.
+var timer;
+
+/**
+ * This function check if the clicked element is null and clickable, ann then it sets a timer for longpress
+ * event, that is, how long does user needs to press it in order to call a longpress event. 
+ *
+ * @param {event} event
+ */
+
+ function longPress(event){
+    console.log("begin");
+    var x = event.offsetX;
+    var y = event.offsetY;
+    var element = GAME.getCurrentSence().getClickedElement(x, y);
+    if (element!=null&&element.clickable) {
+        timer = setTimeout(temp, 2000);
+        //timer = setTimeout(function(){ alertFunc("First parameter", "Second parameter"); }, 2000);
+        element.excuteLongPress(x,y);
+    }
+    
+}
+// This is temporary test function
+function temp(){
+    alert("Long Press Game");
+}
+
+/**
+ * This function stop timer that were opened in longpress event, and it determine what would happen
+ * if user stop press element.
+ *
+ * @param {event} event
+ */
+function longPressOver(event){
+    clearTimeout(timer);
+}

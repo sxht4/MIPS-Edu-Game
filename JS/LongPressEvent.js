@@ -25,7 +25,7 @@ class LongPressEvent extends Event {
  * @memberof LongPressEvent
  */
 excute(x,y){
-        SOUNDS.click.play();
+        alert("longPressEvent Class");
         console.log("longPressEvent Class");
         
     }

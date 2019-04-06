@@ -30,7 +30,6 @@ class Button extends Component {
         this.longpress_event = new Event();
 
 
-
     }
     /**
      * create a button instance by resource objcet
@@ -89,10 +88,10 @@ class Button extends Component {
 
     }
     excuteClick(x, y) {
-        this.event_controller.clickEvent(x, y);
+        this.click_event.excute(x,y);
     }
     excuteLongPress(x,y){
-        this.event_controller.mouseDownEvent(x,y);
+        this.longpress_event.excute(x,y);
     }
 
     drawSprite(color, index) {

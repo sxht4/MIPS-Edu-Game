@@ -26,12 +26,16 @@ class CPU extends Component {
      * @param {number} y
      * @memberof CPU
      */
-    moveTo(x, y) {
+    async moveTo(x, y) {
 
         this.destination.x = x;
         this.destination.y = y;
         this.state = CPU_CONST.START_MOVE;
-      
+        while(this.state!=CPU_CONST.STATIC){
+            await  sleep(1000);
+  
+        }
+        
 
     }
 

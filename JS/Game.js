@@ -97,7 +97,7 @@ function gameClick(){
     var y = event.offsetY;
     var element = GAME.getCurrentScene().getClickedElement(x, y);
     if (element != null && element.clickable) {
-        element.excuteClick();
+        element.excuteClick(x,y);
        
         
     }

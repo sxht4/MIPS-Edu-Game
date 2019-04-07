@@ -1,4 +1,5 @@
 
+
 /**
  *
  *
@@ -6,8 +7,8 @@
  * @extends {Component}
  * @param content: is registerCell
  */
-class Register extends Component{
-    constructor(id, content, x, y, width, height, clickable){
+class Register extends Component {
+    constructor(id, content, x, y, width, height, clickable) {
         super(id, content, x, y, width, height, clickable);
         this.addAllRegisterCell();
     }
@@ -18,14 +19,14 @@ class Register extends Component{
      *
      * @memberof Register
      */
-    addAllRegisterCell(){
+    addAllRegisterCell() {
         console.log("addAllRegisterCell");
-        let xOfRegister=120;
-        let yOfRegister=270;
-        for(var i=0; i<5; i++){
-            this.content.push(new RegisterCell(i, 0, xOfRegister, yOfRegister, 50, 50, true) );
-                console.log("addAllRegisterCell number"+i);
-                xOfRegister=xOfRegister+50;
+        let xOfRegister = 120;
+        let yOfRegister = 270;
+        for (var i = 0; i < 5; i++) {
+            this.content.push(new RegisterCell(i, 0, xOfRegister, yOfRegister, 50, 50, true));
+            console.log("addAllRegisterCell number" + i);
+            xOfRegister = xOfRegister + 50;
         }
     }
 
@@ -33,14 +34,26 @@ class Register extends Component{
      * @returns  all of the cells
      * @memberof Register
      */
-    getContent(){
+    getContent() {
         return this.content;
     }
+    /**
+     *
+     *
+     * @param {*} i
+     * @memberof Register
+     */
+    getCellAt(i){
+        return this.content[i];
+
+    }
+    
 
 
-    excuteClick(x,y){
-       
-        for(var i=0; i<this.content.length; i++){
+
+    excuteClick(x, y) {
+
+        for (var i = 0; i < this.content.length; i++) {
             var component = this.content[i];
             if (x >= component.x && x <= component.x + component.width) {
                 if (y >= component.y && y <= component.y + component.height) {
@@ -49,16 +62,17 @@ class Register extends Component{
                 }
             }
         }
-        
+
 
     }
 
-    
 
-    update(){
-        CTX.clearRect(this.x, this.y,this.width,this.height);
-        for(var i=0;i<this.content.length;i++){
+
+    update() {
+        
+        for (var i = 0; i < this.content.length; i++) {
+         
             this.content[i].update();
-         }
+        }
     }
 }

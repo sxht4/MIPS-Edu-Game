@@ -3,8 +3,8 @@
  * This code panel in game that users can write their code or drag preset code from code menu.
  * @class CodePanel
  * @extends {Component}
- * @author Sai Cao, Hanzhang Bai
- * @version 30 Mar 2019
+ * @author Sai Cao
+ * @version 3/29/2019
  */
 class CodePanel extends Component {
     /**
@@ -33,12 +33,13 @@ class CodePanel extends Component {
     init() {
 
         this.addTextCell();
-        for(var i=0;i<16;i++){
+        for(var i=0;i<14;i++){
 
             this.addTextCell();
         }
-        //this.instructions.push('your instrctuions');
-        //this.instructions.push('no more 500 lines');
+      
+        this.instructions.push('add t0 t1 t2');
+        this.instructions.push('addi t0 t1 5');
         for(var i=2;i<500;i++){
             this.instructions[i]='';
         }
@@ -75,7 +76,9 @@ class CodePanel extends Component {
     excuteClick(x,y){
         console.log('click code panel');
         //Relative coordinates
+       
         var realtive_y= y-this.y;
+       
         var i=Math.floor(realtive_y/(this.cell_hegiht+this.vertical_space));
         var str=this.instructions[i+this.line_index];
          //create form

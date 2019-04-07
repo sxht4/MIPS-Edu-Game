@@ -27,7 +27,7 @@ class InstructionMenu extends GameScene{
     init(){
         console.log("Instruction Menu Initialized");
         var addInstruction = Button.getButton('Add_Ins',50,30,1,3,'Add');
-        addInstruction.addClickEvent(new Event());
+        addInstruction.addClickEvent(new GameEvent());
         addInstruction.addClickEvent(new LongPressEvent());
         this.addComponent(addInstruction,-1);
 

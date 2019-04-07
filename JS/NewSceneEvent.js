@@ -1,11 +1,11 @@
-class NewSceneEvent extends Event {
+class NewSceneEvent extends GameEvent {
     /**
      *Creates an instance of NewsceneEvents.
      * @param {GameScene} new_scene  is latest scene that will be added to GAME
      * @memberof NewSceneEvent
      */
     constructor(new_scene){
-        super("new game");
+        super("new game",0);
         this.new_scene=new_scene;
     }
 

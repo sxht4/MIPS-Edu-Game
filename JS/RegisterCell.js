@@ -7,7 +7,6 @@
 class RegisterCell extends Component{
     constructor(id, content, x, y, width, height, clickable){
         super(id, content, x, y, width, height, clickable);
-        //this.content=null;
     }
 
     /**
@@ -17,10 +16,13 @@ class RegisterCell extends Component{
      * @memberof RegisterCell
      */
     setContent(value){
-        if(str==null){
-            str='';
+
+        if(value==null){
+            this.content='';
+        }else{
+            this.content=value;
         }
-        this.content=value;
+        
     }
 
     /**
@@ -30,17 +32,25 @@ class RegisterCell extends Component{
      * @memberof RegisterCell
      */
     getContent(){
-        return this.content;
+        if(this.content==''){
+            return null;
+        }else{
+            return this.content ;
+        }
+        
     }
-
+    /**
+     *
+     * 
+     * @memberof RegisterCell
+     */
     excuteClick(){
         alert("Register"+this.id);
     }
 
     update(){
-        if(this.content==null){
-            this.content='';
-        }
+        
+      
         CTX.fillStyle = "red";
         CTX.fillText(this.content, this.x, this.y);
         CTX.fillText("t"+this.id, this.x, this.y-20);

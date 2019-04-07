@@ -26,8 +26,8 @@ class Button extends Component {
         this.sprite_index = sprite_index;
         this.text = text;
         this.font = font;
-        this.click_event = new Event();
-        this.longpress_event = new Event();
+        this.click_event = null
+        this.longpress_event = new LongPressEvent();
 
 
     }

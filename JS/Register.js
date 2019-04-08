@@ -1,5 +1,3 @@
-
-
 /**
  *
  *
@@ -10,16 +8,16 @@
 class Register extends Component {
     constructor(id, content, x, y, width, height, clickable) {
         super(id, content, x, y, width, height, clickable);
-        this.addAllRegisterCell();
+
     }
 
 
     /**
-     *
-     *
+     *initialize Resgiter
+     *add Register cells
      * @memberof Register
      */
-    addAllRegisterCell() {
+    init() {
         console.log("addAllRegisterCell");
         let xOfRegister = 120;
         let yOfRegister = 270;
@@ -43,11 +41,11 @@ class Register extends Component {
      * @param {*} i
      * @memberof Register
      */
-    getCellAt(i){
+    getCellAt(i) {
         return this.content[i];
 
     }
-    
+
 
 
 
@@ -69,9 +67,9 @@ class Register extends Component {
 
 
     update() {
-        
+
         for (var i = 0; i < this.content.length; i++) {
-         
+
             this.content[i].update();
         }
     }

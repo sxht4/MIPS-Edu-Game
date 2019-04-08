@@ -9,12 +9,14 @@ class Game {
      */
     constructor(width, height, FPS) {
         console.log("create game instance");
-
+        this.width=width;
+        this.height=height;
         // all Game scene contain in this array.
         this.game_scenes = [];
         // the current scene shown by game.
         this.current_scene = this.game_scenes.length;
         this.FPS = FPS;
+        this.speed=1;
 
     }
     /**

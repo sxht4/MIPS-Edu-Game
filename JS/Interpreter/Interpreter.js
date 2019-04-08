@@ -1,4 +1,17 @@
+/**
+ * a Mips Interpreter for users's code
+ * exucte animations
+ * @class Interpreter
+ */
 class Interpreter {
+    /**
+     *Creates an instance of Interpreter.
+     * @param {CPU} cpu
+     * @param {CodePanel} code_panel
+     * @param {Memory} memeory
+     * @param {Register} register
+     * @memberof Interpreter
+     */
     constructor(cpu, code_panel, memeory, register) {
         this.cpu = cpu;
         this.code_panel = code_panel;
@@ -7,20 +20,36 @@ class Interpreter {
         this.init();
 
     }
+    /**
+     *init the interpreter
+     *
+     * @memberof Interpreter
+     */
     init() {
        var parseMap = new Map();
         for (var i = 0; i < 5; i++) {
             parseMap.set('t' + i,this.register.getCellAt(i));
         }
         this.parseMap=parseMap;
-
-
     }
-    //ArrayList, and call back array
+    /**
+     *
+     * alert a error message
+     * @param {String} message
+     * @memberof Interpreter
+     */
     errorReport(message) {
         console.log(message);
         alert(message);
     }
+    /**
+     *
+     * parse and run ADDI MIPS instruction 
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
     async executeADDI(dest, arg1, arg2) {
         try {
             Number.parseInt (arg2)
@@ -44,6 +73,14 @@ class Interpreter {
        
 
     }
+    /**
+     *
+     * parse and run ADD MIPS instruction 
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
     async  executeADD(dest, arg1, arg2) {
         var R1 = this.getRegister(arg1);
         var R2 = this.getRegister(arg2);
@@ -60,7 +97,11 @@ class Interpreter {
     }
 
 
-  
+    /**
+     * parse the instructions from Code_Panel
+     *
+     * @memberof Interpreter
+     */
     async prase() {
         console.log("interpreter started");
         var ins = this.code_panel.getInstructions();
@@ -92,7 +133,13 @@ class Interpreter {
     }
 
 
-
+    /**
+     *
+     *
+     * @param {String} id string 
+     * @returns {RegisterCell}
+     * @memberof Interpreter
+     */
     getRegister(id) {
         try {
             
@@ -117,6 +164,3 @@ class Interpreter {
 
 
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}

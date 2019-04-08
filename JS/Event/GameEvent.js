@@ -1,3 +1,8 @@
+/**
+ *
+ *
+ * @class GameEvent
+ */
 class GameEvent {
 
   /**

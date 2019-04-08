@@ -9,7 +9,7 @@ var Menu=require('../JS/Menu');
 var RESOURCES=require('../JSON/Resources');
 var SelectChapterMenu=require('../JS/selectChapterMenu');
 var NewSceneEvent=require('../JS/NewSceneEvent');
-var GameUI=require('../JS/GameUI');
+var MainScene=require('../JS/MainScene');
 
 var assert = require('assert');
 //Author: Hanzhang Bai, Tianyu Cao
@@ -249,16 +249,16 @@ describe('Menu.js Unit Tests', function(){
     });
 });
 
-//GameUI Tests
-describe('GameUI.js Unit Tests', function(){
-    var gui = new GameUI();
+//MainScene Tests
+describe('MainScene.js Unit Tests', function(){
+    var gui = new MainScene();
     it('Constructor should set fps to 30', function(){
         assert.equal(gui.FPS, 30);
     });
     it('Contructor should construct a nonempty array of Component', function(){
         assert.notEqual(gui.components.length, 0);
     });
-    it('initMenu should create a button which has id "gameUIButton"', function(){
-        assert.notEqual(gui.getByID("gameUIButton"), "gameUIButton");
+    it('initMenu should create a button which has id "MainSceneButton"', function(){
+        assert.notEqual(gui.getByID("MainSceneButton"), "MainSceneButton");
     });
 });

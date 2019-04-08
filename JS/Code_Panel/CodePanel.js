@@ -9,8 +9,8 @@
 class CodePanel extends Component {
     /**
      *Creates an instance of CodePanel. 
-     *This code panel in the game that users can write their code or drag preset code from code menu.
-     * @memberof CodePanel
+     *This code panel in the game that users can write their code
+     *@memberof CodePanel
      */
     constructor() {
         super('code_panel', [],365, 90, 100, 16*14, true); 

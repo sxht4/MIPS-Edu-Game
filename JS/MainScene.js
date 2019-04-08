@@ -1,20 +1,24 @@
 /**
- *
- *
- * @class GameUI
+ * player use this sence to play game
+ * @class MainScene
  * @extends {GameScene}
- * 
- * this is chapter 1
+ * @author Sai Cao,Xiang Li,Tianyu Cao
  */
-class GameUI extends GameScene {
+class MainScene extends GameScene {
+    /**
+     *Creates an instance of MainScene.
+     * @memberof MainScene
+     */
     constructor() {
         super();
-        
-
-
     }
-
-    init() {
+    
+/**
+ *
+ * init this scene
+ * @memberof MainScene
+ */
+init() {
         console.log("init GaneUI Menu");
         var cp = new  CodePanel();
         this.addComponent(cp, -1);
@@ -33,26 +37,15 @@ class GameUI extends GameScene {
         this.addComponent(m, -1);
 
         var r = new Register("Register", [], 100, 270, 250, 50, true);
-        r.addAllRegisterCell();
+        r.init();
         this.addComponent(r, -1);
-       
-
 
         this.addLayer();
         var cpu = new CPU();
-
-      
-
         this.addComponent(cpu, -1);
+        cpu.setSpeed(1);
 
         RunButon.addClickEvent(new RunCodeEvent(new Interpreter(cpu, cp, m, r)));
       
-        
-
-
-
-
-
-
     }
 }

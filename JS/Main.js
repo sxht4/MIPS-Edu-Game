@@ -21,7 +21,10 @@ function main() {
     game_canvas.addEventListener("mouseup",longPressOver);
     GAME_CANVAS=game_canvas;
 }
-function sleep(ms) {
+exports.sleep=function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-module.exports=main;
+
+
+
+

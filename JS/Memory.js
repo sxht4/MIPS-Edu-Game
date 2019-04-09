@@ -16,6 +16,12 @@ class Memory extends Component{
         this.content=[];
         this.maxSize=13;
         //this.store.length=100;
+        this.init();
+    }
+    init(){
+        for (var i=0;i<13;i++){
+            this.content[i]=0;
+        }
     }
 
     add(value){ //add value to memory
@@ -35,7 +41,7 @@ class Memory extends Component{
     }
 
     get(index){ //get value at this index(address)
-        if(index >= this.maxSize-1){
+        if(index > this.maxSize-1){
             console.log("The maxium size of memory is reached");
             return null;
         }else{
@@ -45,7 +51,7 @@ class Memory extends Component{
     }
 
     set(index, value){ //set this index(memory)
-        if(index >= this.maxSize-1){
+        if(index > this.maxSize-1){
             console.log("The maxium size of memory is reached");
         }else{
             this.content[index]=value;

@@ -9,6 +9,7 @@ CPU=require('./Character/CPU');
 RunCodeEvent=require('./Event/RunCodeEvent');
 Interpreter=require('./Interpreter/Interpreter');
 Button=require('./Button');
+HintEvent=require('./Event/HintEvent');
 
 /**
  * player use this sence to play game

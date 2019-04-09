@@ -34,6 +34,7 @@ var assert = require('assert');
 //var expect = require('expect');
 //Author: Hanzhang Bai, Tianyu Cao
 //26 Feb 2019
+
 describe('Basic Mocha String Test: Testing whether mocha and chai works or not', function () {
  it('should return number of charachters in a string', function () {
         assert.equal("Hello".length, 5);
@@ -408,36 +409,43 @@ describe('Interpreter.js Unit Tests', function(){
     it('Constructor should set Register correctly', function(){
         assert.equal(ip.register, r);
     });
-    it('excuteADD function should add value correctly', function(){
+    it('excuteADD function should add value correctly', async function(){
         //test failed
         r.getCellAt(0).setContent(2);
+       
         
-        ip.executeADD('t0', 't1', 't2'); // t0 = 0 + 0 
+        await  ip.executeADD('t0', 't1', 't2'); // t0 = 0 + 0 
+       // console.log(ip.getRegister('t0'));
         assert.equal(ip.getRegister('t0').value, 0);
-
         //test passed
         r.getCellAt(3).setContent(3);
-        ip.executeADD('t1', 't2', 't3');
+        
+        await ip.executeADD('t1', 't2', 't3');
         assert.equal(ip.getRegister('t1').value, 3);
         r.getCellAt(4).setContent(12);
-        ip.executeADD('t2', 't3', 't4'); //t2 = 3 + 12
-        ip.executeADD('t2', 't3', 't1'); //t2 = 3 + 3
+        await   ip.executeADD('t2', 't3', 't4'); //t2 = 3 + 12
+        await  ip.executeADD('t2', 't3', 't1'); //t2 = 3 + 3
         assert.equal(ip.getRegister('t2').value, 6);
     });
-    it('excuteADDI function should add value correctly', function(){
+    it('excuteADDI function should add value correctly',async function(){
         //test failed
         r.getCellAt(0).setContent(2);
-        ip.executeADDI('t0', 't1', '1');
-        assert.equal(ip.getRegister('t0').value, 1);
+        await ip.executeADDI('t0', 't1', '1');
+        assert.equal(ip.getRegister('t0').value, 4);
 
         //test passed
         r.getCellAt(4).setContent(5);
-        ip.executeADDI('t1', 't4', '-1');
+        await ip.executeADDI('t1', 't4', '-1');
         assert.equal(ip.getRegister('t1').value, 4);
         r.getCellAt(4).setContent(19);
-        ip.executeADDI('t2', 't1', '-1'); // t2 = 4 - 1
-        ip.executeADDI('t2', 't2', 't4'); // t2 = t2 + 19 = 3 + 19
-        assert.equal(ip.getRegister('t2').value, 22);
+        await  ip.executeADDI('t2', 't1', '-1'); // t2 = 4 - 1
+        try {
+            await  ip.executeADDI('t2', 't2', 't4'); // t2 = t2 + 19 = 3 + 19
+        } catch (error) {
+            assert.equal(error, 'not a number '+ 't4');
+        }
+        
+        assert.equal(ip.getRegister('t2').value, 3);
     });
 });
 
@@ -705,7 +713,7 @@ describe('Memory.js Unit Tests', function(){
         assert.equal(mem2.get(2), 0);
     });
     it('add function should modify memory size correctly', function(){
-        assert.equal(mem2.content.length, 3);
+        assert.equal(mem2.content.length, 13);
     });
     it('delete function should delete element correctly', function(){
         mem2.delete(1);
@@ -719,7 +727,7 @@ describe('Memory.js Unit Tests', function(){
     });
     it('set function should modify the size of memory', function(){
         mem2.set(1, 8);
-        assert.equal(mem2.content.length, 3);
+        assert.equal(mem2.content.length, 13);
     });
 
     //test failed

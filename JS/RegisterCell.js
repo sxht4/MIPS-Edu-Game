@@ -33,6 +33,7 @@ class RegisterCell extends Component{
      * @memberof RegisterCell
      */
     getContent(){
+        return this.content;
         if(this.content==''){
             return null;
         }else{

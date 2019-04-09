@@ -52,18 +52,23 @@ class Interpreter {
      * @memberof Interpreter
      */
     async executeADDI(dest, arg1, arg2) {
-        try {
-            Number.parseInt (arg2)
-        } catch (error) {
-            throw 'not a integer'+arg2;
+  
+        
+        var value2=Number.parseInt (arg2);
+
+        if(isNaN(value2)) {
+               console.log(value2);
+               throw 'not a number '+ arg2;
         }
+            
+        
         try {
             var R1 = this.getRegister(arg1);
+
             var destCell = this.getRegister(dest);
             await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
             await  this.cpu.moveTo(destCell.cell.x, destCell.cell.y);
-            
-            destCell.cell.setContent(R1.value + Number.parseInt (arg2));
+            destCell.cell.setContent(R1.value + value2);
             
         } catch (error) {
             throw error;
@@ -146,6 +151,8 @@ class Interpreter {
             
             var retcell = this.parseMap.get(id);
             var retvalue = retcell.getContent();
+            // console.log(retcell);
+            // console.log(retvalue);
             return { cell: retcell, value: retvalue };
 
         } catch (error) {

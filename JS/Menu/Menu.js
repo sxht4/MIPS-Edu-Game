@@ -11,7 +11,7 @@ class Menu extends GameScene {
      */
     constructor() {
         super();
-        this.initMenu();
+        
 
 
         
@@ -23,8 +23,12 @@ class Menu extends GameScene {
     /**
      *init menu
      * @memberof Menu
+    /**
+     *
+     *
+     * @memberof Menu
      */
-    initMenu() {
+    init() {
         console.log("init Menu");
         this.addComponent(new MenuBackGround(),-1);
         this.addLayer();
@@ -32,8 +36,9 @@ class Menu extends GameScene {
         var NewGameButton= Button.getButton('New_Game_Button',185,210,0,0,'NEW GAME');
         var ContinueButton= Button.getButton('New_Game_Button',185,245,0,0,'OPTION');
         var OptionsButton= Button.getButton('about_us',185,280,0,0,'ABOUT US');
-
-        NewGameButton.event_controller=new EventController(new NewSenceEvents(new SelectChapterMenu()),new Event());
+        NewGameButton.addClickEvent(new NewSceneEvent(new SelectChapterMenu()));
+        NewGameButton.addLongPressEvent(new LongPressEvent());
+       
 
         this.addComponent (NewGameButton,-1);
         this.addComponent(ContinueButton,-1);

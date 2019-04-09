@@ -1,7 +1,13 @@
+/**
+ *
+ *
+ * @class Memory
+ * @extends {Component}
+ */
 class Memory extends Component{
     /**
      *Creates an instance of memory.
-     * @memberof memory
+     * @memberof Memory
      * this class is created to display and setup memory
      */
     constructor(id, content, x, y, width, height, clickable){

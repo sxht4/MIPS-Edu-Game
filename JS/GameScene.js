@@ -1,4 +1,5 @@
 /**
+ * 
  * @version 2019/3/29
  * @author Sai Cao
  * @class GameScene
@@ -23,7 +24,7 @@ class GameScene {
         this.layers.push(new Layer());
     }
     /**
-     * add Component to this Game Sence
+     * add Component to this Game Scene
      *
      * @param {Object} component
      * @param {number} index the layer index to be added, -1 to add top layer
@@ -44,7 +45,7 @@ class GameScene {
 
     }
     /**
-     *get Clicked Element or compoment in game sence.
+     *get Clicked Element or compoment in game scene.
      *
      * @param {number} x The x axis  coordinate
      * @param {number} y The y axis  coordinate
@@ -63,7 +64,7 @@ class GameScene {
 
     }
     /**
-     *get  Element or compoment by thier ID in game sence.
+     *get  Element or compoment by thier ID in game scene.
      *
      * @param {string} id
      * @returns compoment that be has the id or null if not be found

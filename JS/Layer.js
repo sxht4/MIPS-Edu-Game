@@ -6,7 +6,7 @@
  */
 class Layer {
     /**
-     *Creates an instance of Layer in GameSence.
+     *Creates an instance of Layer in GameScene.
      * @memberof Layer
      */
     constructor() {

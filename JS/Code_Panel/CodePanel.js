@@ -9,8 +9,8 @@
 class CodePanel extends Component {
     /**
      *Creates an instance of CodePanel. 
-     *This code panel in the game that users can write their code or drag preset code from code menu.
-     * @memberof CodePanel
+     *This code panel in the game that users can write their code
+     *@memberof CodePanel
      */
     constructor() {
         super('code_panel', [],365, 90, 100, 16*14, true); 
@@ -37,8 +37,9 @@ class CodePanel extends Component {
 
             this.addTextCell();
         }
-        this.instructions.push('your instrctuions');
-        this.instructions.push('no more 500 lines');
+      
+        this.instructions.push('add t0 t1 t2');
+        this.instructions.push('addi t0 t1 5');
         for(var i=2;i<500;i++){
             this.instructions[i]='';
         }
@@ -75,7 +76,9 @@ class CodePanel extends Component {
     excuteClick(x,y){
         console.log('click code panel');
         //Relative coordinates
+       
         var realtive_y= y-this.y;
+       
         var i=Math.floor(realtive_y/(this.cell_hegiht+this.vertical_space));
         var str=this.instructions[i+this.line_index];
          //create form

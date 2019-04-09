@@ -32,11 +32,16 @@ class Button extends Component {
 
     }
     /**
-     * create a button instance by resource objcet
+     *
      *
      * @static
-     * @param {Object} obj Obj in resource class
-     * @returns button instance
+     * @param {number} id
+     * @param {number} x
+     * @param {number} y
+     * @param {number} color
+     * @param {number} index
+     * @param {number} text 
+     * @returns
      * @memberof Button
      */
     static getButton(id, x, y, color, index, text) {

@@ -38,7 +38,9 @@ init() {
         //Instruction Menu Button 
         var InstructionMenuButton = Button.getButton('Instruction_Menu', 375, 30, 1, 3, 'IM');
         InstructionMenuButton.addClickEvent(new NewSceneEvent(new InstructionMenu()));
-
+        var IMHint= new HintEvent('IMHint')
+        IMHint.setHintContent('this is instruction menu \n it contain all insturtions game support');
+        InstructionMenuButton.addLongPressEvent(IMHint);
         this.addComponent(InstructionMenuButton, -1);
 
         //run button

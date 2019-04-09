@@ -45,6 +45,7 @@ class Menu extends GameScene {
         var OptionsButton= Button.getButton('about_us',185,280,0,0,'ABOUT US');
         NewGameButton.addClickEvent(new NewSceneEvent(new SelectChapterMenu()));
         NewGameButton.addLongPressEvent(new LongPressEvent());
+        
        
 
         this.addComponent (NewGameButton,-1);

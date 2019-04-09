@@ -3,17 +3,17 @@
  * And it determine what would happen if LongPress event is executed.
  * 
  * @class LongPressEvent
- * @extends {Event}
+ * @extends {GameEvent}
  */
 
-class LongPressEvent extends Event {
+class LongPressEvent extends GameEvent {
 
     /**
      *Creates an instance of LongPressEvent.
      * @memberof LongPressEvent
      */
     constructor(){
-        super("longPress");
+        super("longPress",0);
     }
 
   
@@ -25,7 +25,7 @@ class LongPressEvent extends Event {
  * @memberof LongPressEvent
  */
 excute(x,y){
-        SOUNDS.click.play();
+        alert("longPressEvent Class");
         console.log("longPressEvent Class");
         
     }

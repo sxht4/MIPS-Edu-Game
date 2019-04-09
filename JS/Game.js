@@ -1,5 +1,5 @@
 
- class Game {
+class Game {
     /**
      *Creates an instance of Game.
      * @param {number} width width of the game canvas
@@ -9,27 +9,29 @@
      */
     constructor(width, height, FPS) {
         console.log("create game instance");
-  
-        // all Game sence contain in this array.
-        this.game_sences = [];
-        // the current sence shown by game.
-        this.current_sence = this.game_sences.length;
+        this.width=width;
+        this.height=height;
+        // all Game scene contain in this array.
+        this.game_scenes = [];
+        // the current scene shown by game.
+        this.current_scene = this.game_scenes.length;
         this.FPS = FPS;
-        
+        this.speed=1;
+
     }
     /**
      *load Assets for game
      * @memberof Game
      */
     initGame() {
-       
-        var loader=new Loader(function(){
+
+        var loader = new Loader(function () {
             GAME.start();
         });
         loader.loadResources();
-    
+
     }
-    
+
     /**
      * run the game
      * @memberof Game
@@ -40,39 +42,33 @@
         this.initGame();
 
     }
-    getCurrentSence() {
-        return this.game_sences[this.game_sences.length - 1];
+    getCurrentScene() {
+        return this.game_scenes[this.game_scenes.length - 1];
     }
     /**
-     * start draw game sence
+     * start draw game scene
      * @memberof Game
      */
     start() {
         console.log("game start");
-        this.game_sences.push(new Menu());
+        var menu = new Menu();
+        menu.init();
+        this.addScene(menu);
         let self = this;
         this.interval = setInterval(function () {
             CTX.clearRect(0, 0, 480, 320);
-            self.getCurrentSence().updateFrame();
-           
+            self.getCurrentScene().updateFrame();
+
         }, this.FPS);
     }
-    addSence(sence) {
+    addScene(scene) {
 
-        this.game_sences.push(sence);
+        this.game_scenes.push(scene);
 
     }
 }
 
-function gameClick(event) {
-    var x = event.offsetX;
-    var y = event.offsetY;
-    var element = GAME.getCurrentSence().getClickedElement(x, y);
-    if (element!=null&&element.clickable) {
-        alert(element.id);
-        element.excuteClick(x,y);
-    }
-}
+
 
 // timer is a valuable that will be used in longPress, it determine how long a element need to be pressed.
 var timer;
@@ -83,23 +79,41 @@ var timer;
  *
  * @param {event} event
  */
-
- function longPress(event){
-    console.log("begin");
+function longPress (event){
+    console.log('game click');
     var x = event.offsetX;
     var y = event.offsetY;
-    var element = GAME.getCurrentSence().getClickedElement(x, y);
-    if (element!=null&&element.clickable) {
-        timer = setTimeout(temp, 2000);
-        //timer = setTimeout(function(){ alertFunc("First parameter", "Second parameter"); }, 2000);
-        element.excuteLongPress(x,y);
+    let element = GAME.getCurrentScene().getClickedElement(x, y);
+    if (element != null && element.clickable) {
+        timer = setTimeout(function(){
+            element.excuteLongPress();
+        }, 2000);
+       
+        
     }
+
+
+}
+function gameClick(){
+    var x = event.offsetX;
+    var y = event.offsetY;
+    var element = GAME.getCurrentScene().getClickedElement(x, y);
+    if (element != null && element.clickable) {
+        element.excuteClick(x,y);
+       
+        
+    }
+
+
+
+}
+function temp(){
+  
+        alert('long press');
+        
     
 }
-// This is temporary test function
-function temp(){
-    alert("Long Press Game");
-}
+
 
 /**
  * This function stop timer that were opened in longpress event, and it determine what would happen
@@ -107,6 +121,6 @@ function temp(){
  *
  * @param {event} event
  */
-function longPressOver(event){
+function longPressOver(event) {
     clearTimeout(timer);
 }

@@ -1,12 +1,16 @@
-const CPU_CONST = { STATIC: 0, UP: 4, DOWN: 1, LEFT: 3, RIGHT: 2, START_MOVE: 5, CARRAY:-1  };
+const CPU_CONST = { STATIC: 0, UP: 4, DOWN: 1, LEFT: 3, RIGHT: 2, START_MOVE: 5, CARRAY: -1 };
 /**
  *
- * 
+ * a charater play a role of CPU
  * @class CPU
  * @extends {Component}
  * @author Sai Cao
  */
 class CPU extends Component {
+    /**
+     *Creates an instance of CPU.
+     * @memberof CPU
+     */
     constructor() {
         super('CPU', null, 220, 0, 32, 32, true);
         this.speedX = 4;
@@ -16,24 +20,34 @@ class CPU extends Component {
         this.callback = undefined;
         this.interval = null;
         this.updateIndex = 0;
-        this.animation_speed=4;
-        this.frame_count=0;
+        this.animation_speed = 6;
+        this.frame_count = 0;
+        this.sleeptime=0;
     }
+
+    
     /**
      *
-     *
+     * this character move to the x and y
      * @param {number} x
      * @param {number} y
      * @memberof CPU
      */
-    moveTo(x, y) {
+    async moveTo(x, y) {
 
         this.destination.x = x;
         this.destination.y = y;
         this.state = CPU_CONST.START_MOVE;
-       
+        while(this.state!=CPU_CONST.STATIC){
+            await  sleep(100*this.animation_speed);
+  
+        }
+        
 
     }
+
+
+
     /**
      *
      * call before each frame to update x,y
@@ -91,20 +105,20 @@ class CPU extends Component {
         this.state = CPU_CONST.UP;
         this.y = this.y - this.speedY;
     }
-     /**
-     *
-     * make this component move Right with distance speed
-     * @memberof CPU
-     */
+    /**
+    *
+    * make this component move Right with distance speed
+    * @memberof CPU
+    */
     moveRight() {
         this.state = CPU_CONST.RIGHT;
         this.x = this.x + this.speedX;
     }
-     /**
-     *
-     * make this component move Left with distance speed
-     * @memberof CPU
-     */
+    /**
+    *
+    * make this component move Left with distance speed
+    * @memberof CPU
+    */
     moveLeft() {
         this.state = CPU_CONST.LEFT;
         this.x = this.x - this.speedX;
@@ -120,17 +134,21 @@ class CPU extends Component {
 
     }
 
-
-    doNext(state, callback) {
-        let CPU = this;
-        this.interval = setInterval(function () {
-            if (CPU.state == state) {
-                console.log('run call back');
-                callback();
-                clearInterval(CPU.interval);
-            }
-
-        }, 10);
+    /**
+     *
+     * to change this character moving speed.
+     * @param {number} speed
+     * @memberof CPU
+     */
+    setSpeed(speed){
+        if(0<speed&&speed<4){
+            this.speedX=4*speed;
+            this.speedY=4*speed;
+            this.animation_speed=6/speed;
+        }else{
+            throw new RangeError( 'speed should in range 1 to 3');
+        }
+        
 
     }
 
@@ -147,13 +165,13 @@ class CPU extends Component {
      * @memberof CPU
      */
     drawSprite() {
-        if ( this.frame_count >= this.animation_speed) {
-            this.frame_count=0;
+        if (this.frame_count >= this.animation_speed) {
+            this.frame_count = 0;
             this.updateIndex++;
-            if(this.updateIndex>1){
-                this.updateIndex=0;
+            if (this.updateIndex > 1) {
+                this.updateIndex = 0;
             }
-                
+
         }
 
         CTX.drawImage(RESOURCES.CPU_sprites[0].content,
@@ -161,12 +179,13 @@ class CPU extends Component {
             this.width, this.height,
             this.x, this.y,
             this.width, this.height);
-        
 
-            this.frame_count++;
+
+        this.frame_count++;
     }
 
 
 
 
 }
+

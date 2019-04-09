@@ -1,4 +1,5 @@
-
+Loader=require('../Resource/Loader');
+Menu=require('./Menu/Menu');
 class Game {
     /**
      *Creates an instance of Game.
@@ -124,3 +125,4 @@ function temp(){
 function longPressOver(event) {
     clearTimeout(timer);
 }
+module.exports=Game;

@@ -1,3 +1,5 @@
+Component=require('../Component');
+
 const CPU_CONST = { STATIC: 0, UP: 4, DOWN: 1, LEFT: 3, RIGHT: 2, START_MOVE: 5, CARRAY: -1 };
 /**
  *
@@ -188,4 +190,6 @@ class CPU extends Component {
 
 
 }
+
+module.exports=CPU;
 

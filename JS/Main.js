@@ -1,3 +1,4 @@
+Game=require('./Game');
 // author: sai cao Tianyu Cao
 // 2 10 2019
  
@@ -23,4 +24,4 @@ function main() {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
+module.exports=main;

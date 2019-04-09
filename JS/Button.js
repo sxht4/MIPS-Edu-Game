@@ -1,4 +1,5 @@
-
+LongPressEvent=require('./Event/LongPressEvent');
+Component=require('./Component');
 /**
  *
  * button is a clickable component in game
@@ -21,7 +22,6 @@ class Button extends Component {
     constructor(id, content, x, y, width, height, text, font, color, sprite_index) {
 
         super(id, content, x, y, width, height, true);
-        this.click_event = event;
         this.color = color;
         this.sprite_index = sprite_index;
         this.text = text;
@@ -127,3 +127,4 @@ class Button extends Component {
 
     }
 }
+module.exports=Button;

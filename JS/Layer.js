@@ -52,8 +52,8 @@ class Layer {
      */
     getByID(id){
         for (var i = 0; i <  this.components.length; i++) {
-            component = this.components[i];
-            if (id ===component.ID) {
+            var component = this.components[i];
+            if (id == component.id) {
                     return component;
             }
         }
@@ -72,3 +72,4 @@ class Layer {
 
     
 }
+module.exports=Layer;

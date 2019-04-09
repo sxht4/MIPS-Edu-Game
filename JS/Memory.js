@@ -1,3 +1,4 @@
+Component=require('./Component');
 /**
  *
  *
@@ -71,6 +72,6 @@ class Memory extends Component{
         
     }
 }
-
+module.exports=Memory;
 
 

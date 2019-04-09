@@ -1,3 +1,9 @@
+Button=require('../Button');
+GameScene=require('../GameScene');
+MainScene=require('../MainScene');
+NewSenceEvents=require('../Event/NewSceneEvent');
+LongPressEvent=require('../Event/LongPressEvent');
+RESOURCES=require('../../Resource/Resources');
 /**
  *
  * This menu
@@ -36,6 +42,7 @@ init(){
 
     
 }
+module.exports=SelectChapterMenu;
 
 
 

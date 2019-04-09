@@ -1,3 +1,4 @@
+
 /**
  * a Mips Interpreter for users's code
  * exucte animations
@@ -161,6 +162,6 @@ class Interpreter {
 
 
 }
-
+module.exports=Interpreter;
 
 

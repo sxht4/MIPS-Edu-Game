@@ -1,4 +1,7 @@
+Component=require('./Component');
+RegisterCell=require('./RegisterCell');
 /**
+ * 
  *
  *
  * @class Register
@@ -74,3 +77,4 @@ class Register extends Component {
         }
     }
 }
+module.exports=Register;

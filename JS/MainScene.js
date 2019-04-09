@@ -1,3 +1,15 @@
+GameScene=require('./GameScene');
+CodePanel=require('./Code_Panel/CodePanel');
+NewSceneEvent=require('./Event/NewSceneEvent');
+SelectChapterMenu=require('./Menu/SelectChapterMenu');
+InstructionMenu=require('./Menu/InstructionMenu');
+Memory=require('./Memory');
+Register=require('./Register');
+CPU=require('./Character/CPU');
+RunCodeEvent=require('./Event/RunCodeEvent');
+Interpreter=require('./Interpreter/Interpreter');
+Button=require('./Button');
+
 /**
  * player use this sence to play game
  * @class MainScene
@@ -32,7 +44,7 @@ init() {
         //run button
         var RunButon = Button.getButton('Code_Run', 375, 60, 1, 3, 'Run');
         this.addComponent(RunButon, -1);
-        var m = new Memory("Memory", [], 5, 5, 50, 200, false);
+        var m = new Memory("Memory", [], 5, 5, 50, 200, true);
         m.add(0);
         this.addComponent(m, -1);
 
@@ -49,3 +61,4 @@ init() {
       
     }
 }
+module.exports=MainScene;

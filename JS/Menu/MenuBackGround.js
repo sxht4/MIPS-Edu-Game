@@ -1,3 +1,4 @@
+Component=require('../Component');
 class MenuBackGround extends Component {
     constructor() {
 
@@ -20,7 +21,7 @@ class MenuBackGround extends Component {
 
             CTX.drawImage(this.content[1].content, 0, 0);
         } else if (this.time > this.AnimationSpeed) {
-            this.time = -this.AnimationSpeed;
+            this.time = -this.AnimationSpeed;InstructionMenu
 
         } 
             this.time++;
@@ -33,3 +34,4 @@ class MenuBackGround extends Component {
 
 
 }
+module.exports=MenuBackGround;

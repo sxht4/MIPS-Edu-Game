@@ -1,3 +1,6 @@
+GameScene=require('../GameScene');
+GameEvent=require('../Event/GameEvent');
+LongPressEvent=require('../Event/LongPressEvent');
 
 /**
  * This class create Instrucion Menu whcih should contain all Instructions that we will 
@@ -33,3 +36,4 @@ class InstructionMenu extends GameScene{
 
     }
 }
+module.exports=InstructionMenu;

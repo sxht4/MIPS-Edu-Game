@@ -1,5 +1,5 @@
 
- class Game {
+class Game {
     /**
      *Creates an instance of Game.
      * @param {number} width width of the game canvas
@@ -8,111 +8,119 @@
      * @memberof Game
      */
     constructor(width, height, FPS) {
-    
-        // all Game sence contain in this array.
-        this.game_sences = [];
-        // the current sence shown by game.
-        this.current_sence = this.game_sences.length;
+        console.log("create game instance");
+        this.width=width;
+        this.height=height;
+        // all Game scene contain in this array.
+        this.game_scenes = [];
+        // the current scene shown by game.
+        this.current_scene = this.game_scenes.length;
         this.FPS = FPS;
-        
+        this.speed=1;
+
     }
     /**
      *load Assets for game
      * @memberof Game
      */
     initGame() {
-        GAME = this;
-        
-        let count = 0;
-        let end=RESOURCES.buttons.length+RESOURCES.select_chapter_button.length-1;
 
-        let self = this;
-        for (let i = 0; i < RESOURCES.buttons.length; i++) {
+        var loader = new Loader(function () {
+            GAME.start();
+        });
+        loader.loadResources();
 
-            var img = new Image();
-            img.onload = function () {
-          
-                if (count == end) {
-                    self.start();
-                }
-                count++;
-            }
-            img.src = RESOURCES.buttons[i].src;
-            RESOURCES.buttons[i].content = img;
-        }
-        
-        for (let j = 0; j < RESOURCES.select_chapter_button.length; j++) {
-            var img = new Image();
-            img.onload = function () {
-             
-                if (count == end) {
-                    self.start();
-                }
-                count++;
-            }
-            img.src = RESOURCES.select_chapter_button[j].src;
-            RESOURCES.select_chapter_button[j].content = img;
-
-        }
-
-        for (let j = 0; j < RESOURCES.game_UI_button.length; j++) {
-            var img = new Image();
-            img.onload = function () {
-               
-                if (count == end) {
-                    self.start();
-                }
-                count++;
-            }
-            img.src = RESOURCES.game_UI_button[j].src;
-            RESOURCES.game_UI_button[j].content = img;
-
-        }
-
-
-
-    
     }
+
     /**
      * run the game
      * @memberof Game
      */
+
     run() {
 
         this.initGame();
 
     }
-    getCurrentSence() {
-        return this.game_sences[this.game_sences.length - 1];
+    getCurrentScene() {
+        return this.game_scenes[this.game_scenes.length - 1];
     }
     /**
-     * start draw game sence
+     * start draw game scene
      * @memberof Game
      */
     start() {
-        this.game_sences.push(new Menu());
+        console.log("game start");
+        var menu = new Menu();
+        menu.init();
+        this.addScene(menu);
         let self = this;
         this.interval = setInterval(function () {
-            self.getCurrentSence().updateFrame();
+            CTX.clearRect(0, 0, 480, 320);
+            self.getCurrentScene().updateFrame();
+
         }, this.FPS);
     }
-    addSence(sence) {
+    addScene(scene) {
 
-        this.game_sences.push(sence);
+        this.game_scenes.push(scene);
 
     }
 }
+
+
+
+// timer is a valuable that will be used in longPress, it determine how long a element need to be pressed.
+var timer;
+
 /**
- *  when canvas was clicked, this function will be called
+ * This function check if the clicked element is null and clickable, ann then it sets a timer for longpress
+ * event, that is, how long does user needs to press it in order to call a longpress event. 
  *
- * @param {Object} event
+ * @param {event} event
  */
-function gameClick(event) {
+function longPress (event){
+    console.log('game click');
     var x = event.offsetX;
     var y = event.offsetY;
-    var element = GAME.getCurrentSence().getClickedElement(x, y);
-    if (element!=null&&element.clickable) {
+    let element = GAME.getCurrentScene().getClickedElement(x, y);
+    if (element != null && element.clickable) {
+        timer = setTimeout(function(){
+            element.excuteLongPress();
+        }, 2000);
        
-        element.excuteClick();
+        
     }
+
+
+}
+function gameClick(){
+    var x = event.offsetX;
+    var y = event.offsetY;
+    var element = GAME.getCurrentScene().getClickedElement(x, y);
+    if (element != null && element.clickable) {
+        element.excuteClick(x,y);
+       
+        
+    }
+
+
+
+}
+function temp(){
+  
+        alert('long press');
+        
+    
+}
+
+
+/**
+ * This function stop timer that were opened in longpress event, and it determine what would happen
+ * if user stop press element.
+ *
+ * @param {event} event
+ */
+function longPressOver(event) {
+    clearTimeout(timer);
 }

@@ -1,6 +1,6 @@
-# MIPS Educational Game for CSE442 semester long project
+# Branch Info
+This Branch is created for improving Game Graphics and UI appearance 
 
-Purpose: Educational game for MIPS beginner
 
 Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 

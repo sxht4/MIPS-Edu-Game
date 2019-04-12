@@ -1,6 +1,7 @@
 /**
- *all the Scene for this game will extend this class 
- *ex:Menu,SelcetChapterMenu
+ * 
+ * @version 2019/3/29
+ * @author Sai Cao
  * @class GameScene
  */
 class GameScene {
@@ -9,12 +10,42 @@ class GameScene {
      * @memberof GameScene
      */
     constructor() {
-
-        this.components = [];
+        this.layers = [];
+        this.layers.push(new Layer());
 
     }
     /**
-     *get Clicked Element or compoment in game sence.
+     * append a layer to this Scene
+     *
+     * @memberof GameScene
+     */
+    addLayer(){
+        
+        this.layers.push(new Layer());
+    }
+    /**
+     * add Component to this Game Scene
+     *
+     * @param {Object} component
+     * @param {number} index the layer index to be added, -1 to add top layer
+     * @memberof GameScene
+     */
+    addComponent(component,index ){
+        
+        var size=this.layers.length;
+        if(index==-1){
+            this.layers[size-1].addComponent(component);
+            return;
+        }
+        if( index>size-1&&index<-1){
+            throw 'out of bound fail to add component @'+component.id+' at '+index;
+        }else{
+            this.layers[index].addComponent(component);
+        }
+
+    }
+    /**
+     *get Clicked Element or compoment in game scene.
      *
      * @param {number} x The x axis  coordinate
      * @param {number} y The y axis  coordinate
@@ -23,42 +54,43 @@ class GameScene {
      */
     getClickedElement(x, y) {
 
-        for (var i = 0; i < this.components.length; i++) {
-           var component = this.components[i];
-            if (x >= component.x && x <= component.x + component.width) {
-                if (y >= component.y && y <= component.y + component.height) {
-                    return component;
-                }
+        for (var i = this.layers.length-1; i >=0 ; i--) {
+           var component = this.layers[i].getClickedElement(x,y);
+            if (component!=null) {
+                return component;
             }
         }
         return null;
+
     }
     /**
-     *get  Element or compoment by thier ID in game sence.
+     *get  Element or compoment by thier ID in game scene.
      *
      * @param {string} id
      * @returns compoment that be has the id or null if not be found
      * @memberof GameScene
      */
     getByID(id){
+
         for (var i = 0; i <  this.components.length; i++) {
-            component = this.components[i];
-            if (id ===component.ID) {
-                    return component;
+            var component = this.layers[i].getByID(id);
+            if (component!=null) {
+                return component;
             }
         }
         return null;
+
     }
     /**
      *draw this Scene
      * @memberof GameScene
      */
     updateFrame(){
-        for (var i = 0; i < this.components.length; i++) {
-            this.components[i].update();
+
+        for (var i = 0; i < this.layers.length; i++) {
+            this.layers[i].updateLayer();
         }
+
     }
-
-
     
 }

@@ -447,6 +447,58 @@ describe('Interpreter.js Unit Tests', function(){
         
         assert.equal(ip.getRegister('t2').value, 3);
     });
+    it('excuteSLL function should shift value correctly',async function(){
+        r.getCellAt(0).setContent(2);
+        await ip.executeSLL('t0', 't0', '1');
+        assert.equal(ip.getRegister('t0').value, 4);
+
+        r.getCellAt(4).setContent(5);
+        await ip.executeSLL('t1', 't4', '3');
+        assert.equal(ip.getRegister('t1').value, 40); 
+        try {
+            await  ip.executeSLL('t2', 't2', 't4'); 
+        } catch (error) {
+            assert.equal(error, 'not a number '+ 't4');
+        }
+        r.getCellAt(3).setContent(19);
+        await ip.executeSLL('t3', 't3', '0');
+        assert.equal(ip.getRegister('t3').value, 19);
+    });
+    it('excuteSRL function should shift value correctly',async function(){
+        r.getCellAt(0).setContent(2);
+        await ip.executeSRL('t0', 't0', '1');
+        assert.equal(ip.getRegister('t0').value, 1);
+
+        r.getCellAt(1).setContent(5);
+        await ip.executeSRL('t2', 't1', '1');
+        assert.equal(ip.getRegister('t2').value, 2); 
+        try {
+            await  ip.executeSRL('t2', 't2', 't4'); 
+        } catch (error) {
+            assert.equal(error, 'not a number '+ 't4');
+        }
+        r.getCellAt(3).setContent(19);
+        await ip.executeSRL('t3', 't3', '3');
+        assert.equal(ip.getRegister('t3').value, 2);
+    });
+    it('excuteSTL function should compare values and set result value correctly', async function(){
+        r.getCellAt(2).setContent(2);
+        r.getCellAt(1).setContent(1);
+        r.getCellAt(3).setContent(3);
+        await  ip.executeSLT('t0', 't1', 't2'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 1);
+        //test passed
+        await  ip.executeSLT('t4', 't3', 't2');
+        assert.equal(ip.getRegister('t4').value, 0);
+    });
+    it('When two values are equal to each other, 0 should be set to destination reg', async function(){
+        r.getCellAt(2).setContent(2);
+        r.getCellAt(1).setContent(2);        
+        await  ip.executeSLT('t0', 't1', 't2'); 
+        assert.equal(ip.getRegister('t0').value, 0);
+    });
+
 });
 
 // //EventController tests

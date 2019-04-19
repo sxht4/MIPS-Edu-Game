@@ -16,6 +16,7 @@ class Memory extends Component{
         this.maxSize=13;
         //this.store.length=100;
     }
+    
 
     add(value){ //add value to memory
         if(this.content.length >= this.maxSize){
@@ -24,6 +25,8 @@ class Memory extends Component{
             this.content.push(value);
         }
     }
+
+
 
     delete(index){
         if(index >= this.maxSize-1){

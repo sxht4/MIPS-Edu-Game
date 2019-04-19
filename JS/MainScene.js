@@ -43,7 +43,7 @@ init() {
         this.addLayer();
         var cpu = new CPU();
         this.addComponent(cpu, -1);
-        cpu.setSpeed(1);
+        cpu.setSpeed(3);
 
         RunButon.addClickEvent(new RunCodeEvent(new Interpreter(cpu, cp, m, r)));
       

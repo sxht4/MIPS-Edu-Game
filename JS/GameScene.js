@@ -67,7 +67,7 @@ class GameScene {
      *get  Element or compoment by thier ID in game scene.
      *
      * @param {string} id
-     * @returns compoment that be has the id or null if not be found
+     * @returns {Component} component that be has the id or null if not be found
      * @memberof GameScene
      */
     getByID(id){

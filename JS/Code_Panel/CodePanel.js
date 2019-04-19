@@ -24,6 +24,9 @@ class CodePanel extends Component {
         this.init();
 
     }
+    getContent(i){
+        return this.content[i];
+    }
     /**
      *init the code panel.
      *
@@ -37,12 +40,13 @@ class CodePanel extends Component {
 
             this.addTextCell();
         }
-      
+        for (var i=0;i<10;i++){
         this.instructions.push('add t0 t1 t2');
         this.instructions.push('addi t0 t1 5');
-        for(var i=2;i<500;i++){
-            this.instructions[i]='';
+
         }
+        
+       
         
 
     }
@@ -116,6 +120,12 @@ class CodePanel extends Component {
         }
         document.body.appendChild(input);
         input.focus();
+    }
+    nextPage(){
+       this.line_index= this.line_index+14;
+    }
+    lastPage(){
+        this.line_index=Math.max(this.line_index-14,0);
     }
 
    /**

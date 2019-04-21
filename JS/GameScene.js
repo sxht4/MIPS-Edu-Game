@@ -23,6 +23,16 @@ class GameScene {
         
         this.layers.push(new Layer());
     }
+    removeLayer(i){
+        if(i==-1){
+            this.layers.pop();
+
+        }else{
+            this.layers.slice(i,i);
+        }
+       
+
+    }
     /**
      * add Component to this Game Scene
      *
@@ -92,5 +102,6 @@ class GameScene {
         }
 
     }
+    
     
 }

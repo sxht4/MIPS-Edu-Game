@@ -17,6 +17,8 @@ class Interpreter {
         this.code_panel = code_panel;
         this.memeory = memeory;
         this.register = register;
+        this.test=null;
+     
         this.init();
 
     }
@@ -52,7 +54,7 @@ class Interpreter {
      */
     async executeADDI(dest, arg1, arg2) {
         try {
-            Number.parseInt(arg2)
+            Number.parseInt(arg2);
         } catch (error) {
             throw 'not a integer' + arg2;
         }
@@ -61,7 +63,6 @@ class Interpreter {
             var destCell = this.getRegister(dest);
             await this.cpu.moveTo(R1.cell.x, R1.cell.y);
             await this.cpu.moveTo(destCell.cell.x, destCell.cell.y);
-
             destCell.cell.setContent(R1.value + Number.parseInt(arg2));
 
         } catch (error) {
@@ -232,6 +233,7 @@ class Interpreter {
             } catch (error) {
                 await this.cpu.moveTo(220,0);
                 alert("Please correct your error at line " + (i + 1) + '\n' + error);
+                return false;
             }
 
 
@@ -239,6 +241,8 @@ class Interpreter {
         }
         await this.cpu.moveTo(220,0);
     }
+
+ 
 
 
     /**
@@ -260,12 +264,12 @@ class Interpreter {
             throw 'invaild Register address ' + id;
         }
 
-
-
-
+    }
+  
+    setTest(test){
+        this.test=test;
 
     }
-
 
 
 }

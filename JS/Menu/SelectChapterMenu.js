@@ -23,7 +23,11 @@ init(){
         //CTX.clearRect(0, 0, 480, 320);
         console.log("create select game menu");
         var tutorialButton= Button.getButton('Tutorial_Button',185,160,0,0,'Tutorial');
+<<<<<<< HEAD
         tutorialButton.addClickEvent(new NewSceneEvent(new TutorialChapter()));
+=======
+        tutorialButton.addClickEvent(new NewSceneEvent(new Tutorial()));
+>>>>>>> Implement a tutorial chapater
         var chapter1Button= Button.getButton('Chapter_1_Button',185,210,0,0,'Chapter 1');
         chapter1Button.addClickEvent(new NewSceneEvent(new MainScene()));
         

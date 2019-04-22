@@ -57,18 +57,19 @@ class Memory extends Component{
 
 
     update(){
-        let xOfMemory=5;
-        let yOfMemory=10;
+        let xOfMemory=10;
+        let yOfMemory=20;
         CTX.clearRect(this.x,this.y,this.width,this.height);
-        CTX.fillStyle = "red";
+        CTX.fillStyle = "black";
         //CTX.font="12px Times New Roma";
+        CTX.drawImage(RESOURCES.MenuBackGround[3].content, 17, 17, 40, 38, this.x, this.y, this.width, this.height);
 
         for(let i=0; i<this.content.length; i++){
-            CTX.fillText(i+". ", xOfMemory, yOfMemory);
+            CTX.fillText(4*i+". ", xOfMemory, yOfMemory);
             CTX.fillText(this.content[i], xOfMemory+20, yOfMemory);
-            CTX.moveTo(xOfMemory, yOfMemory+5);
-            CTX.lineTo(xOfMemory+90, yOfMemory+5);
-            CTX.stroke();
+            // CTX.moveTo(xOfMemory, yOfMemory+5);
+            // CTX.lineTo(xOfMemory+90, yOfMemory+5);
+            // CTX.stroke();
             yOfMemory=yOfMemory+20;
         }
         

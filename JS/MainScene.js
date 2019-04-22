@@ -32,11 +32,13 @@ init() {
         //run button
         var RunButon = Button.getButton('Code_Run', 375, 60, 1, 3, 'Run');
         this.addComponent(RunButon, -1);
-        var m = new Memory("Memory", [], 5, 5, 50, 200, false);
-        m.add(0);
+        var m = new Memory("Memory", [], 5, 5, 80, 300, false);
+        for(var i=0; i<13; i++){
+            m.add(100);
+        }
         this.addComponent(m, -1);
 
-        var r = new Register("Register", [], 100, 270, 250, 50, true);
+        var r = new Register("Register", [], 100, 220, 250, 100, true);
         r.init();
         this.addComponent(r, -1);
 

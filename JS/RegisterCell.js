@@ -55,9 +55,11 @@ class RegisterCell extends Component{
     update(){
         
       
-        CTX.fillStyle = "red";
-        CTX.fillText(this.content, this.x, this.y);
-        CTX.fillText("t"+this.id, this.x, this.y-20);
+        CTX.fillStyle = "black";
+        CTX.fillText(this.content, this.x+20, this.y+22);
+        CTX.fillText("t"+this.id, this.x, this.y+10);
+        // CTX.fillStyle = "white";
+        // CTX.fillRect(this.x, this.y, this.width, this.height);
         
     }
 }

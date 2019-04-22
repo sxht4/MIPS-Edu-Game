@@ -1,10 +1,13 @@
 /**
- *
- *
+ * A tutorial chapter to tech the game
  * @class Tutorial
  * @extends {GameScene}
  */
-class Tutorial extends GameScene {
+class TutorialChapter extends GameScene {
+    /**
+     *Creates an instance of Tutorial.
+     * @memberof Tutorial
+     */
     constructor() {
         super();
         this.except_component = null;
@@ -16,6 +19,11 @@ class Tutorial extends GameScene {
 
 
     }
+    /**
+     * init the this chapter
+     *
+     * @memberof TutorialChapter
+     */
     init() {
         this.layers = [];
         this.layers.push(new Layer());
@@ -26,6 +34,11 @@ class Tutorial extends GameScene {
 
 
     }
+    /**
+     *
+     * init the Scene that will be techded.
+     * @memberof TutorialChapter
+     */
     initScene() {
         console.log("init GaneUI Menu");
         this.cp = new CodePanel();
@@ -54,6 +67,11 @@ class Tutorial extends GameScene {
         this.interpreter=new Interpreter(this.cpu, this.cp, this.m, this.r);
         this.RunButon.addClickEvent(new RunCodeEvent( this.interpreter));
     }
+    /**
+     * tech how to use code panel
+     *
+     * @memberof TutorialChapter
+     */
     codePanelHint() {
         this.cp.instructions = ['Hello ', 'bug'];
         this.except_component = this.cp.getContent(1);
@@ -69,17 +87,12 @@ class Tutorial extends GameScene {
 
 
     }
-
-    highLightByID(str) {
-
-        var component = this.getByID(str);
-        if (component == null) {
-            throw 'fail to high light ' + str
-        }
-
-
-
-    }
+    /**
+     *High Light the component in game
+     *
+     * @param {Component} component
+     * @memberof TutorialChapter
+     */
     highLight(component) {
         this.inverseSelect(component);
 
@@ -88,22 +101,28 @@ class Tutorial extends GameScene {
 
     /**
      *
-     *
+     *  create a 4 black transparent Rectangles to all components except the agruement component.
      * @param {Component} component
      * @memberof Tutorial
      */
-    inverseSelect(component, color) {
+    inverseSelect(component) {
 
         this.addComponent(new TransparentComponent('Left', 0, 0, component.x, GAME.height), -1);
         this.addComponent(new TransparentComponent('Riht', component.x + component.width, 0, GAME.width - (component.x + component.width), GAME.height), -1);
         this.addComponent(new TransparentComponent('Top', component.x, 0, component.width, component.y), -1);
         this.addComponent(new TransparentComponent('Down', component.x, component.y + component.height, component.width, GAME.height - (component.y + component.height)), -1);
 
-
     }
 
 
-
+    /**
+     * get click element in this scene
+     * this function contain the event listener this tutorial chapter
+     * @param {number} x
+     * @param {number} y
+     * @returns {Component} 
+     * @memberof TutorialChapter
+     */
     getClickedElement(x, y) {
         console.log('get click');
         var component = this.private_getClickElement(x, y);
@@ -132,6 +151,14 @@ class Tutorial extends GameScene {
 
 
     }
+    /**
+     *Help function for getClickElement().
+     *
+     * @param {number} x
+     * @param {number} y
+     * @returns
+     * @memberof TutorialChapter
+     */
     private_getClickElement(x, y) {
         for (var i = this.layers.length - 1; i >= 0; i--) {
             var component = this.layers[i].getClickedElement(x, y);
@@ -142,7 +169,11 @@ class Tutorial extends GameScene {
         }
         return null;
     }
-
+    /**
+     * a listener to listen which step that users are learning.
+     *
+     * @memberof TutorialChapter
+     */
     nextStep() {
 
 
@@ -153,7 +184,7 @@ class Tutorial extends GameScene {
 
                 break;
             case 2:
-                this.memoryHit();
+                this.memoryHint();
                 break;
             case 3:
                 this.registerHint();
@@ -169,6 +200,11 @@ class Tutorial extends GameScene {
 
 
 }
+/**
+ * a tutorial to type code
+ *
+ * @memberof TutorialChapter
+ */
 typeCode() {
 
     console.log('tpye code');
@@ -180,12 +216,17 @@ typeCode() {
     this.addComponent(cp_hint, -1);
     cp_hint.appendLine("now type to change the\" bug\"");
     cp_hint.appendLine(' to \"world\" and,press enter');
-
     this.count++;
 
 
 }
-memoryHit() {
+/**
+ * a tutorial to memory
+ *
+ * @returns
+ * @memberof TutorialChapter
+ */
+memoryHint() {
 
     if (this.cp.modcount != this.cp.count) {
         console.log(this.cp.getInstructions()[1]);
@@ -197,6 +238,7 @@ memoryHit() {
             var cp_hint = new Dialogue();
             cp_hint.appendLine("click it to next step ");
             cp_hint.appendLine("this is the memory cell you ");
+            this.addComponent(cp_hint,-1);
             this.except_component = this.m;
             cp_hint.x = 250;
             cp_hint.y = 100;
@@ -220,7 +262,11 @@ memoryHit() {
 
 
 }
-
+/**
+ * a toturial to register
+ *
+ * @memberof TutorialChapter
+ */
 registerHint() {
     this.removeLayer(-1);
     this.addLayer();
@@ -235,6 +281,11 @@ registerHint() {
     cp_hint.height = 100;
     this.addComponent(cp_hint, -1);
 }
+/**
+ *
+ * tutorial to run first code
+ * @memberof TutorialChapter
+ */
 runFirstCode() {
     this.removeLayer(-1);
     this.addLayer();
@@ -245,10 +296,11 @@ runFirstCode() {
     cp_hint.appendLine('now,it time to run your first instruction');
     cp_hint.appendLine('type,\"add t0 t1 t2\"');
     cp_hint.appendLine('click run button');
-    
+    cp_hint.appendLine('you can click IM button');
+    cp_hint.appendLine('see what instrutions are supported');
     this.cpu.setLocation(250,200);
-    cp_hint.width = 250;
-    cp_hint.height =100;
+    cp_hint.width = 270;
+    cp_hint.height =120;
     cp_hint.x = 70;
     cp_hint.y =0;
     this.addComponent(cp_hint, -1);

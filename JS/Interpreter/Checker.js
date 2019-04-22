@@ -1,3 +1,8 @@
+/**
+ * demo implement
+ * check the result of users codes 
+ * @class Checker
+ */
 class Checker {
     constructor(code_panel,r,m){
         this.code_panel=code_panel;

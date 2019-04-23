@@ -1,32 +1,10 @@
 
-<<<<<<< HEAD
-/**
- *
- * Create a Dialogue box 
- * @class Dialogue
- * @extends {Component}
- */
-class Dialogue extends Component{
-    /**
-     *Creates an instance of Dialogue.
-     * @param {*} id
-     * @memberof Dialogue
-     */
-    constructor(id){
-        super(id,[],100,100,200,150,false);
-        this.color='Red';
-        this.font='14px Arial';
-        
-
-    }
     /**
      * append a line to this dialogue box
      *
      * @param {string} str
      * @memberof Dialogue
      */
-=======
-
 class Dialogue extends Component{
     constructor(id){
         super(id,[],100,100,200,150,false);
@@ -34,13 +12,13 @@ class Dialogue extends Component{
         
 
     }
->>>>>>> Implement a tutorial chapater
+
     appendLine(str){
         this.content.push(str);
 
 
     }
-<<<<<<< HEAD
+
     /**
      * draw this content
      *
@@ -61,7 +39,7 @@ class Dialogue extends Component{
      *
      * @memberof Dialogue
      */
-=======
+
     update() {
         this.drawbackground();
         CTX.fillStyle = 'Red';
@@ -72,7 +50,7 @@ class Dialogue extends Component{
         }
 
     }
->>>>>>> Implement a tutorial chapater
+
     drawbackground(){
         CTX.fillStyle = "#41f459";
         CTX.fillRect(this.x,this.y, this.width, this.height);

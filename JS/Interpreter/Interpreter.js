@@ -28,9 +28,11 @@ class Interpreter {
      * @memberof Interpreter
      */
     init() {
+
        var parseMap = new Map();
         for (var i = 0; i < 8; i++) {
             parseMap.set('t' + i,this.register.getCellAt(i));
+
         }
         this.parseMap = parseMap;
     }
@@ -54,7 +56,9 @@ class Interpreter {
      */
     async executeADDI(dest, arg1, arg2) {
         try {
+
             Number.parseInt(arg2);
+
         } catch (error) {
             throw 'not a integer' + arg2;
         }
@@ -224,7 +228,7 @@ class Interpreter {
                     case "":
                         break;
                     default:
-                        
+
                         alert('instruction not support at line' + (i + 1));
                         cell.highLight('red');
                         await this.cpu.moveTo(220,0);
@@ -236,6 +240,7 @@ class Interpreter {
             } catch (error) {
                 cell.highLight('red');
                 
+
                 alert("Please correct your error at line " + (i + 1) + '\n' + error);
                 await this.cpu.moveTo(220,0);
                 cell.deHighLight();
@@ -245,9 +250,11 @@ class Interpreter {
 
             cell.deHighLight();
         }
+
         
         await this.cpu.moveTo(220,0);
         this.test.check();
+
     }
 
  

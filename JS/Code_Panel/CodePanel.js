@@ -13,14 +13,16 @@ class CodePanel extends Component {
      *@memberof CodePanel
      */
     constructor() {
-        super('code_panel', [],365, 90, 100, 16*14, true); 
+        super('code_panel', [],365, 90, 100, 15*14, true); 
         this.vertical_space=1;
         this.left_space=2;
         this.cell_hegiht=12;
         this.cell_width=100;
         this.instructions=[];
         this.line_index=0;
-
+        this.count=0;
+        this.modcount=0;
+        this.hasInput=false;
         this.init();
 
     }
@@ -85,8 +87,13 @@ class CodePanel extends Component {
        
         var i=Math.floor(realtive_y/(this.cell_hegiht+this.vertical_space));
         var str=this.instructions[i+this.line_index];
+        console.log(this.line_index+i);
          //create form
-        this.addInput(str,i);
+         if(!this.hasInput){
+            this.hasInput=true;
+            this.addInput(str,i);
+         }
+       
        
     }
     /**
@@ -97,6 +104,8 @@ class CodePanel extends Component {
      * @param {number} i 
      */
     addInput(str,i) {
+
+        console.log('text area');
         var input_x=GAME_CANVAS.offsetLeft;
         var input_y=GAME_CANVAS.offsetTop;
         var input = document.createElement('input');
@@ -111,9 +120,11 @@ class CodePanel extends Component {
            
                 var keyCode = e.keyCode;
                 if (keyCode === 13) {
-
+                    
                     self.instructions[index]=this.value;
                     document.body.removeChild(this);
+                    self.modcount++;
+                    self.hasInput=false;
                     
                 }
             

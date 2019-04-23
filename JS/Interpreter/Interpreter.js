@@ -17,6 +17,8 @@ class Interpreter {
         this.code_panel = code_panel;
         this.memeory = memeory;
         this.register = register;
+        this.test=null;
+     
         this.init();
 
     }
@@ -26,9 +28,11 @@ class Interpreter {
      * @memberof Interpreter
      */
     init() {
-        var parseMap = new Map();
-        for (var i = 0; i < 5; i++) {
-            parseMap.set('t' + i, this.register.getCellAt(i));
+
+       var parseMap = new Map();
+        for (var i = 0; i < 8; i++) {
+            parseMap.set('t' + i,this.register.getCellAt(i));
+
         }
         this.parseMap = parseMap;
     }
@@ -52,7 +56,9 @@ class Interpreter {
      */
     async executeADDI(dest, arg1, arg2) {
         try {
-            Number.parseInt(arg2)
+
+            Number.parseInt(arg2);
+
         } catch (error) {
             throw 'not a integer' + arg2;
         }
@@ -61,7 +67,6 @@ class Interpreter {
             var destCell = this.getRegister(dest);
             await this.cpu.moveTo(R1.cell.x, R1.cell.y);
             await this.cpu.moveTo(destCell.cell.x, destCell.cell.y);
-
             destCell.cell.setContent(R1.value + Number.parseInt(arg2));
 
         } catch (error) {
@@ -96,6 +101,88 @@ class Interpreter {
 
     }
 
+    /**
+     *
+     *parse and run sub
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeSub(dest, arg1, arg2){
+        var R1 = this.getRegister(arg1);
+        var R2 = this.getRegister(arg2);
+        var destcell = this.getRegister(dest);
+        await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await  this.cpu.moveTo(R2.cell.x, R2.cell.y);
+        await  this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(R1.value - R2.value);
+    }
+
+    /**
+     *
+     *parse and run subi
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeSubi(dest, arg1, arg2) {
+        try {
+            Number.parseInt (arg2)
+        } catch (error) {
+            throw 'not a integer'+arg2;
+        }
+        try {
+            var R1 = this.getRegister(arg1);
+            var destCell = this.getRegister(dest);
+            await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+            await  this.cpu.moveTo(destCell.cell.x, destCell.cell.y);
+            
+            destCell.cell.setContent(R1.value - Number.parseInt (arg2));
+            
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    /**
+     *
+     *parse and run mul
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeMul(dest, arg1, arg2){
+        var R1 = this.getRegister(arg1);
+        var R2 = this.getRegister(arg2);
+        var destcell = this.getRegister(dest);
+        await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await  this.cpu.moveTo(R2.cell.x, R2.cell.y);
+        await  this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(R1.value * R2.value);
+    }
+
+    /**
+     *
+     *parse and run Div
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeDiv(dest, arg1, arg2){
+        var R1 = this.getRegister(arg1);
+        var R2 = this.getRegister(arg2);
+        var destcell = this.getRegister(dest);
+        await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await  this.cpu.moveTo(R2.cell.x, R2.cell.y);
+        await  this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(R1.value / R2.value);
+    }
+    
+
 
     /**
      * parse the instructions from Code_Panel
@@ -126,27 +213,51 @@ class Interpreter {
                     case "add":
                         await this.executeADD(splited[1], splited[2], splited[3]);
                         break;
+                    case "subi":
+                        await this.executeSubi(splited[1], splited[2], splited[3]);
+                        break;
+                    case "sub":
+                        await this.executeSub(splited[1], splited[2], splited[3]);
+                        break;
+                    case "mul":
+                        await this.executeMul(splited[1], splited[2], splited[3]);
+                        break;
+                    case "div":
+                        await this.executeDiv(splited[1], splited[2], splited[3]);
+                        break;
                     case "":
                         break;
                     default:
-                        cell.highLight('red');
-                        await sleep(2000);
+
                         alert('instruction not support at line' + (i + 1));
-                        break;
+                        cell.highLight('red');
+                        await this.cpu.moveTo(220,0);
+                        cell.deHighLight();
+                        return;
+                        
                 }
 
             } catch (error) {
                 cell.highLight('red');
-                await sleep(2000);
-                cell.deHighLight();
-                return;
+                
+
                 alert("Please correct your error at line " + (i + 1) + '\n' + error);
+                await this.cpu.moveTo(220,0);
+                cell.deHighLight();
+                break;
+                
             }
 
             cell.deHighLight();
         }
 
+        
+        await this.cpu.moveTo(220,0);
+        this.test.check();
+
     }
+
+ 
 
 
     /**
@@ -168,12 +279,12 @@ class Interpreter {
             throw 'invaild Register address ' + id;
         }
 
-
-
-
+    }
+  
+    setTest(test){
+        this.test=test;
 
     }
-
 
 
 }

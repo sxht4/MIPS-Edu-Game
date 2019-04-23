@@ -224,22 +224,30 @@ class Interpreter {
                     case "":
                         break;
                     default:
-                        await this.cpu.moveTo(220,0);
+                        
                         alert('instruction not support at line' + (i + 1));
-                        return
-
+                        cell.highLight('red');
+                        await this.cpu.moveTo(220,0);
+                        cell.deHighLight();
+                        return;
+                        
                 }
 
             } catch (error) {
-                await this.cpu.moveTo(220,0);
+                cell.highLight('red');
+                
                 alert("Please correct your error at line " + (i + 1) + '\n' + error);
-                return false;
+                await this.cpu.moveTo(220,0);
+                cell.deHighLight();
+                break;
+                
             }
 
-
-
+            cell.deHighLight();
         }
+        
         await this.cpu.moveTo(220,0);
+        this.test.check();
     }
 
  

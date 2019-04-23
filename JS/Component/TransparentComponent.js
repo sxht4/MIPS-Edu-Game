@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * a balck Transparent Component
  *
@@ -15,9 +14,6 @@ class TransparentComponent extends Component{
      * @param {*} height
      * @memberof TransparentComponent
      */
-=======
-class TransparentComponent extends Component{
->>>>>>> Implement a tutorial chapater
     constructor(id,x,y,width,height){
         
         super(id,null,x,y,width,height,false);

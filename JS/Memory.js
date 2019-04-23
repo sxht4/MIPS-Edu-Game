@@ -11,7 +11,7 @@ class Memory extends Component{
      * this class is created to display and setup memory
      */
     constructor(id, content, x, y, width, height, clickable){
-        super(id, content, x, y, width, height, true);
+        super(id, content, x, y, width, height, clickable);
         this.content=[];
         this.maxSize=13;
         //this.store.length=100;

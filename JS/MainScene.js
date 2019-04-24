@@ -73,7 +73,7 @@ class MainScene extends GameScene {
         pro.appendLine('t0 = 31*(t1^2) + 4*t2 + 7');
         pro.appendLine('click green area to continue');
         this.except_component = pro;
-        //this.ErrorText = 'you should click second line';
+        this.ErrorText = 'Read instructions in green area carefully.';
         this.addComponent(pro, -1);
 
 

@@ -45,7 +45,6 @@ class Game {
     removeScene(i){
         if(i==-1){
             this.game_scenes.pop();
-
         }else{
             this.game_scenes.slice(i,i);
         }

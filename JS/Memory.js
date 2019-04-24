@@ -49,7 +49,7 @@ class Memory extends Component{
 
 
     update(){
-        let xOfMemory=10;
+        let xOfMemory=15;
         let yOfMemory=20;
         CTX.clearRect(this.x,this.y,this.width,this.height);
         CTX.fillStyle = "black";

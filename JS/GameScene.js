@@ -9,7 +9,8 @@ class GameScene {
      *Creates an instance of GameScene.
      * @memberof GameScene
      */
-    constructor() {
+    constructor(id) {
+        this.id=id;
         this.layers = [];
         this.layers.push(new Layer());
 

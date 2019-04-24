@@ -25,13 +25,13 @@ class TutorialTest extends Checker{
     check(){
         if((this.r.getCellAt(0).content==5)){
            GAME.removeScene(-1);
-           alert('good job');
+           alert('Good job');
            return true;
             
         }else{
             this.r.getCellAt(0).content=4;
             this.r.getCellAt(1).content=5;
-            alert('not correct,try again');
+            alert('It is incorrect, please try again.');
             return false;
         }
         

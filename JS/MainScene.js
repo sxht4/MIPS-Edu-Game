@@ -49,10 +49,11 @@ init() {
         this.addComponent(this.cpu, -1);
         this.cpu.setSpeed(2);
 
-        this.interpreter=new Interpreter(this.cpu, this.cp, this.m, this.r);
-        this.interpreter.test=new TutorialTest();
-        this.interpreter.loadAnimation=new LoadAnimation();
-        this.addComponent(this.interpreter.loadAnimation,-1);
+        this.interpreter=new Interpreter(this.cpu, this.cp, this.m, this.r,new InterpreterAnimation());
+        this.interpreter.test={check(){
+            return;
+        }};
+        this.addComponent(this.interpreter.InterpreterAnimation,-1);
         this.RunButon.addClickEvent(new RunCodeEvent(this.interpreter));
       
     }

@@ -12,13 +12,13 @@ class Interpreter {
      * @param {Register} register
      * @memberof Interpreter
      */
-    constructor(cpu, code_panel, memory, register,loadAnimation) {
+    constructor(cpu, code_panel, memory, register,InterpreterAnimation) {
         this.cpu = cpu;
         this.code_panel = code_panel;
         this.memory = memory;
         this.register = register;
         this.test = null;
-        this.loadAnimation=loadAnimation
+        this.InterpreterAnimation=InterpreterAnimation
 
         this.init();
 
@@ -173,7 +173,7 @@ class Interpreter {
         await this.cpu.moveTo(R1.cell.x, R1.cell.y);
         console.log('=');
         var value=this.loadMemory(R1.value+offest,R1.cell);
-        await sleep (this.loadAnimation.aniamtionTime*1000/15);
+        await sleep (this.InterpreterAnimation.aniamtionTime*1000/15);
         await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
         destcell.cell.setContent(value);
     }
@@ -185,7 +185,7 @@ class Interpreter {
         await this.cpu.moveTo(R1.cell.x, R1.cell.y);
         
         this.writeMemory(R1.value+offest,destcell.value,R1.cell);
-        await sleep (this.loadAnimation.aniamtionTime*1000/15);
+        await sleep (this.InterpreterAnimation.aniamtionTime*1000/15);
         await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
     }
 
@@ -319,7 +319,7 @@ class Interpreter {
         }else{
             
             this.memory.set(address,value);
-            this.loadAnimation.setAninmation(beignCompoent.x+10,beignCompoent.y-10, (this.memory.x+10),this.memory.y+20+(20)*address);
+            this.InterpreterAnimation.setAninmation(beignCompoent.x+10,beignCompoent.y-10, (this.memory.x+10),this.memory.y+20+(20)*address);
 
         } 
 
@@ -332,7 +332,7 @@ class Interpreter {
         if(index%4!=0){
             this.addressError();
         }else{
-            this.loadAnimation.setAninmation(beignCompoent.x+10,beignCompoent.y-10, (this.memory.x+10),this.memory.y+20+(20)*address);
+            this.InterpreterAnimation.setAninmation(beignCompoent.x+10,beignCompoent.y-10, (this.memory.x+10),this.memory.y+20+(20)*address);
             
             return this.memory.get(address);
         }

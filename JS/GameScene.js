@@ -30,8 +30,6 @@ class GameScene {
         }else{
             this.layers.slice(i,i);
         }
-       
-
     }
     /**
      * add Component to this Game Scene

@@ -3,13 +3,14 @@
  * @class Tutorial
  * @extends {GameScene}
  */
-class TutorialChapter extends GameScene {
+class TutorialChapter extends MainScene {
     /**
      *Creates an instance of Tutorial.
      * @memberof Tutorial
      */
     constructor() {
         super();
+        
         this.except_component = null;
         this.ErrorText = null;
         this.modcount = 0;
@@ -25,9 +26,10 @@ class TutorialChapter extends GameScene {
      * @memberof TutorialChapter
      */
     init() {
+        
         this.layers = [];
         this.layers.push(new Layer());
-        this.initScene();
+        super.init();
         this.codePanelHint();
 
 

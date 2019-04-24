@@ -12,11 +12,6 @@ class Menu extends GameScene {
     constructor() {
         super();
         
-
-
-        
-
-        
     }
 
 

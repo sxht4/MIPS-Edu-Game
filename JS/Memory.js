@@ -28,14 +28,6 @@ class Memory extends Component{
 
 
 
-    delete(index){
-        if(index >= this.maxSize-1){
-            console.log("The maxium size of memory is reached");
-        }else{
-            this.content[index]=undefined;
-        }
-    }
-
     get(index){ //get value at this index(address)
         if(index >= this.maxSize-1){
             console.log("The maxium size of memory is reached");

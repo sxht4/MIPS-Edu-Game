@@ -20,36 +20,40 @@ class MainScene extends GameScene {
  */
 init() {
         console.log("init GaneUI Menu");
-        var cp = new  CodePanel();
-        this.addComponent(cp, -1);
+        this.cp = new  CodePanel();
+        this.addComponent(this.cp, -1);
 
         //Instruction Menu Button 
-        var InstructionMenuButton = Button.getButton('Instruction_Menu', 375, 30, 1, 3, 'IM');
-        InstructionMenuButton.addClickEvent(new NewSceneEvent(new InstructionMenu()));
-        var IMHint= new HintEvent('IMHint')
-        IMHint.setHintContent('this is instruction menu \n it contain all insturtions game support');
-        InstructionMenuButton.addLongPressEvent(IMHint);
-        this.addComponent(InstructionMenuButton, -1);
+        this.InstructionMenuButton = Button.getButton('Instruction_Menu', 375, 30, 1, 3, 'IM');
+        this.InstructionMenuButton.addClickEvent(new NewSceneEvent(new InstructionMenu()));
+        this.IMHint= new HintEvent('IMHint')
+        this.IMHint.setHintContent('this is instruction menu \n it contain all insturtions game support');
+        this.InstructionMenuButton.addLongPressEvent(this.IMHint);
+        this.addComponent(this.InstructionMenuButton, -1);
 
         //run button
-        var RunButon = Button.getButton('Code_Run', 375, 60, 1, 3, 'Run');
-        this.addComponent(RunButon, -1);
-        var m = new Memory("Memory", [], 5, 5, 80, 300, false);
+        this.RunButon = Button.getButton('Code_Run', 375, 60, 1, 3, 'Run');
+        this.addComponent(this.RunButon, -1);
+        this.m = new Memory("Memory", [], 5, 5, 80, 300, false);
         for(var i=0; i<13; i++){
-            m.add(100);
+            this.m.add(i);
         }
-        this.addComponent(m, -1);
+        this.addComponent(this.m, -1);
 
-        var r = new Register("Register", [], 100, 220, 250, 100, true);
-        r.init();
-        this.addComponent(r, -1);
+        this. r = new Register("Register", [], 100, 220, 250, 100, true);
+        this.r.init();
+        this.addComponent(this.r, -1);
 
         this.addLayer();
-        var cpu = new CPU();
-        this.addComponent(cpu, -1);
-        cpu.setSpeed(3);
+        this.cpu = new CPU();
+        this.addComponent(this.cpu, -1);
+        this.cpu.setSpeed(2);
 
-        RunButon.addClickEvent(new RunCodeEvent(new Interpreter(cpu, cp, m, r)));
+        this.interpreter=new Interpreter(this.cpu, this.cp, this.m, this.r);
+        this.interpreter.test=new TutorialTest();
+        this.interpreter.loadAnimation=new LoadAnimation();
+        this.addComponent(this.interpreter.loadAnimation,-1);
+        this.RunButon.addClickEvent(new RunCodeEvent(this.interpreter));
       
     }
 }

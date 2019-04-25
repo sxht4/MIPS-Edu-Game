@@ -30,11 +30,12 @@ class Menu extends GameScene {
         
         var NewGameButton= Button.getButton('New_Game_Button',185,210,0,0,'NEW GAME');
         var ContinueButton= Button.getButton('New_Game_Button',185,245,0,0,'OPTION');
-        var CridetButton= Button.getButton('about_us',185,280,0,0,'Cridet');
+        ContinueButton.addClickEvent( {excute(){alert('to be added');}});
+        var CridetButton= Button.getButton('Credit',185,280,0,0,'CREDIT');
         NewGameButton.addClickEvent(new NewSceneEvent(new SelectChapterMenu()));
         NewGameButton.addLongPressEvent(new LongPressEvent());
         CridetButton.addClickEvent(new NewSceneEvent(new Credit()));
-       
+        
 
         this.addComponent (NewGameButton,-1);
         this.addComponent(ContinueButton,-1);

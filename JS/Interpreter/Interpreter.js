@@ -314,7 +314,7 @@ class Interpreter {
  
     writeMemory(index,value,beignCompoent){ 
         var address= index/4;
-        if(index%4!=0){
+        if(index%4!=0||index<0){
             this.addressError();
         }else{
             
@@ -329,7 +329,7 @@ class Interpreter {
         console.log(beignCompoent);
         var address= index/4;
         console.log(address);
-        if(index%4!=0){
+        if(index%4!=0||index<0){
             this.addressError();
         }else{
             this.InterpreterAnimation.setAninmation(beignCompoent.x+10,beignCompoent.y-10, (this.memory.x+10),this.memory.y+20+(20)*address);

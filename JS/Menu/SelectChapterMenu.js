@@ -30,7 +30,7 @@ init(){
         var background =new Component('Chapter_Menu_Background',RESOURCES.MenuBackGround[2].content,0,0,480,320,false);
         this.addComponent(background,-1);
         this.addLayer();
-        var returnButton= Button.getButton('Return_Main', 190, 250, 0, 3, 'Return');
+        var returnButton= Button.getButton('Return_Main', 192, 250, 0, 3, 'Return');
         returnButton.addClickEvent(new ReturnEvent(true));
         this.addComponent(returnButton,-1);
         this.addComponent(chapter1Button,-1);

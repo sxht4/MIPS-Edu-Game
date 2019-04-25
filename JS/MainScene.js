@@ -39,7 +39,7 @@ init() {
         this.addComponent(this.RunButon, -1);
         this.m = new Memory("Memory", [], 10, 5, 80, 280, false);
         for(var i=0; i<13; i++){
-            this.m.add(i);
+            this.m.add(0);
         }
         this.addComponent(this.m, -1);
 

@@ -9,7 +9,8 @@ class GameScene {
      *Creates an instance of GameScene.
      * @memberof GameScene
      */
-    constructor() {
+    constructor(id) {
+        this.id=id;
         this.layers = [];
         this.layers.push(new Layer());
 
@@ -30,8 +31,6 @@ class GameScene {
         }else{
             this.layers.slice(i,i);
         }
-       
-
     }
     /**
      * add Component to this Game Scene
@@ -82,7 +81,7 @@ class GameScene {
      */
     getByID(id){
 
-        for (var i = 0; i <  this.components.length; i++) {
+        for (var i = 0; i <  this.layers.length; i++) {
             var component = this.layers[i].getByID(id);
             if (component!=null) {
                 return component;

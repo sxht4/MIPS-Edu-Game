@@ -1,4 +1,19 @@
+/**
+ * a balck Transparent Component
+ *
+ * @class TransparentComponent
+ * @extends {Component}
+ */
 class TransparentComponent extends Component{
+    /**
+     *Creates an instance of TransparentComponent.
+     * @param {*} id
+     * @param {*} x
+     * @param {*} y
+     * @param {*} width
+     * @param {*} height
+     * @memberof TransparentComponent
+     */
     constructor(id,x,y,width,height){
         
         super(id,null,x,y,width,height,false);

@@ -19,9 +19,9 @@ class ChapterOneTest extends Checker{
             }else{
                 this.r.getCellAt(0).setContent(4);
                 this.r.getCellAt(1).setContent(5);
-                for(var i = 2; i <= 7; i++){
-                    this.r.getCellAt(i).setContent(0);
-                }
+                // for(var i = 2; i <= 7; i++){
+                //     this.r.getCellAt(i).setContent(0);
+                // }
                 alert('Remember, add t0 t1 t2 means t0 = t1 + t2. Try again!');
                 return false;
             }

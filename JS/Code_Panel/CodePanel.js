@@ -42,12 +42,8 @@ class CodePanel extends Component {
 
             this.addTextCell();
         }
-        for (var i=0;i<10;i++){
-        this.instructions.push('add t0 t1 t2');
-        this.instructions.push('addi t0 t1 5');
-
-        }
-        
+        this.instructions.push('lw $t1 4$t2');
+        this.instructions.push('sw $t1 4$t2');
        
         
 

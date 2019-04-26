@@ -30,8 +30,9 @@ class ChapterOne extends MainScene {
     init() {
         
         super.init();
-        this.introduction();
 
+        this.introduction();
+        this.initScene();
 
 
 
@@ -42,36 +43,12 @@ class ChapterOne extends MainScene {
      * @memberof ChapterOne
      */
     initScene() {
-        console.log("init GaneUI Menu");
-        this.cp = new CodePanel();
-        this.addComponent(this.cp, -1);
+  
         //Goal Button
         this.GoalButton = Button.getButton('C1Goal', 375, 0, 1, 3, 'Goal');
+     
         this.addComponent(this.GoalButton,-1);
-        //Instruction Menu Button 
-        this.InstructionMenuButton = Button.getButton('Instruction_Menu', 375, 30, 1, 3, 'IM');
-        this.InstructionMenuButton.addClickEvent(new NewSceneEvent(new InstructionMenu()));
-        var IMHint = new HintEvent('IMHint')
-        IMHint.setHintContent('this is instruction menu \n it contain all insturtions game support');
-        this.InstructionMenuButton.addLongPressEvent(IMHint);
-        this.addComponent(this.InstructionMenuButton, -1);
-        //run button
-        this.RunButon = Button.getButton('Code_Run', 375, 60, 1, 3, 'Run');
-        this.addComponent(this.RunButon, -1);
-        this.m = new Memory("Memory", [], 10, 5, 50, 280, false);
-        for(var i=0; i<13; i++){
-            this.m.add(i);
-        }
-        this.addComponent(this.m, -1);
-        this.r = new Register("Register", [], 100, 270, 250, 50, true);
-        this.r.init();
-        this.addComponent(this.r, -1);
-        this.addLayer();
-        this.cpu = new CPU();
-        this.addComponent(this.cpu, -1);
-        this.cpu.setSpeed(2);
-        this.interpreter=new Interpreter(this.cpu, this.cp, this.m, this.r);
-        this.RunButon.addClickEvent(new RunCodeEvent( this.interpreter));
+        
     } 
 
     introduction(){
@@ -89,6 +66,7 @@ class ChapterOne extends MainScene {
         this.except_component = intro;
         this.ErrorText = 'Please read the instruction in green area carefully.';
         this.addComponent(intro, -1);
+        console.log(this.GoalButton);
     }
 
     add(){

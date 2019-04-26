@@ -13,10 +13,7 @@ class ChapterOne extends MainScene {
     constructor() {
         super();
         
-        this.except_component = null;
-        this.ErrorText = null;
-        this.modcount = 0;
-        this.count = 0;
+       
 
 
 
@@ -28,14 +25,16 @@ class ChapterOne extends MainScene {
      * @memberof ChapterOne
      */
     init() {
-        
+        this.except_component = null;
+        this.ErrorText = null;
+        this.modcount = 0;
+        this.count = 0;
         super.init();
         this.GoalButton = Button.getButton('C1Goal', 375, 0, 1, 3, 'Goal');
      
         this.addComponent(this.GoalButton,-1);
 
         this.introduction();
-        this.initScene();
 
 
 

@@ -10,10 +10,11 @@ class Credit extends GameScene {
     constructor() {
         super();
         this.components=[];
-       this.init();
+       
     }
 
     init(){
+        super.init();
         var background =new Component('Chapter_Menu_Background',RESOURCES.MenuBackGround[2].content,0,0,480,320,false);
         this.addComponent(background,-1);
         this.addLayer();

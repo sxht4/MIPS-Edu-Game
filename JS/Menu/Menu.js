@@ -24,6 +24,7 @@ class Menu extends GameScene {
      * @memberof Menu
      */
     init() {
+        super.init();
         console.log("init Menu");
         this.addComponent(new MenuBackGround(),-1);
         this.addLayer();

@@ -11,6 +11,10 @@ class GameScene {
      */
     constructor(id) {
         this.id=id;
+       
+
+    }
+    init(){
         this.layers = [];
         this.layers.push(new Layer());
 

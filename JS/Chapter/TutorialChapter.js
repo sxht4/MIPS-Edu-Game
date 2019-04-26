@@ -11,10 +11,7 @@ class TutorialChapter extends MainScene {
     constructor() {
         super();
         
-        this.except_component = null;
-        this.ErrorText = null;
-        this.modcount = 0;
-        this.count = 0;
+        
 
 
 
@@ -26,7 +23,10 @@ class TutorialChapter extends MainScene {
      * @memberof TutorialChapter
      */
     init() {
-        
+        this.except_component = null;
+        this.ErrorText = null;
+        this.modcount = 0;
+        this.count = 0;
         this.layers = [];
         this.layers.push(new Layer());
         super.init();

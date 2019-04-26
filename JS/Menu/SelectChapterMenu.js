@@ -20,6 +20,7 @@ class SelectChapterMenu extends GameScene{
  * @memberof SelectChapterMenu
  */
 init(){
+        super.init();
         //CTX.clearRect(0, 0, 480, 320);
         console.log("create select game menu");
         var tutorialButton= Button.getButton('Tutorial_Button',185,160,0,0,'Tutorial');

@@ -15,7 +15,7 @@ class InstructionMenu extends GameScene{
      */
     constructor() {
         super();
-        this.init();
+        
     }
 
     /**
@@ -25,6 +25,7 @@ class InstructionMenu extends GameScene{
      * @memberof InstructionMenu
      */
     init(){
+        super.init();
         console.log("Instruction Menu Initialized");
         var addInstruction = Button.getButton('Add_Ins',50,30,1,3,'Add');
         var AddHint= new HintEvent('IMHint');

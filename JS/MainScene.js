@@ -14,10 +14,10 @@ class MainScene extends GameScene {
 
     }
     init() {
+        super.init();
         console.log("init GaneUI Menu");
         this.cp = new  CodePanel();
         this.addComponent(this.cp, -1);
-
         //Instruction Menu Button 
         this.InstructionMenuButton = Button.getButton('Instruction_Menu', 375, 30, 1, 3, 'IM');
         this.InstructionMenuButton.addClickEvent(new NewSceneEvent(new InstructionMenu()));

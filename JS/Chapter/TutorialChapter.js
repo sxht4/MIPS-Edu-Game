@@ -217,9 +217,10 @@ typeCode() {
     this.highLight(new Component('full', null, 0, 0, 0, 0, false));
     var cp_hint = new Dialogue();
     this.addComponent(cp_hint, -1);
-    cp_hint.appendLine("Now let\'s change \"world\" from");
-    cp_hint.appendLine('to \"bug\" and press [ENTER]');
-    cp_hint.appendLine('/[RETURN]');
+    cp_hint.appendLine("Now let\'s change the input ");
+    cp_hint.appendLine('from \"bug\" to \"world\" and ');
+    cp_hint.appendLine('press [ENTER]/[RETURN]');
+
     this.count++;
 
 

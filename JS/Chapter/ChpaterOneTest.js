@@ -54,6 +54,8 @@ class ChapterOneTest extends Checker{
                 
             }else{
                 this.r.getCellAt(0).setContent(0);
+                this.r.getCellAt(1).setContent(4);
+                this.r.getCellAt(2).setContent(13);
                 alert('Wrong. Hint: you can regard sll instruction as a multiplication');
                 return false;
                 }

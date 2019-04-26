@@ -31,7 +31,7 @@ class ChapterOne extends MainScene {
         this.count = 0;
         super.init();
         this.GoalButton = Button.getButton('C1Goal', 375, 0, 1, 3, 'Goal');
-     
+        console.log(this.layers);
         this.addComponent(this.GoalButton,-1);
 
         this.introduction();
@@ -61,8 +61,9 @@ class ChapterOne extends MainScene {
     }
 
     add(){
+     
         this.removeLayer(-1);
-        this.addLayer();
+        var ly= this.addLayer();
         var add = new Dialogue();
         this.cp.instructions = [''];
         this.r.getCellAt(0).setContent(4);
@@ -78,21 +79,24 @@ class ChapterOne extends MainScene {
         add.height =140;
         add.x = 90;
         add.y = 40;
-        this.except_component=this.getByID('Code_Run');
+        // this.except_component=this.getByID('Code_Run');
         this.addComponent(add, -1);
         console.log("1");
         this.interpreter.test=new ChapterOneTest(this.cp,this.r,this.m, 1, this);
         //console.log("interpreter test:" + this.interpreter.test.check());
-        this.C1GoalEvent= new HintEvent('C1Goal');
-        this.C1GoalEvent.setHintContent("Compute function t2 = t0 + t1 by using \"add\" instrution ");
+        this.C1GoalEvent= new GoalEvent(ly);
+        // this.C1GoalEvent.setHintContent("Compute function t2 = t0 + t1 by using \"add\" instrution ");
         this.GoalButton.addClickEvent(this.C1GoalEvent);
         this.count=5;
     }
 
     sll(){
         //if(this.r.getCellAt(2).content==9){
-            this.removeLayer(-1);
-            this.addLayer();
+            if(this.C1GoalEvent.show){
+                this.removeLayer(-1);
+            }
+            // this.removeLayer(-1);
+            var ly=this.addLayer();
             var add = new Dialogue();
             this.cp.instructions = [''];
             this.r.getCellAt(1).setContent(5);
@@ -112,9 +116,9 @@ class ChapterOne extends MainScene {
             add.y = 10;
             this.addComponent(add, -1);
             this.interpreter.test=new ChapterOneTest(this.cp,this.r,this.m, 2, this);
-            this.C1GoalEvent= new HintEvent('C1Goal');
+            this.C1GoalEvent= new GoalEvent(ly);
             this.GoalButton.addClickEvent(this.C1GoalEvent);
-            this.C1GoalEvent.setHintContent("Compute function t1 = t1 * 4 by using \"sll\" instruction. ");
+            // this.C1GoalEvent.setHintContent("Compute function t1 = t1 * 4 by using \"sll\" instruction. ");
             this.count=5;
             return;
         }//else{
@@ -131,9 +135,11 @@ class ChapterOne extends MainScene {
     problem() {
         //if(this.interpreter.test.check()){
             this.cp.instructions = [''];
-            this.removeLayer(-1);
-            this.addLayer();
-            this.count=3;
+            if(this.C1GoalEvent.show){
+                this.removeLayer(-1);
+            }
+            var ly =this.addLayer();
+            //this.count=3;
             //this.highLight(this.cp);
             var pro = new Dialogue('problem 1');
             pro.x = 90;
@@ -143,13 +149,18 @@ class ChapterOne extends MainScene {
             pro.appendLine('Now, you are going to meet your match:');
             pro.appendLine('compute the following function:');
             pro.appendLine('t0 = 31*(t1^2) + 4*t2 + 7');
-            pro.appendLine('click green area to accept this challenge!');
-            this.except_component = pro;
+            //this.except_component = pro;
             //this.ErrorText = 'Please read the instruction in green area carefully.';
-            this.C1GoalEvent= new HintEvent('C1Goal');
-            this.C1GoalEvent.setHintContent("Compute function t0 = 31*(t1^2) + 4*t2 + 7.");
+            // this.C1GoalEvent= new HintEvent('C1Goal');
+            // this.C1GoalEvent.setHintContent("Compute function t0 = 31*(t1^2) + 4*t2 + 7.");
+            // this.GoalButton.addClickEvent(this.C1GoalEvent);
+            this.C1GoalEvent= new GoalEvent(ly);
             this.GoalButton.addClickEvent(this.C1GoalEvent);
             this.addComponent(pro, -1);
+            this.r.getCellAt(1).setContent(4);
+            this.r.getCellAt(2).setContent(13);
+            this.interpreter.test=new ChapterOneTest(this.cp,this.r,this.m, 3);
+            this.count=5;
             
         //}else{
     //         this.count = 100;
@@ -160,8 +171,9 @@ class ChapterOne extends MainScene {
     //     }
         
     }
-
+ 
     clearScreen(){
+        console.log('call clear');
         this.removeLayer(-1);
         this.addLayer();
         this.r.getCellAt(1).setContent(4);

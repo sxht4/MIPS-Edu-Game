@@ -25,8 +25,9 @@ class GameScene {
      * @memberof GameScene
      */
     addLayer(){
-        
-        this.layers.push(new Layer());
+        var retval=new Layer();
+        this.layers.push(retval);
+        return retval;
     }
     removeLayer(i){
         if(i==-1){

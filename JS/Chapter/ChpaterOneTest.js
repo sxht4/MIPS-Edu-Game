@@ -13,7 +13,7 @@ class ChapterOneTest extends Checker{
             if((this.r.getCellAt(2).content==this.r.getCellAt(0).content+this.r.getCellAt(1).content)){
                 //if(deepCheck()){
                 //GAME.removeScene(-1);
-                alert('Congratuation! You know how to use \"add\" instruction now!');
+                alert('Congratuations! You know how to properly use \"add\" instruction now!');
                 this.scene.sll();
                 return true;
             }else{
@@ -23,7 +23,7 @@ class ChapterOneTest extends Checker{
                 // for(var i = 2; i <= 7; i++){
                 //     this.r.getCellAt(i).setContent(0);
                 // }
-                alert('Remember, add t0 t1 t2 means t0 = t1 + t2. Try again!');
+                alert('Remember, \'add $t0 $t1 $t2\' means t0 = t1 + t2. Please try again!');
                 return false;
             }
 
@@ -32,19 +32,19 @@ class ChapterOneTest extends Checker{
             if((this.r.getCellAt(1).content==5*4)){
                 //if(deepCheck()){
                 //GAME.removeScene(-1);
-                alert('Congratuation! You know how to use \"sll\" instruction now!');
+                alert('Congratuations! You know how to properly use \"sll\" instruction now!');
                 this.scene.problem();
                 return true;
             }else{
                 this.r.getCellAt(1).setContent(5);
-                alert('Remember, sll t0 t1 n means t0 = t1 * (2^n). Try again!');
+                alert('Remember, \'sll t0 t1\' n means t0 = t1 * (2^n). Please try again!');
                 return false;
             }
             case 3:
             if((this.r.getCellAt(0).content==555)){
                 //if(deepCheck()){
                 GAME.removeScene(-1);
-                alert('Congratulation! You have mastered how to compute basic arithmetic in MIPS!');
+                alert('Congratulations! You have mastered how to compute basic arithmetic operations in MIPS!');
                 return true;
                 //}
                 //else{

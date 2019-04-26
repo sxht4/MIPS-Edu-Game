@@ -46,7 +46,7 @@ class RegisterCell extends Component{
      * @memberof RegisterCell
      */
     excuteClick(){
-        alert("Register"+this.id);
+        //alert("Register"+this.id);
     }
     /**
      *

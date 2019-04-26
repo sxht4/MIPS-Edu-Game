@@ -45,16 +45,17 @@ class ChapterOne extends MainScene {
         this.addLayer();
         var intro = new Dialogue();
         this.cp.instructions = [''];
-        intro.appendLine('In this chapter, you will be learing');
-        intro.appendLine('instructions related to basic arithmetic');
-        intro.appendLine('such as add, sll. Now, Click on the green');
-        intro.appendLine('area to study \"add\" instruction');
+        intro.appendLine('In this chapter, you will be learning basic');
+        intro.appendLine('instructions related to some basic');
+        intro.appendLine('arithmetic operations, such as \"add\", \"sll\".');
+        intro.appendLine('Now, Click on the green area to');
+        intro.appendLine('begin \"add\" instruction.');
         intro.width = 270;
         intro.height =100;
         intro.x = 90;
         intro.y =70;
         this.except_component = intro;
-        this.ErrorText = 'Please read the instruction in green area carefully.';
+        this.ErrorText = 'Please read the instruction in the green area carefully.';
         this.addComponent(intro, -1);
         console.log(this.GoalButton);
     }
@@ -71,7 +72,7 @@ class ChapterOne extends MainScene {
         add.appendLine('specific register. For example:');
         add.appendLine('If you want to compute t0 = t1 + t2,');
         add.appendLine('you should type:\"add $t0 $t1 $t2\"');
-        add.appendLine('On the code panel, which would do the');
+        add.appendLine('On the code panel, what you would do this');
         add.appendLine('trick. Now, try to compute t2 = t0 + t1');
         add.width = 270;
         add.height =140;
@@ -95,7 +96,7 @@ class ChapterOne extends MainScene {
             var add = new Dialogue();
             this.cp.instructions = [''];
             this.r.getCellAt(1).setContent(5);
-            add.appendLine('Now, let\'s take a look at \"sll\"');
+            add.appendLine('Now, let\'s take a look at \"sll\".');
             add.appendLine('\"sll\" performs shift left logical');
             add.appendLine('operation, where shift left one means');
             add.appendLine('move each bit to the left by one, ');

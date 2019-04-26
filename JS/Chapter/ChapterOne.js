@@ -30,6 +30,9 @@ class ChapterOne extends MainScene {
     init() {
         
         super.init();
+        this.GoalButton = Button.getButton('C1Goal', 375, 0, 1, 3, 'Goal');
+     
+        this.addComponent(this.GoalButton,-1);
 
         this.introduction();
         this.initScene();
@@ -37,19 +40,7 @@ class ChapterOne extends MainScene {
 
 
     }
-    /**
-     *
-     * init the Scene that will be techded.
-     * @memberof ChapterOne
-     */
-    initScene() {
-  
-        //Goal Button
-        this.GoalButton = Button.getButton('C1Goal', 375, 0, 1, 3, 'Goal');
-     
-        this.addComponent(this.GoalButton,-1);
-        
-    } 
+
 
     introduction(){
         this.addLayer();

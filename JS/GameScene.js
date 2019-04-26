@@ -81,7 +81,7 @@ class GameScene {
      */
     getByID(id){
 
-        for (var i = 0; i <  this.components.length; i++) {
+        for (var i = 0; i <  this.layers.length; i++) {
             var component = this.layers[i].getByID(id);
             if (component!=null) {
                 return component;

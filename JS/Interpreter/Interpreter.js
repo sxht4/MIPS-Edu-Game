@@ -57,9 +57,6 @@ class Interpreter {
      * @memberof Interpreter
      */
     async executeADDI(dest, arg1, arg2) {
-
-
-
         var R2 = this.toNumber(arg2);
         var R1 = this.getRegister(arg1);
         var destCell = this.getRegister(dest);
@@ -86,10 +83,184 @@ class Interpreter {
         destcell.cell.setContent(R1.value + R2.value);
 
 
+    }
+
+    /**
+     *
+     * Shift Left Logic Instruction
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeSLL(dest, arg1, arg2) {
+        try {
+            var value2 = Number.parseInt (arg2)
+        } catch (error) {
+            throw 'not a integer'+arg2;
+        }
+        try {
+            var R1 = this.getRegister(arg1);
+            var destCell = this.getRegister(dest);
+            await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+            await  this.cpu.moveTo(destCell.cell.x, destCell.cell.y);            
+            destCell.cell.setContent(R1.value * Math.pow(2, value2));
+            
+        } catch (error) {
+            throw error;
+        }       
+    }
+
+    /**
+     *
+     * Shift Right Logic Instruction
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeSRL(dest, arg1, arg2) {
+        try {
+            var value2 = Number.parseInt (arg2)
+        } catch (error) {
+            throw 'not a integer'+arg2;
+        }
+        try {
+            var R1 = this.getRegister(arg1);
+            var destCell = this.getRegister(dest);
+            await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+            await  this.cpu.moveTo(destCell.cell.x, destCell.cell.y); 
+            for(var i = 0; i < value2; i++){
+                R1.value % 2 == 0? R1.value = R1.value : R1.value = R1.value-1;
+                R1.value = R1.value / 2;    
+            }
+            //R1.value % 2 == 0? R1.value = R1.value : R1.value = R1.value-1;
+            destCell.cell.setContent(R1.value);
+            
+        } catch (error) {
+            throw error;
+        }
+       
+    }
+
+    /**
+     *
+     * Set Less Than Instruction
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeSLT(dest, arg1, arg2) {
+        var R1 = this.getRegister(arg1);
+        var R2 = this.getRegister(arg2);
+        var destcell = this.getRegister(dest);
+        await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await  this.cpu.moveTo(R2.cell.x, R2.cell.y);
+        await  this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(R1.value < R2.value? 1: 0);
+       
+    }
+
+    /**
+     *
+     *parse and run sub
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeSub(dest, arg1, arg2) {
+        var R1 = this.getRegister(arg1);
+        var R2 = this.getRegister(arg2);
+        var destcell = this.getRegister(dest);
+        await this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await this.cpu.moveTo(R2.cell.x, R2.cell.y);
+        await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(R1.value - R2.value);
+    }
+
+    /**
+     *
+     *parse and run subi
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeSubi(dest, arg1, arg2) {
 
 
+        var R2 = this.toNumber(arg2);
+        var R1 = this.getRegister(arg1);
+        var destCell = this.getRegister(dest);
+        await this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await this.cpu.moveTo(destCell.cell.x, destCell.cell.y);
+        destCell.cell.setContent(R1.value - R2);
 
     }
+
+    /**
+     *
+     *parse and run mul
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeMul(dest, arg1, arg2) {
+        var R1 = this.getRegister(arg1);
+        var R2 = this.getRegister(arg2);
+        var destcell = this.getRegister(dest);
+        await this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await this.cpu.moveTo(R2.cell.x, R2.cell.y);
+        await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(R1.value * R2.value);
+    }
+
+    /**
+     *
+     *parse and run Div
+     * @param {String} dest
+     * @param {String} arg1
+     * @param {String} arg2
+     * @memberof Interpreter
+     */
+    async executeDiv(dest, arg1, arg2) {
+        var R1 = this.getRegister(arg1);
+        var R2 = this.getRegister(arg2);
+        var destcell = this.getRegister(dest);
+        await this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await this.cpu.moveTo(R2.cell.x, R2.cell.y);
+        await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(R1.value / R2.value);
+    }
+    async executeLw(dest, arg1) {
+        var tokens = arg1.split('$');
+        var offest = this.toNumber(tokens[0]);
+        console.log('$'+tokens[1]);
+        var R1 = this.getRegister('$'+tokens[1]);
+        var destcell = this.getRegister(dest);
+        await this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        console.log('=');
+        var value=this.loadMemory(R1.value+offest,R1.cell);
+        await sleep (this.InterpreterAnimation.aniamtionTime*1000/15);
+        await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(value);
+    }
+    async executeSw(dest, arg1) {
+        var tokens = arg1.split('$');
+        var offest = this.toNumber(tokens[0]);
+        var R1 = this.getRegister('$'+tokens[1]);
+        var destcell = this.getRegister(dest);
+        await this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        
+        this.writeMemory(R1.value+offest,destcell.value,R1.cell);
+        await sleep (this.InterpreterAnimation.aniamtionTime*1000/15);
+        await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+    }
+
+
 
     /**
      *
@@ -238,6 +409,17 @@ class Interpreter {
                         break;
                     case "sw":
                         await this.executeSw(splited[1],splited[2]);
+                        break;
+                    case "sll":
+                        await this.executeSLL(splited[1], splited[2], splited[3]);
+                        break;
+                    case "srl":
+                        await this.executeSRL(splited[1], splited[2], splited[3]);
+                        break;
+                    case "slt":
+                        await this.executeSLT(splited[1], splited[2], splited[3]);
+                        break;           
+                    case "":
                         break;
                     default:
 

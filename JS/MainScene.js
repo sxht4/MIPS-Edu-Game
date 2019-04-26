@@ -1,24 +1,19 @@
 /**
- * player use this sence to play game
+ * Chapter 1
  * @class MainScene
  * @extends {GameScene}
- * @author Sai Cao,Xiang Li,Tianyu Cao
+ * @author Sai Cao,Tianyu Cao, Xiang Li
  */
 class MainScene extends GameScene {
-    /**
-     *Creates an instance of MainScene.
-     * @memberof MainScene
-     */
     constructor() {
         super();
+     
+
+
+
+
     }
-    
-/**
- *
- * init this scene
- * @memberof MainScene
- */
-init() {
+    init() {
         console.log("init GaneUI Menu");
         this.cp = new  CodePanel();
         this.addComponent(this.cp, -1);
@@ -54,10 +49,11 @@ init() {
         this.interpreter=new Interpreter(this.cpu, this.cp, this.m, this.r,new InterpreterAnimation());
         this.interpreter.test={check(){
             return;
-        }};
+            }
+        }
         
         this.addComponent(this.interpreter.InterpreterAnimation,-1);
         this.RunButon.addClickEvent(new RunCodeEvent(this.interpreter));
-      
+     
     }
 }

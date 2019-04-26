@@ -8,7 +8,7 @@
 class Dialogue extends Component{
     /**
      *Creates an instance of Dialogue.
-     * @param {*} id
+     * @param {String} id
      * @memberof Dialogue
      */
     constructor(id){

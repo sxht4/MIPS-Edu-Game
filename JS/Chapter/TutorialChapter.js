@@ -296,7 +296,7 @@ runFirstCode() {
     this.r.getCellAt(0).setContent(4);
     this.r.getCellAt(1).setContent(5);
     cp_hint.appendLine('now,it time to run your first instruction');
-    cp_hint.appendLine('type,\"add t0 t1 t2\"');
+    cp_hint.appendLine('type,\"add $t0 $t1 $t2\"');
     cp_hint.appendLine('click run button');
     cp_hint.appendLine('you can click IM button');
     cp_hint.appendLine('see what instrutions are supported');

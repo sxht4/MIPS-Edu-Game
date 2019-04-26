@@ -51,7 +51,7 @@ class ChapterOne extends MainScene {
         intro.appendLine('area to study \"add\" instruction');
         intro.width = 270;
         intro.height =100;
-        intro.x = 70;
+        intro.x = 90;
         intro.y =70;
         this.except_component = intro;
         this.ErrorText = 'Please read the instruction in green area carefully.';
@@ -70,12 +70,12 @@ class ChapterOne extends MainScene {
         add.appendLine('operation, and stores the result in a');
         add.appendLine('specific register. For example:');
         add.appendLine('If you want to compute t0 = t1 + t2,');
-        add.appendLine('you should type:\"add t2 t1 t0\"');
+        add.appendLine('you should type:\"add $t0 $t1 $t2\"');
         add.appendLine('On the code panel, which would do the');
         add.appendLine('trick. Now, try to compute t2 = t0 + t1');
         add.width = 270;
         add.height =140;
-        add.x = 70;
+        add.x = 90;
         add.y = 40;
         this.except_component=this.getByID('Code_Run');
         this.addComponent(add, -1);
@@ -83,7 +83,7 @@ class ChapterOne extends MainScene {
         this.interpreter.test=new ChapterOneTest(this.cp,this.r,this.m, 1, this);
         //console.log("interpreter test:" + this.interpreter.test.check());
         this.C1GoalEvent= new HintEvent('C1Goal');
-        this.C1GoalEvent.setHintContent("Compute function t2 = t0 + t1 by using \"add t2 t0 t1\". ");
+        this.C1GoalEvent.setHintContent("Compute function t2 = t0 + t1 by using \"add\" instrution ");
         this.GoalButton.addClickEvent(this.C1GoalEvent);
         this.count=5;
     }
@@ -101,13 +101,13 @@ class ChapterOne extends MainScene {
             add.appendLine('move each bit to the left by one, ');
             add.appendLine('a simple version: mulitiply number by 2');
             add.appendLine('for each shift. If you want to compute');
-            add.appendLine('If you want to compute t0 = t0 * 2,');
-            add.appendLine(' you should type: \"sll t0 t0 1\"');
-            add.appendLine('On the code panel, which shift t0 left');
-            add.appendLine('by one. Now, try to compute t1 = t1 * 4');
+            add.appendLine('t0 = t0 * 2, you should type:');
+            add.appendLine('\"sll $t0 $t0 1\" on the code panel,');
+            add.appendLine('which shift t0 left by one.');
+            add.appendLine('Now, try to compute t1 = t1 * 4');
             add.width = 270;
             add.height =190;
-            add.x = 70;
+            add.x = 90;
             add.y = 10;
             this.addComponent(add, -1);
             this.interpreter.test=new ChapterOneTest(this.cp,this.r,this.m, 2, this);
@@ -135,12 +135,11 @@ class ChapterOne extends MainScene {
             this.count=3;
             //this.highLight(this.cp);
             var pro = new Dialogue('problem 1');
-            pro.x = 70;
+            pro.x = 90;
             pro.y=40;
             pro.width = 270;
             pro.height = 150;
-            pro.appendLine('Now, you are going to encounter');
-            pro.appendLine('your first match:');
+            pro.appendLine('Now, you are going to meet your match:');
             pro.appendLine('compute the following function:');
             pro.appendLine('t0 = 31*(t1^2) + 4*t2 + 7');
             pro.appendLine('click green area to accept this challenge!');

@@ -19,6 +19,7 @@ class ChapterOneTest extends Checker{
             }else{
                 this.r.getCellAt(0).setContent(4);
                 this.r.getCellAt(1).setContent(5);
+                this.r.getCellAt(2).setContent(0);
                 // for(var i = 2; i <= 7; i++){
                 //     this.r.getCellAt(i).setContent(0);
                 // }
@@ -52,6 +53,7 @@ class ChapterOneTest extends Checker{
                 //}
                 
             }else{
+                this.r.getCellAt(0).setContent(0);
                 alert('Wrong. Hint: you can regard sll instruction as a multiplication');
                 return false;
                 }

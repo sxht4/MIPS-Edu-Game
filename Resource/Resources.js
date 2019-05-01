@@ -39,6 +39,13 @@ var RESOURCES = {
                 sprites:null,
                 src: "Assets/menu/paper_full.png"
 
+            },
+            {
+                content: null,
+                id: 'Background',
+                sprites:null,
+                src: "Assets/menu/Background.png"
+
             }
         ]
 }

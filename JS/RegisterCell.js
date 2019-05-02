@@ -17,7 +17,7 @@ class RegisterCell extends Component{
      */
     setContent(value){
 
-        if(value==null){
+        if(value===null){
             this.content='';
         }else{
             this.content=value;
@@ -32,7 +32,8 @@ class RegisterCell extends Component{
      * @memberof RegisterCell
      */
     getContent(){
-        if(this.content==''){
+        console.log(this.content)
+        if(this.content===''){
             return null;
         }else{
             return this.content ;
@@ -45,7 +46,7 @@ class RegisterCell extends Component{
      * @memberof RegisterCell
      */
     excuteClick(){
-        alert("Register"+this.id);
+        //alert("Register"+this.id);
     }
     /**
      *

@@ -3,17 +3,15 @@
  * @class Tutorial
  * @extends {GameScene}
  */
-class TutorialChapter extends GameScene {
+class TutorialChapter extends MainScene {
     /**
      *Creates an instance of Tutorial.
      * @memberof Tutorial
      */
     constructor() {
         super();
-        this.except_component = null;
-        this.ErrorText = null;
-        this.modcount = 0;
-        this.count = 0;
+        
+        
 
 
 
@@ -25,9 +23,13 @@ class TutorialChapter extends GameScene {
      * @memberof TutorialChapter
      */
     init() {
+        this.except_component = null;
+        this.ErrorText = null;
+        this.modcount = 0;
+        this.count = 0;
         this.layers = [];
         this.layers.push(new Layer());
-        this.initScene();
+        super.init();
         this.codePanelHint();
 
 
@@ -48,7 +50,7 @@ class TutorialChapter extends GameScene {
         this.InstructionMenuButton = Button.getButton('Instruction_Menu', 375, 30, 1, 3, 'IM');
         this.InstructionMenuButton.addClickEvent(new NewSceneEvent(new InstructionMenu()));
         var IMHint = new HintEvent('IMHint')
-        IMHint.setHintContent('this is instruction menu \n it contain all insturtions game support');
+        IMHint.setHintContent('This is an instruction menu \n It contain all insturtions that support the game to run');
         this.InstructionMenuButton.addLongPressEvent(IMHint);
         this.addComponent(this.InstructionMenuButton, -1);
         //run button
@@ -75,14 +77,15 @@ class TutorialChapter extends GameScene {
     codePanelHint() {
         this.cp.instructions = ['Hello ', 'bug'];
         this.except_component = this.cp.getContent(1);
-        this.ErrorText = 'you should click second line';
+        this.ErrorText = 'You should click the second line in the code area.';
 
         this.addLayer();
         this.highLight(this.cp);
         var cp_hint = new Dialogue('cp hint');
-        cp_hint.appendLine('this is a code panel');
-        cp_hint.appendLine('you write your code in here');
-        cp_hint.appendLine('now,click second line');
+        cp_hint.appendLine('This is a code panel.');
+        cp_hint.appendLine('You write your code here.');
+        cp_hint.appendLine('Now, it\'s time to click the');
+        cp_hint.appendLine('second line in the code area.');
         this.addComponent(cp_hint, -1);
 
 
@@ -207,15 +210,17 @@ class TutorialChapter extends GameScene {
  */
 typeCode() {
 
-    console.log('tpye code');
+    console.log('type code STARTED');
 
     this.removeLayer(-1);
     this.addLayer();
     this.highLight(new Component('full', null, 0, 0, 0, 0, false));
     var cp_hint = new Dialogue();
     this.addComponent(cp_hint, -1);
-    cp_hint.appendLine("now type to change the\" bug\"");
-    cp_hint.appendLine(' to \"world\" and,press enter');
+    cp_hint.appendLine("Now let\'s change the input ");
+    cp_hint.appendLine('from \"bug\" to \"world\" and ');
+    cp_hint.appendLine('press [ENTER]/[RETURN]');
+
     this.count++;
 
 
@@ -236,17 +241,23 @@ memoryHint() {
             this.addLayer();
             this.highLight(this.m);
             var cp_hint = new Dialogue();
-            cp_hint.appendLine("click it to next step ");
-            cp_hint.appendLine("this is the memory cell you ");
+            cp_hint.appendLine("On the left, it is our memory cell.");
+            cp_hint.appendLine("On the left hand side of the cell,");
+            cp_hint.appendLine("it is our memory address");
+            cp_hint.appendLine("On the right hand side of the cell,");
+            cp_hint.appendLine("it is our value at that memory address");
+            cp_hint.appendLine("Click the memory cell on the  ");
+            cp_hint.appendLine("left to continue the next step.");
             this.addComponent(cp_hint,-1);
             this.except_component = this.m;
-            cp_hint.x = 250;
+            cp_hint.x = 220;
             cp_hint.y = 100;
+            cp_hint.width=300;
             this.cp.modcount = this.cp.count;
             return;
         }
         else {
-            alert('sorry,not correct try again');
+            alert('Sorry, incorrect. Please try again');
 
             this.count = 0;
             this.cp.modcount = this.cp.count;
@@ -272,9 +283,9 @@ registerHint() {
     this.addLayer();
     this.highLight(this.r);
     var cp_hint = new Dialogue();
-    this.ErrorText = 'you should click first register';
-    cp_hint.appendLine("this is the rigster cell  ");
-    cp_hint.appendLine("click it t0 cell to next step ");
+    this.ErrorText = 'You should click the first register icon';
+    cp_hint.appendLine("This is the register cell area.");
+    cp_hint.appendLine("Click 't0' cell to the next step.");
     this.except_component = this.r.content[0];
     cp_hint.x = 250;
     cp_hint.y = 100;
@@ -293,10 +304,10 @@ runFirstCode() {
     this.cp.instructions = [''];
     this.r.getCellAt(0).setContent(4);
     this.r.getCellAt(1).setContent(5);
-    cp_hint.appendLine('now,it time to run your first instruction');
-    cp_hint.appendLine('type,\"add t0 t1 t2\"');
-    cp_hint.appendLine('click run button');
-    cp_hint.appendLine('you can click IM button');
+    cp_hint.appendLine('Now,it\'s time to run your first');
+    cp_hint.appendLine('MIPS instruction. Type \"add $t0 $t1 $t2\",');
+    cp_hint.appendLine('and click the [RUN] button');
+    cp_hint.appendLine('You can click the [IM] button to');
     cp_hint.appendLine('see what instrutions are supported');
     this.cpu.setLocation(250,200);
     cp_hint.width = 270;
@@ -308,7 +319,6 @@ runFirstCode() {
 
 
     this.count++;
-
 
 }
 

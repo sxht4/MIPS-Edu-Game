@@ -23,6 +23,7 @@ class CPU extends Component {
         this.animation_speed = 6;
         this.frame_count = 0;
         this.sleeptime = 0;
+
     }
 
 
@@ -190,6 +191,7 @@ class CPU extends Component {
         this.y = y;
         this.destination = { x: this.x, y: this.y };
     }
+
 
 }
 

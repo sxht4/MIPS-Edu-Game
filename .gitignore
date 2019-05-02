@@ -2,4 +2,7 @@
 **/node_modules/
 sth/
 **/.vscode/
+**/testScripts/*.txt
+**/testScripts/*.php
+**/testScripts/*.conf
 README.md

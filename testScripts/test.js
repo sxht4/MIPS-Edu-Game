@@ -972,6 +972,23 @@ describe('Credit.js unit test', function(){
 });
 
 
+//ChapterOne test
+describe('ChapterOne.js unit test', function(){
+    var ch = new ChapterOne();
+    ch.init();
+    it('ChapterOne init should set modcount to 0', function(){
+        assert.equal(ch.modcount, 0);
+    });
+    it('ChapterOne init should set count to 0', function(){
+        assert.equal(ch.count, 0);
+    });
+    it('ChapterOne init should create a Button which has id "C1Goal"', function(){
+        assert.notEqual(ch.getByID('C1Goal'), null);
+    });
+    it('ChapterOne init should create a Button which has name "Goal"', function(){
+        assert.equal(ch.getByID('C1Goal').text, "Goal");
+    });
+});
 
 
 

@@ -890,6 +890,40 @@ describe('RegisterCell.js Unit Tests', function(){
     });
 });
 
+
+
+describe('CodePanel.js Change Page Unit Tests', function(){
+    var cp = new CodePanel();
+    for(var i=0;i<30;i++){
+        cp.instructions.push('ins'+i);
+    }
+    it('changePage (1) should change the page to next page', function(){
+       cp.changePage(1);
+       assert.equal(cp.line_index,13 );
+    }); 
+    it('Constructor should set content correctly', function(){
+        cp.changePage(1);
+        assert.equal(cp.line_index,13 );
+        assert.equal(cp.getContent(1).content,'ins 14');
+
+    }); 
+
+    it('changePage (-1) should change the page to content', function(){
+    
+        cp.changePage(1);
+        cp.changePage(-1);
+        assert.equal(cp.line_index,0 );
+     }); 
+     it('changePage (-1) should change the content', function(){
+         cp.changePage(1);
+         cp.changePage(1);
+         cp.changePage(-1);
+         assert.equal(cp.line_index,13 );
+         assert.equal(cp.getContent(1).content,'ins 14');
+     }); 
+    
+});
+
 //Credit test
 describe('Credit.js unit test', function(){
     it('Register should have correct register cells', function(){
@@ -898,3 +932,4 @@ describe('Credit.js unit test', function(){
         assert.equal(c.content.length, 2);
     });
 });
+

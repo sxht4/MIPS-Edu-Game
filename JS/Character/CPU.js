@@ -42,10 +42,10 @@ class CPU extends Component {
         this.destination.x = x;
         this.destination.y = y;
         this.state = CPU_CONST.START_MOVE;
-        while (this.state != CPU_CONST.STATIC) {
-            await sleep(100 * this.animation_speed);
+        // while (this.state != CPU_CONST.STATIC) {
+        //     await sleep(100 * this.animation_speed);
 
-        }
+        // }
 
 
             await  this.sleep(10);

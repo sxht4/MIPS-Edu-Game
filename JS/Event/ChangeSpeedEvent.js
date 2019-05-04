@@ -1,3 +1,4 @@
+GameEvent=require('./GameEvent');
 class ChangeSpeedEvent extends GameEvent{
     constructor(cpu){
         super();
@@ -13,3 +14,4 @@ class ChangeSpeedEvent extends GameEvent{
        
     }
 }
+module.exports=ChangeSpeedEvent;

@@ -10,6 +10,9 @@ RunCodeEvent=require('./Event/RunCodeEvent');
 Interpreter=require('./Interpreter/Interpreter');
 Button=require('./Button');
 HintEvent=require('./Event/HintEvent');
+ChangePageEvent=require('./Event/ChangePageEvent');
+InterpreterAnimation=require('./Interpreter/InterpreterAnimation');
+ChangeSpeedEvent=require('./Event/ChangeSpeedEvent');
 
 /**
  * Chapter 1

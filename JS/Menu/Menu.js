@@ -37,14 +37,9 @@ class Menu extends GameScene {
         this.addLayer();
         
         var NewGameButton= Button.getButton('New_Game_Button',185,210,0,0,'NEW GAME');
-<<<<<<< HEAD
-        var ContinueButton= Button.getButton('Option_Button',185,245,0,0,'OPTION');
-        var OptionsButton= Button.getButton('about_us',185,280,0,0,'ABOUT US');
-=======
         var ContinueButton= Button.getButton('New_Game_Button',185,245,0,0,'OPTION');
         ContinueButton.addClickEvent( {excute(){alert('to be added');}});
         var CridetButton= Button.getButton('Credit',185,280,0,0,'CREDIT');
->>>>>>> origin/master
         NewGameButton.addClickEvent(new NewSceneEvent(new SelectChapterMenu()));
         NewGameButton.addLongPressEvent(new LongPressEvent());
         CridetButton.addClickEvent(new NewSceneEvent(new Credit()));

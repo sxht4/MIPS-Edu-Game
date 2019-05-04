@@ -438,9 +438,13 @@ class Interpreter {
                 this.code_panel.nextPage();
             }
             cell.highLight();
-
-
-            var splited = ins[i].split(" ");
+            
+            if(ins[i]==undefined){
+                var splited='';
+            }else{
+                var splited = ins[i].split(" ");
+            }
+            
             try {
                 switch (splited[0]) {
                     case "addi":

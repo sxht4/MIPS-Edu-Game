@@ -104,7 +104,7 @@ function longPress (event){
             longpress=true;
             clickedElement.excuteLongPress();
             longpress=false;
-        }, 2000);
+        }, 1000);
        
     
         

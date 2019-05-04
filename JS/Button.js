@@ -47,7 +47,10 @@ class Button extends Component {
     static getButton(id, x, y, color, index, text) {
         var buttons = RESOURCES.buttons[color];
 
+
         var retval = new Button(id, buttons.content, x, y, buttons.sprites[2][index], buttons.sprites[3][index], text, { size: 12, type: 'Arial' }, color, index);
+        console.log(id);
+        console.log( buttons.sprites[2]);
         return retval;
 
     }

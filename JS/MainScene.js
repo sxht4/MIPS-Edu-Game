@@ -42,7 +42,14 @@ class MainScene extends GameScene {
         this.returnButton= Button.getButton('Return_Main', 5, 290, 1, 3, 'Return');
         this.returnButton.addClickEvent(new ReturnEvent(true));
         this.addComponent(this.returnButton, -1);
-        //run button
+       
+    
+        this.UPArrow=Button.getButton('LastPage', 340,200, 2, 2, '');
+        this.UPArrow.addClickEvent(new ChangePageEvent(-1,this.cp) );
+        this.DownArrow=Button.getButton('NextPage', 340,240, 2, 1, '');
+        this.DownArrow.addClickEvent(new ChangePageEvent(1,this.cp) );
+        this.addComponent(this.UPArrow,-1);
+        this.addComponent(this.DownArrow,-1);
         this.RunButon = Button.getButton('Code_Run', 375, 60, 1, 3, 'Run');
         this.addComponent(this.RunButon, -1);
         this.m = new Memory("Memory", [], 10, 5, 80, 280, false);
@@ -67,6 +74,9 @@ class MainScene extends GameScene {
         
         this.addComponent(this.interpreter.InterpreterAnimation,-1);
         this.RunButon.addClickEvent(new RunCodeEvent(this.interpreter));
+        this.chageSpeed= Button.getButton('Speed', 100, 0, 1, 3, 'Speed');
+        this.chageSpeed.addClickEvent(new ChangeSpeedEvent(this.cpu));
+        this.addComponent(this.chageSpeed, -1);
      
     }
 }

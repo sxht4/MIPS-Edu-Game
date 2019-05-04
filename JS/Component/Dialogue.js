@@ -15,8 +15,6 @@ class Dialogue extends Component{
         super(id,[],100,100,200,150,false);
         this.color='Red';
         this.font='14px Arial';
-        
-
     }
     /**
      * append a line to this dialogue box

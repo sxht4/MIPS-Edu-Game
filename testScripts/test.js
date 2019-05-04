@@ -924,6 +924,35 @@ describe('CodePanel.js Change Page Unit Tests', function(){
     
 });
 
+
+
+
+
+describe('Dialogue.js Unit Tests', function(){
+    var box = new Dialogue('test');
+    
+    it('Dialogue Id setting Error', function(){
+        assert.equal(box.id,'test');
+    }); 
+    it('Constructor should set content correctly', function(){
+       box.appendLine('Hello World');
+       assert.equal(box.content[1],'hello world');
+
+    }); 
+
+    it('changePage (-1) should change the page to content', function(){
+    
+        box.appendLine('1');
+        box.appendLine('2');
+        assert.equal(cp.cotnent[0],'1' );
+        assert.equal(cp.cotnent[1],'2' );
+     }); 
+    
+    
+});
+
+
+
 //Credit test
 describe('Credit.js unit test', function(){
     it('Register should have correct register cells', function(){
@@ -932,4 +961,5 @@ describe('Credit.js unit test', function(){
         assert.equal(c.content.length, 2);
     });
 });
+
 

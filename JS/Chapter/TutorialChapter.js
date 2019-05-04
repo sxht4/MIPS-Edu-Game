@@ -1,3 +1,9 @@
+MainScene=require('../MainScene');
+Dialogue=require('../Component/Dialogue');
+ChapterOneTest=require('./ChpaterOneTest');
+GoalEvent=require('../Event/GoalEvent');
+TransparentComponent=require('../Component/TransparentComponent');
+var GAME={width:480,height:320}
 /**
  * A tutorial chapter to tech the game
  * @class Tutorial
@@ -234,9 +240,9 @@ typeCode() {
 memoryHint() {
 
     if (this.cp.modcount != this.cp.count) {
-        console.log(this.cp.getInstructions()[1]);
+        // console.log(this.cp.getInstructions()[1]);
         if (this.cp.getInstructions()[1] == "world") {
-            console.log(this.cp.getContent(1).getContent());
+            // console.log(this.cp.getContent(1).getContent());
             this.removeLayer(-1);
             this.addLayer();
             this.highLight(this.m);

@@ -35,7 +35,7 @@ var ChapterOne = require('../JS/Chapter/ChapterOne');
 var TutorialChapter=require('../JS/Chapter/TutorialChapter');
 var Dialogue=require('../JS/Component/Dialogue');
 
-
+var Tutorial=require('../JS/Chapter/TutorialChapter');
 
 var assert = require('assert');
 //var expect = require('expect');
@@ -971,6 +971,31 @@ describe('Credit.js unit test', function(){
     });
 });
 
+describe('Tutorial.js unit test', function(){
+    var Tutorial = new TutorialChapter()
+    Tutorial.init();
+    it('init not correct', function(){
+      
+        assert.equal(Tutorial.count,0);
+       
+       
+    });
+    it('type code tutorial is not correct', function(){
+        Tutorial.typeCode();
+        assert.equal(Tutorial.count,1);
+       
+    });
+    it('type code tutorial is not correct', function(){
+        console.log(Tutorial.cp.instructions[1]);
+      
+        Tutorial.cp.instructions[1] = "world";
+        Tutorial.cp.modcount = Tutorial.cp.count;
+        
+        assert.equal(Tutorial.except_component,Tutorial.cp.content[1]);
+       
+    });
+
+});
 
 //ChapterOne test
 describe('ChapterOne.js unit test', function(){

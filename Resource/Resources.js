@@ -15,6 +15,12 @@ var RESOURCES = {
                 id: 'button_sprites_grey',
                 sprites: [[0, 0, 8, 8], [0, 42, 80, 119], [100, 100, 86, 86], [29, 29, 30, 29]],
                 src: 'Assets/buttons/Button1_green.png'
+            },
+            {
+                content: null,
+                id: 'Arrow',
+                sprites: [[0, 20, 39, 58], [0, 0, 0, 0], [20, 19, 19, 20], [20, 20, 20, 20]],
+                src: 'Assets/buttons/Arrow.png'
             }
         ],
 

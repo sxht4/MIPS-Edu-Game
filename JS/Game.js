@@ -158,3 +158,4 @@ function longPressOver(event) {
   
    
 }
+module.exports=Game;

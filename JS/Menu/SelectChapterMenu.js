@@ -4,6 +4,9 @@ MainScene=require('../MainScene');
 NewSenceEvents=require('../Event/NewSceneEvent');
 LongPressEvent=require('../Event/LongPressEvent');
 RESOURCES=require('../../Resource/Resources');
+TutorialChapter=require('../Chapter/TutorialChapter');
+ChapterOne=require('../Chapter/ChapterOne');
+ReturnEvent=require('../Event/ReturnEvent');
 /**
  *
  * This menu

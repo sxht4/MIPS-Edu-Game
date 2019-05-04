@@ -8,11 +8,13 @@ var Menu=require('../JS/Menu/Menu');
 var MenuBackGround=require('../JS/Menu/MenuBackGround');
 var SelectChapterMenu=require('../JS/Menu/SelectChapterMenu');
 var InstructionMenu=require('../JS/Menu/InstructionMenu');
+var Credit=require('../JS/Menu/Credit');    
 
 var GameEvent=require('../JS/Event/GameEvent');
 var LongPressEvent=require('../JS/Event/LongPressEvent');
 var NewSenceEvent=require('../JS/Event/NewSceneEvent');
 var RunCodeEvent=require('../JS/Event/RunCodeEvent');
+var ReturnEvent=require('../JS/Event/ReturnEvent');
 
 var Interpreter=require('../JS/Interpreter/Interpreter');
 
@@ -28,6 +30,9 @@ var RegisterCell=require('../JS/RegisterCell');
 
 var RESOURCES=require('../Resource/Resources');
 var Loader=require('../Resource/Loader');
+
+var ChapterOne = require('../JS/Chapter/ChapterOne');
+var TutorialChapter=require('../JS/Chapter/TutorialChapter');
 
 
 var assert = require('assert');
@@ -47,12 +52,16 @@ describe('Basic Mocha String Test: Testing whether mocha and chai works or not',
 //Menu Test
 describe('Menu.js Unit Tests', function(){
     var mn = new Menu();
-    it('Constructor should create a array of type Layer which contains one element', function(){
-        assert.equal(mn.layers.length, 1);
+    mn.init();
+    it('Constructor should create a array of type Layer which contains 2 element', function(){
+      
+        assert.equal(mn.layers.length, 2);
     });
     var mn1 = new Menu();
     mn1.init();
     it('init function should create a button which id is "New_Game_Button"', function(){
+        
+       
         assert.notEqual(mn1.getByID("New_Game_Button"), null);
         assert.equal(mn1.getByID("New_Game_Button").text, "NEW GAME")
     });
@@ -60,9 +69,9 @@ describe('Menu.js Unit Tests', function(){
         assert.notEqual(mn1.getByID("Option_Button"), null);
         assert.equal(mn1.getByID("Option_Button").text, "OPTION");
     });
-    it('init should create a button which id is "about_us"', function(){
-        assert.notEqual(mn1.getByID("about_us"), null);
-        //assert.notEqual(mn1.getByID("about_us").text, "ABOUT US");
+    it('init should create a button which id is "Credit"', function(){
+        assert.notEqual(mn1.getByID("Credit"), null);
+        assert.equal(mn1.getByID("Credit").text, "CREDIT");
     });
     it('init should create a MenuAnimation component which id is "MenuAnimation"', function(){
         assert.notEqual(mn1.getByID("MenuAnimation"), null);
@@ -75,12 +84,14 @@ describe('Menu.js Unit Tests', function(){
 //Instruction Menu Test
 describe('InstructionMenu.js Unit Tests', function(){
     var im = new InstructionMenu();
-    it('Constructor should create a array of type Layer which contains one element', function(){
+    im.init();
+    it('Constructor should create a array of type Layer which contains 1 element', function(){
+
         assert.equal(im.layers.length, 1);
     });
     it('init function should create a button which id is "Add_Ins"', function(){
         assert.notEqual(im.getByID("Add_Ins"), null);
-        assert.equal(im.getByID("Add_Ins").text, "Add")
+        assert.equal(im.getByID("Add_Ins").text, "Add");
     });
 });
 
@@ -99,8 +110,9 @@ describe('MenuBackground.js Unit Tests', function(){
 //SelectChapterMenu Test
 describe('SelectChapterMenu.js Unit Tests', function(){
     var sc = new SelectChapterMenu();
+    sc.init();
     it('Constructor should create a array of type Layer which contains one element', function(){
-        assert.equal(sc.layers.length, 1);
+        assert.equal(sc.layers.length, 2);
     });
     var sc1 = new SelectChapterMenu();
     sc1.init();
@@ -350,7 +362,8 @@ describe('CodePanel.js Unit Tests', function(){
         assert.equal(cp.width, 100);
     });
     it('Constructor should set height correctly', function(){
-        assert.equal(cp.height, 16*14);
+      
+        assert.equal(cp.height, 210);
     });
     it('CodePanel should be clickable', function(){
         assert.equal(cp.clickable, true);
@@ -404,7 +417,7 @@ describe('Interpreter.js Unit Tests', function(){
         assert.equal(ip.code_panel, cp);
     });
     it('Constructor should set Memory correctly', function(){
-        assert.equal(ip.memeory, m);
+        assert.equal(ip.memory, m);
     });
     it('Constructor should set Register correctly', function(){
         assert.equal(ip.register, r);
@@ -413,90 +426,112 @@ describe('Interpreter.js Unit Tests', function(){
         //test failed
         r.getCellAt(0).setContent(2);
        
-        
-        await  ip.executeADD('t0', 't1', 't2'); // t0 = 0 + 0 
-       // console.log(ip.getRegister('t0'));
-        assert.equal(ip.getRegister('t0').value, 0);
-        //test passed
-        r.getCellAt(3).setContent(3);
-        
-        await ip.executeADD('t1', 't2', 't3');
-        assert.equal(ip.getRegister('t1').value, 3);
-        r.getCellAt(4).setContent(12);
-        await   ip.executeADD('t2', 't3', 't4'); //t2 = 3 + 12
-        await  ip.executeADD('t2', 't3', 't1'); //t2 = 3 + 3
-        assert.equal(ip.getRegister('t2').value, 6);
+        console.log(ip.getRegister('$t0'));
+        await  ip.executeADD('$t0', '$t1', '$t2'); // t0 = 0 + 0 
+       
+        assert.equal(ip.getRegister('$t0').value, 0);
+       
     });
     it('excuteADDI function should add value correctly',async function(){
         //test failed
         r.getCellAt(0).setContent(2);
-        await ip.executeADDI('t0', 't1', '1');
-        assert.equal(ip.getRegister('t0').value, 4);
+        r.getCellAt(1).setContent(3);
+        await ip.executeADDI('$t0', '$t1', '1');
+        assert.equal(ip.getRegister('$t0').value, 4);
 
         //test passed
         r.getCellAt(4).setContent(5);
-        await ip.executeADDI('t1', 't4', '-1');
-        assert.equal(ip.getRegister('t1').value, 4);
-        r.getCellAt(4).setContent(19);
-        await  ip.executeADDI('t2', 't1', '-1'); // t2 = 4 - 1
-        try {
-            await  ip.executeADDI('t2', 't2', 't4'); // t2 = t2 + 19 = 3 + 19
-        } catch (error) {
-            assert.equal(error, 'not a number '+ 't4');
-        }
-        
-        assert.equal(ip.getRegister('t2').value, 3);
+        await ip.executeADDI('$t1', '$t4', '-1');
+        assert.equal(ip.getRegister('$t1').value, 4);
+       
     });
     it('excuteSLL function should shift value correctly',async function(){
         r.getCellAt(0).setContent(2);
-        await ip.executeSLL('t0', 't0', '1');
-        assert.equal(ip.getRegister('t0').value, 4);
+        await ip.executeSLL('$t0', '$t0', '1');
+        assert.equal(ip.getRegister('$t0').value, 4);
 
         r.getCellAt(4).setContent(5);
-        await ip.executeSLL('t1', 't4', '3');
-        assert.equal(ip.getRegister('t1').value, 40); 
+        await ip.executeSLL('$t1', '$t4', '3');
+        assert.equal(ip.getRegister('$t1').value, 40); 
         try {
-            await  ip.executeSLL('t2', 't2', 't4'); 
+            await  ip.executeSLL('$t2', '$t2', '$t4'); 
         } catch (error) {
-            assert.equal(error, 'not a number '+ 't4');
+            assert.equal(error, 'not a number '+ '$t4');
         }
         r.getCellAt(3).setContent(19);
-        await ip.executeSLL('t3', 't3', '0');
-        assert.equal(ip.getRegister('t3').value, 19);
+        await ip.executeSLL('$t3', '$t3', '0');
+        assert.equal(ip.getRegister('$t3').value, 19);
     });
     it('excuteSRL function should shift value correctly',async function(){
         r.getCellAt(0).setContent(2);
-        await ip.executeSRL('t0', 't0', '1');
-        assert.equal(ip.getRegister('t0').value, 1);
+        await ip.executeSRL('$t0', '$t0', '1');
+        assert.equal(ip.getRegister('$t0').value, 1);
 
         r.getCellAt(1).setContent(5);
-        await ip.executeSRL('t2', 't1', '1');
-        assert.equal(ip.getRegister('t2').value, 2); 
+        await ip.executeSRL('$t2', '$t1', '1');
+        assert.equal(ip.getRegister('$t2').value, 2); 
         try {
-            await  ip.executeSRL('t2', 't2', 't4'); 
+            await  ip.executeSRL('$t2', '$t2', '$t4'); 
         } catch (error) {
-            assert.equal(error, 'not a number '+ 't4');
+            assert.equal(error, 'not a number '+ '$t4');
         }
         r.getCellAt(3).setContent(19);
-        await ip.executeSRL('t3', 't3', '3');
-        assert.equal(ip.getRegister('t3').value, 2);
+        await ip.executeSRL('$t3', '$t3', '3');
+        assert.equal(ip.getRegister('$t3').value, 2);
     });
     it('excuteSTL function should compare values and set result value correctly', async function(){
         r.getCellAt(2).setContent(2);
         r.getCellAt(1).setContent(1);
         r.getCellAt(3).setContent(3);
-        await  ip.executeSLT('t0', 't1', 't2'); 
+        await  ip.executeSLT('$t0', '$t1', '$t2'); 
        // console.log(ip.getRegister('t0'));
-        assert.equal(ip.getRegister('t0').value, 1);
+        assert.equal(ip.getRegister('$t0').value, 1);
         //test passed
-        await  ip.executeSLT('t4', 't3', 't2');
-        assert.equal(ip.getRegister('t4').value, 0);
+        await  ip.executeSLT('$t4', '$t3', '$t2');
+        assert.equal(ip.getRegister('$t4').value, 0);
     });
+    it('excuteSub function should compare values and set result value correctly', async function(){
+        //By XL
+        r.getCellAt(0).setContent(0);
+        r.getCellAt(1).setContent(4);
+        r.getCellAt(2).setContent(2);
+        await  ip.executeSub('t0', 't1', 't2'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 2);
+    });
+    it('excuteSubi function should compare values and set result value correctly', async function(){
+        //By XL
+        r.getCellAt(0).setContent(0);
+        r.getCellAt(1).setContent(4);
+        r.getCellAt(2).setContent(2);
+        await  ip.executeSubi('t0', 't1', '1'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 3);
+    });
+    it('excuteMul function should compare values and set result value correctly', async function(){
+        //By XL
+        r.getCellAt(0).setContent(0);
+        r.getCellAt(1).setContent(4);
+        r.getCellAt(2).setContent(2);
+        await  ip.executeMul('t0', 't1', 't2'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 8);
+    });
+    it('excuteDiv function should compare values and set result value correctly', async function(){
+        //By XL
+        r.getCellAt(0).setContent(0);
+        r.getCellAt(1).setContent(4);
+        r.getCellAt(2).setContent(2);
+        await  ip.executeDiv('t0', 't1', 't2'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 2);
+    });
+
     it('When two values are equal to each other, 0 should be set to destination reg', async function(){
         r.getCellAt(2).setContent(2);
         r.getCellAt(1).setContent(2);        
-        await  ip.executeSLT('t0', 't1', 't2'); 
-        assert.equal(ip.getRegister('t0').value, 0);
+        await  ip.executeSLT('$t0', '$t1', '$t2'); 
+        assert.equal(ip.getRegister('$t0').value, 0);
     });
 
 });
@@ -590,6 +625,8 @@ describe('Component.js Unit Tests', function(){
 //GameScene Test
 describe('GameScene.js Unit Tests', function(){
     var gs1 = new GameScene();
+    gs1.init();
+   
     it('Constructor should contruct array of type layer which contains one element', function(){
         assert.equal(gs1.layers.length, 1);
     });
@@ -598,9 +635,11 @@ describe('GameScene.js Unit Tests', function(){
         assert.equal(gs1.layers.length, 2);
     });
     var gs2 = new GameScene();
+    gs2.init();
     var cm1 = new Component("cm1Id", "cmC", 10, 20, 30, 40, true);
     var cm2 = new Component("cm2Id", "cmC", 0, 0, 10, 20, true);
     gs2.addComponent(cm1,0);
+    
     //gs2.addComponent(cm3,-1);
     it('GetClickedElement should return null if no component is found', function(){
         assert.equal(gs2.getClickedElement(50,50), null);
@@ -697,10 +736,13 @@ describe('NewSceneEvents.js Unit Tests', function(){
 
 //MainScene Tests
 describe('MainScene.js Unit Tests', function(){
+    
     var gui = new MainScene();
+    gui.init();
     it('Constructor should create an array of type Layer with only one element', function(){
-        assert.equal(gui.layers.length, 1);
+        assert.equal(gui.layers.length, 2);
     });
+    
     var gui2 = new MainScene();
     gui2.init();
     it('init function should create CodePanel which has id "code_panel"', function(){
@@ -719,7 +761,7 @@ describe('MainScene.js Unit Tests', function(){
         assert.notEqual(gui2.getByID("Memory"), null);
     });
     it('init function should create a Memory which is clickable', function(){
-        assert.equal(gui2.getByID("Memory").clickable, true);
+        assert.equal(gui2.getByID("Memory").clickable, false);
     });
     it('init function should create a Register which has id "Register"', function(){
         assert.notEqual(gui2.getByID("Register"), null);
@@ -767,12 +809,6 @@ describe('Memory.js Unit Tests', function(){
     it('add function should modify memory size correctly', function(){
         assert.equal(mem2.content.length, 13);
     });
-    it('delete function should delete element correctly', function(){
-        mem2.delete(1);
-        assert.equal(mem2.get(1), undefined);
-        assert.equal(mem2.get(0), 0);
-        assert.equal(mem2.get(2), 0);
-    });
     it('set function should set value correctly for a specific index', function(){
         mem2.set(2, 3);
         assert.equal(mem2.get(2), 3);
@@ -819,13 +855,14 @@ describe('Register.js Unit Tests', function(){
     });
     var Reg2 = new Register("rID2", [], 10, 20, 30, 50, true);
     Reg2.init();
-    it('init function should push 5 elements to content', function(){
-        assert.equal(Reg2.content.length, 5);
+    it('init function should push 8 elements to content', function(){
+        assert.equal(Reg2.content.length, 8);
     });
 });
 //RegisterCell Tests
 describe('RegisterCell.js Unit Tests', function(){
     var RegCell = new RegisterCell("rcID1", 5, 10, 20, 30, 50, true);
+    var Reg = new Register("Register", [], 10, 20, 100, 200, false);
     it('Constructor should set id correctly', function(){
         assert.equal(RegCell.id, 'rcID1');
     }); 
@@ -847,7 +884,12 @@ describe('RegisterCell.js Unit Tests', function(){
     it('Register should be clickable', function(){
         assert.equal(RegCell.clickable, true);
     });
+    it('Register should have correct register cells', function(){
+        //By XL
+        assert.equal(Reg.content.length, 8);
+    });
 });
+
 
 
 describe('CodePanel.js Change Page Unit Tests', function(){
@@ -880,5 +922,14 @@ describe('CodePanel.js Change Page Unit Tests', function(){
          assert.equal(cp.getContent(1).content,'ins 14');
      }); 
     
+});
+
+//Credit test
+describe('Credit.js unit test', function(){
+    it('Register should have correct register cells', function(){
+        //By XL
+        var c = new Credit();
+        assert.equal(c.content.length, 2);
+    });
 });
 

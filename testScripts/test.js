@@ -492,6 +492,43 @@ describe('Interpreter.js Unit Tests', function(){
         await  ip.executeSLT('t4', 't3', 't2');
         assert.equal(ip.getRegister('t4').value, 0);
     });
+    it('excuteSub function should compare values and set result value correctly', async function(){
+        //By XL
+        r.getCellAt(0).setContent(0);
+        r.getCellAt(1).setContent(4);
+        r.getCellAt(2).setContent(2);
+        await  ip.executeSub('t0', 't1', 't2'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 2);
+    });
+    it('excuteSubi function should compare values and set result value correctly', async function(){
+        //By XL
+        r.getCellAt(0).setContent(0);
+        r.getCellAt(1).setContent(4);
+        r.getCellAt(2).setContent(2);
+        await  ip.executeSubi('t0', 't1', '1'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 3);
+    });
+    it('excuteMul function should compare values and set result value correctly', async function(){
+        //By XL
+        r.getCellAt(0).setContent(0);
+        r.getCellAt(1).setContent(4);
+        r.getCellAt(2).setContent(2);
+        await  ip.executeMul('t0', 't1', 't2'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 8);
+    });
+    it('excuteDiv function should compare values and set result value correctly', async function(){
+        //By XL
+        r.getCellAt(0).setContent(0);
+        r.getCellAt(1).setContent(4);
+        r.getCellAt(2).setContent(2);
+        await  ip.executeDiv('t0', 't1', 't2'); 
+       // console.log(ip.getRegister('t0'));
+        assert.equal(ip.getRegister('t0').value, 2);
+    });
+
     it('When two values are equal to each other, 0 should be set to destination reg', async function(){
         r.getCellAt(2).setContent(2);
         r.getCellAt(1).setContent(2);        
@@ -826,6 +863,7 @@ describe('Register.js Unit Tests', function(){
 //RegisterCell Tests
 describe('RegisterCell.js Unit Tests', function(){
     var RegCell = new RegisterCell("rcID1", 5, 10, 20, 30, 50, true);
+    var Reg = new Register("Register", [], 10, 20, 100, 200, false);
     it('Constructor should set id correctly', function(){
         assert.equal(RegCell.id, 'rcID1');
     }); 
@@ -846,5 +884,18 @@ describe('RegisterCell.js Unit Tests', function(){
     });
     it('Register should be clickable', function(){
         assert.equal(RegCell.clickable, true);
+    });
+    it('Register should have correct register cells', function(){
+        //By XL
+        assert.equal(Reg.content.length, 8);
+    });
+});
+
+//Credit test
+describe('Credit.js unit test', function(){
+    it('Register should have correct register cells', function(){
+        //By XL
+        var c = new Credit();
+        assert.equal(c.content.length, 2);
     });
 });

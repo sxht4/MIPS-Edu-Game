@@ -342,3 +342,4 @@ isClicked(x, y, component) {
 }
 
 }
+module.exports=TutorialChapter;

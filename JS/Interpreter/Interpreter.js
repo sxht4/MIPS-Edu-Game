@@ -75,6 +75,7 @@ class Interpreter {
      * @memberof Interpreter
      */
     async  executeADD(dest, arg1, arg2) {
+        console.log('excute');
         var R1 = this.getRegister(arg1);
         var R2 = this.getRegister(arg2);
         var destcell = this.getRegister(dest);
@@ -82,6 +83,7 @@ class Interpreter {
         await this.cpu.moveTo(R2.cell.x, R2.cell.y);
         await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
         destcell.cell.setContent(R1.value + R2.value);
+        console.log('done');
 
 
     }

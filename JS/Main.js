@@ -5,8 +5,9 @@ Game=require('./Game');
 // global variables
 //Context of game_canvas
 var CTX=undefined;
-var GAME=undefined;
+var  GAME=undefined;
 var GAME_CANVAS =undefined
+
 /**
  *main function
  *

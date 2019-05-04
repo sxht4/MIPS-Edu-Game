@@ -1,3 +1,5 @@
+Component = require('../Component');
+ReturnEvent=require('../Event/ReturnEvent');
 
 
 /**
@@ -42,3 +44,5 @@ class Credit extends GameScene {
         CTX.fillText("Team members: Sai Cao, Hangzhang Bai, Tianyu Cao, Xiang Li", 40 , 70);
     }
 } 
+
+module.exports=Credit;

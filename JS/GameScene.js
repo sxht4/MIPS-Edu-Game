@@ -11,7 +11,12 @@ class GameScene {
      *Creates an instance of GameScene.
      * @memberof GameScene
      */
-    constructor() {
+    constructor(id) {
+        this.id=id;
+       
+
+    }
+    init(){
         this.layers = [];
         this.layers.push(new Layer());
 
@@ -22,8 +27,17 @@ class GameScene {
      * @memberof GameScene
      */
     addLayer(){
-        
-        this.layers.push(new Layer());
+        var retval=new Layer();
+        this.layers.push(retval);
+        return retval;
+    }
+    removeLayer(i){
+        if(i==-1){
+            this.layers.pop();
+
+        }else{
+            this.layers.slice(i,i);
+        }
     }
     /**
      * add Component to this Game Scene
@@ -69,7 +83,7 @@ class GameScene {
      *get  Element or compoment by thier ID in game scene.
      *
      * @param {string} id
-     * @returns compoment that be has the id or null if not be found
+     * @returns {Component} component that be has the id or null if not be found
      * @memberof GameScene
      */
     getByID(id){
@@ -94,6 +108,7 @@ class GameScene {
         }
 
     }
+    
     
 }
 module.exports=GameScene;

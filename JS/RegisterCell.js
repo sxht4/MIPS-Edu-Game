@@ -18,7 +18,7 @@ class RegisterCell extends Component{
      */
     setContent(value){
 
-        if(value==null){
+        if(value===null){
             this.content='';
         }else{
             this.content=value;
@@ -33,8 +33,8 @@ class RegisterCell extends Component{
      * @memberof RegisterCell
      */
     getContent(){
-        return this.content;
-        if(this.content==''){
+        console.log(this.content)
+        if(this.content===''){
             return null;
         }else{
             return this.content ;
@@ -47,7 +47,7 @@ class RegisterCell extends Component{
      * @memberof RegisterCell
      */
     excuteClick(){
-        alert("Register"+this.id);
+        //alert("Register"+this.id);
     }
     /**
      *
@@ -57,9 +57,11 @@ class RegisterCell extends Component{
     update(){
         
       
-        CTX.fillStyle = "red";
-        CTX.fillText(this.content, this.x, this.y);
-        CTX.fillText("t"+this.id, this.x, this.y-20);
+        CTX.fillStyle = "black";
+        CTX.fillText(this.content, this.x+20, this.y+22);
+        CTX.fillText("t"+this.id, this.x, this.y+10);
+        // CTX.fillStyle = "white";
+        // CTX.fillRect(this.x, this.y, this.width, this.height);
         
     }
 }

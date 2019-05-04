@@ -42,6 +42,14 @@ class Game {
 
         this.initGame();
 
+    }  
+    removeScene(i){
+        if(i==-1){
+            this.game_scenes.pop();
+        }else{
+            this.game_scenes.slice(i,i);
+        }
+
     }
     getCurrentScene() {
         return this.game_scenes[this.game_scenes.length - 1];
@@ -62,6 +70,7 @@ class Game {
 
         }, this.FPS);
     }
+
     addScene(scene) {
 
         this.game_scenes.push(scene);
@@ -80,27 +89,36 @@ var timer;
  *
  * @param {event} event
  */
+var longpress=false;
+var clickedElement=null;
+var clickedX=null;
+var clickedY=null;
 function longPress (event){
-    console.log('game click');
-    var x = event.offsetX;
-    var y = event.offsetY;
-    let element = GAME.getCurrentScene().getClickedElement(x, y);
-    if (element != null && element.clickable) {
+    console.log(longpress);
+    clickedX = event.offsetX;
+    clickedY = event.offsetY;
+    
+    clickedElement = GAME.getCurrentScene().getClickedElement(clickedX, clickedY);
+    if (clickedElement != null && clickedElement.clickable) {
         timer = setTimeout(function(){
-            element.excuteLongPress();
+            longpress=true;
+            clickedElement.excuteLongPress();
+            longpress=false;
         }, 2000);
+       
+    
+        
+        
        
         
     }
 
 
 }
-function gameClick(){
-    var x = event.offsetX;
-    var y = event.offsetY;
-    var element = GAME.getCurrentScene().getClickedElement(x, y);
-    if (element != null && element.clickable) {
-        element.excuteClick(x,y);
+function gameClick(event){
+
+    if (clickedElement != null && clickedElement.clickable) {
+        clickedElement.excuteClick(clickedX,clickedY);
        
         
     }
@@ -124,5 +142,19 @@ function temp(){
  */
 function longPressOver(event) {
     clearTimeout(timer);
+    console.log('mouse up');
+    if(longpress){
+        longpress=false;
+        return;
+       
+    }else{
+        
+        gameClick(event);
+        
+    }
+  
+   
+    
+  
+   
 }
-module.exports=Game;

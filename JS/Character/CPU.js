@@ -25,10 +25,11 @@ class CPU extends Component {
         this.updateIndex = 0;
         this.animation_speed = 6;
         this.frame_count = 0;
-        this.sleeptime=0;
+        this.sleeptime = 0;
+
     }
 
-    
+
     /**
      *
      * this character move to the x and y
@@ -41,6 +42,11 @@ class CPU extends Component {
         this.destination.x = x;
         this.destination.y = y;
         this.state = CPU_CONST.START_MOVE;
+        while (this.state != CPU_CONST.STATIC) {
+            await sleep(100 * this.animation_speed);
+
+        }
+
 
             await  this.sleep(10);
 
@@ -143,15 +149,15 @@ class CPU extends Component {
      * @param {number} speed
      * @memberof CPU
      */
-    setSpeed(speed){
-        if(0<speed&&speed<4){
-            this.speedX=4*speed;
-            this.speedY=4*speed;
-            this.animation_speed=6/speed;
-        }else{
-            throw new RangeError( 'speed should in range 1 to 3');
+    setSpeed(speed) {
+        if (0 < speed && speed < 4) {
+            this.speedX = 4 * speed;
+            this.speedY = 4 * speed;
+            this.animation_speed = 6 / speed;
+        } else {
+            throw new RangeError('speed should in range 1 to 3');
         }
-        
+
 
     }
 
@@ -188,6 +194,11 @@ class CPU extends Component {
     }
 
 
+    setLocation(x, y) {
+        this.x = x;
+        this.y = y;
+        this.destination = { x: this.x, y: this.y };
+    }
 
 
 }   

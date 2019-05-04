@@ -14,6 +14,7 @@ class TextCell extends Component{
       super(id, content, x, y, width, height, clickable);
       this.background=null;
       this.font=12;
+      this.color='grey';
       
     }
 
@@ -42,7 +43,18 @@ class TextCell extends Component{
     }
 
 
+    highLight(str){
+        if(str==undefined){
+            this.color='green';
+        }else{
+            this.color=str;
+        }
+       
 
+    }
+    deHighLight(){
+        this.color='grey';
+    }
 
     
     /**
@@ -51,7 +63,7 @@ class TextCell extends Component{
      * @memberof TextCell
      */
     update(){
-        CTX.fillStyle = "grey";
+        CTX.fillStyle = this.color;
         CTX.fillRect(this.x,this.y, this.width, this.height);
         CTX.fillStyle = "white";
         CTX.font = this.font+"px Arial";

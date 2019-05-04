@@ -68,7 +68,7 @@ class MenuAnimation extends Component{
         CTX.strokeStyle = "white";
         this.move();
   
-        CTX.strokeText("Mips Education Game",this.x,this.y+40);
+        CTX.strokeText("MIPS Educational Game",this.x-25,this.y+40);
 
     }
 

@@ -3,6 +3,7 @@ Game=require('./Game');
 // 2 10 2019
  
 // global variables
+//Context of game_canvas
 var CTX=undefined;
 var GAME=undefined;
 var GAME_CANVAS =undefined
@@ -16,9 +17,10 @@ function main() {
     GAME=new Game(game_canvas.width,game_canvas.height,30);
     GAME.run();
     CTX =game_canvas.getContext("2d");
-    game_canvas.addEventListener("click",gameClick);  
     game_canvas.addEventListener("mousedown",longPress);  
     game_canvas.addEventListener("mouseup",longPressOver);
+    // game_canvas.addEventListener("click",gameClick);  
+ 
     GAME_CANVAS=game_canvas;
 }
 exports.sleep=function sleep(ms) {

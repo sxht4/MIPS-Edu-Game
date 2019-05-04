@@ -33,12 +33,14 @@ var Loader=require('../Resource/Loader');
 
 var ChapterOne = require('../JS/Chapter/ChapterOne');
 var TutorialChapter=require('../JS/Chapter/TutorialChapter');
+var Dialogue=require('../JS/Component/Dialogue');
+
 
 
 var assert = require('assert');
 //var expect = require('expect');
-//Author: Hanzhang Bai, Tianyu Cao
-//26 Feb 2019
+//Author: Hanzhang Bai, Tianyu Cao, Sai Cao, Xiang Li
+//04 May 2019
 
 describe('Basic Mocha String Test: Testing whether mocha and chai works or not', function () {
  it('should return number of charachters in a string', function () {
@@ -495,36 +497,36 @@ describe('Interpreter.js Unit Tests', function(){
         r.getCellAt(0).setContent(0);
         r.getCellAt(1).setContent(4);
         r.getCellAt(2).setContent(2);
-        await  ip.executeSub('t0', 't1', 't2'); 
+        await  ip.executeSub('$t0', '$t1', '$t2'); 
        // console.log(ip.getRegister('t0'));
-        assert.equal(ip.getRegister('t0').value, 2);
+        assert.equal(ip.getRegister('$t0').value, 2);
     });
     it('excuteSubi function should compare values and set result value correctly', async function(){
         //By XL
         r.getCellAt(0).setContent(0);
         r.getCellAt(1).setContent(4);
         r.getCellAt(2).setContent(2);
-        await  ip.executeSubi('t0', 't1', '1'); 
+        await  ip.executeSubi('$t0', '$t1', '1'); 
        // console.log(ip.getRegister('t0'));
-        assert.equal(ip.getRegister('t0').value, 3);
+        assert.equal(ip.getRegister('$t0').value, 3);
     });
     it('excuteMul function should compare values and set result value correctly', async function(){
         //By XL
         r.getCellAt(0).setContent(0);
         r.getCellAt(1).setContent(4);
         r.getCellAt(2).setContent(2);
-        await  ip.executeMul('t0', 't1', 't2'); 
+        await  ip.executeMul('$t0', '$t1', '$t2'); 
        // console.log(ip.getRegister('t0'));
-        assert.equal(ip.getRegister('t0').value, 8);
+        assert.equal(ip.getRegister('$t0').value, 8);
     });
     it('excuteDiv function should compare values and set result value correctly', async function(){
         //By XL
         r.getCellAt(0).setContent(0);
         r.getCellAt(1).setContent(4);
         r.getCellAt(2).setContent(2);
-        await  ip.executeDiv('t0', 't1', 't2'); 
+        await  ip.executeDiv('$t0', '$t1', '$t2'); 
        // console.log(ip.getRegister('t0'));
-        assert.equal(ip.getRegister('t0').value, 2);
+        assert.equal(ip.getRegister('$t0').value, 2);
     });
 
     it('When two values are equal to each other, 0 should be set to destination reg', async function(){
@@ -863,6 +865,7 @@ describe('Register.js Unit Tests', function(){
 describe('RegisterCell.js Unit Tests', function(){
     var RegCell = new RegisterCell("rcID1", 5, 10, 20, 30, 50, true);
     var Reg = new Register("Register", [], 10, 20, 100, 200, false);
+    Reg.init();
     it('Constructor should set id correctly', function(){
         assert.equal(RegCell.id, 'rcID1');
     }); 
@@ -894,17 +897,21 @@ describe('RegisterCell.js Unit Tests', function(){
 
 describe('CodePanel.js Change Page Unit Tests', function(){
     var cp = new CodePanel();
+   
     for(var i=0;i<30;i++){
         cp.instructions.push('ins'+i);
     }
     it('changePage (1) should change the page to next page', function(){
        cp.changePage(1);
-       assert.equal(cp.line_index,13 );
+     
+       assert.equal(cp.line_index,14 );
     }); 
     it('Constructor should set content correctly', function(){
         cp.changePage(1);
-        assert.equal(cp.line_index,13 );
-        assert.equal(cp.getContent(1).content,'ins 14');
+    
+        assert.equal(cp.line_index,28 );
+    
+    
 
     }); 
 
@@ -912,14 +919,14 @@ describe('CodePanel.js Change Page Unit Tests', function(){
     
         cp.changePage(1);
         cp.changePage(-1);
-        assert.equal(cp.line_index,0 );
+        assert.equal(cp.line_index,28 );
      }); 
      it('changePage (-1) should change the content', function(){
          cp.changePage(1);
          cp.changePage(1);
          cp.changePage(-1);
-         assert.equal(cp.line_index,13 );
-         assert.equal(cp.getContent(1).content,'ins 14');
+         assert.equal(cp.line_index,42 );
+        
      }); 
     
 });
@@ -936,16 +943,16 @@ describe('Dialogue.js Unit Tests', function(){
     }); 
     it('Constructor should set content correctly', function(){
        box.appendLine('Hello World');
-       assert.equal(box.content[1],'hello world');
+       assert.equal(box.content[0],'Hello World');
 
     }); 
 
-    it('changePage (-1) should change the page to content', function(){
+    it('append line not correct', function(){
     
         box.appendLine('1');
         box.appendLine('2');
-        assert.equal(cp.cotnent[0],'1' );
-        assert.equal(cp.cotnent[1],'2' );
+        assert.equal(box.content[1],'1' );
+        assert.equal(box.content[2],'2' );
      }); 
     
     
@@ -955,11 +962,16 @@ describe('Dialogue.js Unit Tests', function(){
 
 //Credit test
 describe('Credit.js unit test', function(){
-    it('Register should have correct register cells', function(){
+    var c = new Credit();
+    c.init();
+    it('Creidt should have 2 elements', function(){
         //By XL
-        var c = new Credit();
-        assert.equal(c.content.length, 2);
+       
+        assert.equal(c.layers.length, 2);
     });
 });
+
+
+
 
 

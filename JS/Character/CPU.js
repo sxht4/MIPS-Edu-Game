@@ -48,7 +48,7 @@ class CPU extends Component {
         // }
 
 
-            await  this.sleep(10);
+            // await  this.sleep(10);
 
 
     }

@@ -11,7 +11,7 @@ ReturnEvent=require('../Event/ReturnEvent');
 class Credit extends GameScene {
     constructor() {
         super();
-        this.components=[];
+      
        
     }
 

@@ -1,4 +1,4 @@
-
+Component=require('../Component');
 /**
  *
  * Create a Dialogue box 
@@ -55,3 +55,4 @@ class Dialogue extends Component{
     }
     
 }
+module.exports=Dialogue;

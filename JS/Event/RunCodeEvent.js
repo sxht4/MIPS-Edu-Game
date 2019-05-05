@@ -1,3 +1,4 @@
+GameEvent=require('./GameEvent');
 /**
  *
  *
@@ -17,3 +18,4 @@ class RunCodeEvent extends GameEvent {
 
     }
 }
+module.exports=RunCodeEvent;

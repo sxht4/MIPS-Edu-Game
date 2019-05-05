@@ -1,10 +1,11 @@
+GameEvent=require('./GameEvent');
 /**
  * alert a hint when event happen
  *  
  * @class HintEvent
  * @extends {GameEvent}
  */
-class HintEvent extends GameEvent{
+ class HintEvent extends GameEvent{
 
     constructor(id){
         super(id,0);
@@ -26,3 +27,4 @@ class HintEvent extends GameEvent{
     }
 
 }
+module.exports=HintEvent;

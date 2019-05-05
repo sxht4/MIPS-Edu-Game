@@ -1,3 +1,4 @@
+Component=require('../Component');
 
 /**
  *
@@ -76,3 +77,4 @@ class TextCell extends Component{
     }
 
 }
+module.exports=TextCell;

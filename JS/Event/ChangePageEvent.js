@@ -1,3 +1,4 @@
+GameEvent=require('./GameEvent');
 class ChangePageEvent extends GameEvent{
     constructor(number,codePanel){
         super();
@@ -9,3 +10,4 @@ class ChangePageEvent extends GameEvent{
         this.codePanel.changePage(this.number);
     }
 }
+module.exports=ChangePageEvent;

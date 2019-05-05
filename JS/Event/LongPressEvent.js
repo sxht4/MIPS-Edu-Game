@@ -1,3 +1,4 @@
+GameEvent=require('./GameEvent');
 /**
  * This class will be called when a LongPress event is executed. 
  * And it determine what would happen if LongPress event is executed.
@@ -31,3 +32,4 @@ excute(x,y){
     }
    
 }
+module.exports=LongPressEvent;

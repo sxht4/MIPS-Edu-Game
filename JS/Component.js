@@ -1,5 +1,7 @@
 
 /**
+ * 
+ * everything in game sence will extends this class
  * @author Sai Cao
  * @class Component
  * 
@@ -42,4 +44,5 @@ class Component {
 
 
 }
+module.exports=Component;
 

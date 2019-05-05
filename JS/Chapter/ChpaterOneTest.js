@@ -1,3 +1,4 @@
+Checker=require('../Interpreter/Checker');
 class ChapterOneTest extends Checker{
     constructor(code_panel,r,m,order,scene){
         super(code_panel,r,m);
@@ -72,3 +73,4 @@ class ChapterOneTest extends Checker{
     //     return true;
     // }
 }
+module.exports=ChapterOneTest;

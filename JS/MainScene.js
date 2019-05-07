@@ -1,3 +1,19 @@
+GameScene=require('./GameScene');
+CodePanel=require('./Code_Panel/CodePanel');
+NewSceneEvent=require('./Event/NewSceneEvent');
+SelectChapterMenu=require('./Menu/SelectChapterMenu');
+InstructionMenu=require('./Menu/InstructionMenu');
+Memory=require('./Memory');
+Register=require('./Register');
+CPU=require('./Character/CPU');
+RunCodeEvent=require('./Event/RunCodeEvent');
+Interpreter=require('./Interpreter/Interpreter');
+Button=require('./Button');
+HintEvent=require('./Event/HintEvent');
+ChangePageEvent=require('./Event/ChangePageEvent');
+InterpreterAnimation=require('./Interpreter/InterpreterAnimation');
+ChangeSpeedEvent=require('./Event/ChangeSpeedEvent');
+
 /**
  * Chapter 1
  * @class MainScene
@@ -67,3 +83,4 @@ class MainScene extends GameScene {
      
     }
 }
+module.exports=MainScene;

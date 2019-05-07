@@ -1,11 +1,13 @@
-
 /**
+ * 
  *
  *
  * @class Register
  * @extends {Component}
  * @param content: is registerCell
  */
+var RegisterCell = require('./RegisterCell');
+var Component=require('./Component');
 class Register extends Component {
     constructor(id, content, x, y, width, height, clickable) {
         super(id, content, x, y, width, height, clickable);
@@ -82,3 +84,4 @@ class Register extends Component {
         }
     }
 }
+module.exports=Register;

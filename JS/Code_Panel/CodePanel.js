@@ -1,3 +1,6 @@
+Component=require('../Component');
+TextCell=require('./TextCell');
+
 /**
  *
  * This code panel in game that users can write their code or drag preset code from code menu.
@@ -163,4 +166,4 @@ class CodePanel extends Component {
 
     
 }
-
+module.exports=CodePanel;

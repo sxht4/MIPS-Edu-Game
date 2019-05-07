@@ -1,3 +1,5 @@
+Layer=require('./Layer');
+
 /**
  * 
  * @version 2019/3/29
@@ -44,7 +46,7 @@ class GameScene {
      * @param {number} index the layer index to be added, -1 to add top layer
      * @memberof GameScene
      */
-    addComponent(component,index ){
+    addComponent(component,index){
         
         var size=this.layers.length;
         if(index==-1){
@@ -109,3 +111,4 @@ class GameScene {
     
     
 }
+module.exports=GameScene;

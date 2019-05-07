@@ -15,3 +15,4 @@ class Checker {
         throw 'error this should not be called'
     }
 }
+module.exports=Checker;

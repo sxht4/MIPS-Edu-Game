@@ -1,3 +1,8 @@
+MainScene=require('../MainScene');
+Dialogue=require('../Component/Dialogue');
+ChapterOneTest=require('./ChpaterOneTest');
+GoalEvent=require('../Event/GoalEvent');
+TransparentComponent=require('../Component/TransparentComponent');
 /**
  * Chapter One, which teaches user how to use basic 
  * arithmetic intrustions, such as add, sll, srl.
@@ -297,3 +302,4 @@ isClicked(x, y, component) {
     return false;
 }
 }   
+module.exports=ChapterOne;

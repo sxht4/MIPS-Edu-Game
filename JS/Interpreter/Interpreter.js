@@ -1,3 +1,4 @@
+
 /**
  * a Mips Interpreter for users's code
  * exucte animations
@@ -74,6 +75,7 @@ class Interpreter {
      * @memberof Interpreter
      */
     async  executeADD(dest, arg1, arg2) {
+        console.log('excute');
         var R1 = this.getRegister(arg1);
         var R2 = this.getRegister(arg2);
         var destcell = this.getRegister(dest);
@@ -81,6 +83,7 @@ class Interpreter {
         await this.cpu.moveTo(R2.cell.x, R2.cell.y);
         await this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
         destcell.cell.setContent(R1.value + R2.value);
+        console.log('done');
 
 
     }
@@ -99,8 +102,11 @@ class Interpreter {
         } catch (error) {
             throw 'not a integer'+arg2;
         }
+            
+        
         try {
             var R1 = this.getRegister(arg1);
+
             var destCell = this.getRegister(dest);
             await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
             await  this.cpu.moveTo(destCell.cell.x, destCell.cell.y);            
@@ -363,6 +369,59 @@ class Interpreter {
 
 
 
+    async executeSLL(dest, arg1, arg2) {
+        try {
+            var value2 = Number.parseInt (arg2)
+        } catch (error) {
+            throw 'not a integer'+arg2;
+        }
+        try {
+            var R1 = this.getRegister(arg1);
+            var destCell = this.getRegister(dest);
+            await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+            await  this.cpu.moveTo(destCell.cell.x, destCell.cell.y);            
+            destCell.cell.setContent(R1.value * Math.pow(2, value2));
+            
+        } catch (error) {
+            throw error;
+        }       
+    }
+
+    async executeSRL(dest, arg1, arg2) {
+        try {
+            var value2 = Number.parseInt (arg2)
+        } catch (error) {
+            throw 'not a integer'+arg2;
+        }
+        try {
+            var R1 = this.getRegister(arg1);
+            var destCell = this.getRegister(dest);
+            await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+            await  this.cpu.moveTo(destCell.cell.x, destCell.cell.y); 
+            for(var i = 0; i < value2; i++){
+                R1.value % 2 == 0? R1.value = R1.value : R1.value = R1.value-1;
+                R1.value = R1.value / 2;    
+            }
+            //R1.value % 2 == 0? R1.value = R1.value : R1.value = R1.value-1;
+            destCell.cell.setContent(R1.value);
+            
+        } catch (error) {
+            throw error;
+        }
+       
+    }
+
+    async executeSLT(dest, arg1, arg2) {
+        var R1 = this.getRegister(arg1);
+        var R2 = this.getRegister(arg2);
+        var destcell = this.getRegister(dest);
+        await  this.cpu.moveTo(R1.cell.x, R1.cell.y);
+        await  this.cpu.moveTo(R2.cell.x, R2.cell.y);
+        await  this.cpu.moveTo(destcell.cell.x, destcell.cell.y);
+        destcell.cell.setContent(R1.value < R2.value? 1: 0);
+       
+    }
+
     /**
      * parse the instructions from Code_Panel
      *
@@ -456,7 +515,6 @@ class Interpreter {
 
 
 
-
     /**
      *
      *
@@ -468,9 +526,9 @@ class Interpreter {
         try {
 
             var retcell = this.parseMap.get(id);
-            console.log(retcell);
+            // console.log(retcell);
             var retvalue = retcell.getContent();
-            console.log(retvalue);
+            // console.log(retvalue);
             return { cell: retcell, value: retvalue };
 
         } catch (error) {
@@ -529,6 +587,6 @@ class Interpreter {
 
 
 }
-
+module.exports=Interpreter;
 
 

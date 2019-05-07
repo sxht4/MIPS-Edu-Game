@@ -1,3 +1,11 @@
+Button=require('../Button');
+GameEvent=require('../Event/GameEvent')
+GameScene=require('../GameScene');
+NewSenceEvents=require('../Event/NewSceneEvent');
+MenuBackGround=require('./MenuBackGround');
+MenuAnimation=require('./MenuAnimation');
+SelectChapterMenu=require('./SelectChapterMenu');
+Credit=require('../Menu/Credit');
 /**
  *
  *  strat menu of Game
@@ -30,7 +38,7 @@ class Menu extends GameScene {
         this.addLayer();
         
         var NewGameButton= Button.getButton('New_Game_Button',185,210,0,0,'NEW GAME');
-        var ContinueButton= Button.getButton('New_Game_Button',185,245,0,0,'OPTION');
+        var ContinueButton= Button.getButton('Option_Button',185,245,0,0,'OPTION');
         ContinueButton.addClickEvent( {excute(){alert('to be added');}});
         var CridetButton= Button.getButton('Credit',185,280,0,0,'CREDIT');
         NewGameButton.addClickEvent(new NewSceneEvent(new SelectChapterMenu()));
@@ -49,3 +57,4 @@ class Menu extends GameScene {
 
 
 }
+module.exports=Menu;

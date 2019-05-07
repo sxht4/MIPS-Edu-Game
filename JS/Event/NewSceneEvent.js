@@ -1,3 +1,4 @@
+GameEvent=require('./GameEvent');
 class NewSceneEvent extends GameEvent {
     /**
      *Creates an instance of NewsceneEvents.
@@ -24,3 +25,4 @@ class NewSceneEvent extends GameEvent {
     }
    
 }
+module.exports=NewSceneEvent;

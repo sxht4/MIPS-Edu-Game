@@ -1,4 +1,4 @@
-Component=require('./Component');
+
 /**
  * @class RegisterCell
  * @extends {Component}
@@ -65,4 +65,3 @@ class RegisterCell extends Component{
         
     }
 }
-module.exports=RegisterCell;

@@ -56,7 +56,7 @@ var RESOURCES = {
         ]
 }
 
-module.exports=RESOURCES;
+
 
 
 

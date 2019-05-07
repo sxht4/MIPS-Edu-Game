@@ -1,11 +1,11 @@
-Game=require('./Game');
+
 // author: sai cao Tianyu Cao
 // 2 10 2019
  
 // global variables
 //Context of game_canvas
 var CTX=undefined;
-var  GAME=undefined;
+var GAME=undefined;
 var GAME_CANVAS =undefined
 
 /**
@@ -24,7 +24,7 @@ function main() {
  
     GAME_CANVAS=game_canvas;
 }
-exports.sleep=function sleep(ms) {
+function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 

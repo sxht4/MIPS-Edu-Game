@@ -1,4 +1,4 @@
-Component=require('../Component');
+
 class MenuBackGround extends Component {
     constructor() {
 
@@ -34,4 +34,3 @@ class MenuBackGround extends Component {
 
 
 }
-module.exports=MenuBackGround;

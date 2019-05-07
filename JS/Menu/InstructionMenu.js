@@ -1,7 +1,4 @@
-GameScene=require('../GameScene');
-GameEvent=require('../Event/GameEvent');
-LongPressEvent=require('../Event/LongPressEvent');
-HintEvent=require('../Event/HintEvent');
+
 
 /**
  * This class create Instrucion Menu whcih should contain all Instructions that we will 
@@ -92,4 +89,4 @@ class InstructionMenu extends GameScene{
         this.addComponent(addiInstruction, -1);
     }
 }
-module.exports=InstructionMenu;
+

@@ -1,5 +1,4 @@
-Component=require('../Component');
-TextCell=require('./TextCell');
+
 
 /**
  *
@@ -166,4 +165,3 @@ class CodePanel extends Component {
 
     
 }
-module.exports=CodePanel;

@@ -1,4 +1,4 @@
-GameEvent=require('./GameEvent');
+
 /**
  * alert a hint when event happen
  *  
@@ -27,4 +27,3 @@ GameEvent=require('./GameEvent');
     }
 
 }
-module.exports=HintEvent;

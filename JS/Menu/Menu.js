@@ -1,11 +1,4 @@
-Button=require('../Button');
-GameEvent=require('../Event/GameEvent')
-GameScene=require('../GameScene');
-NewSenceEvents=require('../Event/NewSceneEvent');
-MenuBackGround=require('./MenuBackGround');
-MenuAnimation=require('./MenuAnimation');
-SelectChapterMenu=require('./SelectChapterMenu');
-Credit=require('../Menu/Credit');
+
 /**
  *
  *  strat menu of Game
@@ -57,4 +50,3 @@ class Menu extends GameScene {
 
 
 }
-module.exports=Menu;

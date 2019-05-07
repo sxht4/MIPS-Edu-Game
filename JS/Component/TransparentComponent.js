@@ -1,4 +1,4 @@
-Component=require('../Component');
+
 /**
  * a balck Transparent Component
  *
@@ -32,4 +32,3 @@ class TransparentComponent extends Component{
         CTX.fillRect(this.x,this.y, this.width, this.height);
     }
 } 
-module.exports=TransparentComponent;

@@ -1,5 +1,4 @@
-Loader=require('../Resource/Loader');
-Menu=require('./Menu/Menu');
+
 class Game {
     /**
      *Creates an instance of Game.
@@ -158,4 +157,3 @@ function longPressOver(event) {
   
    
 }
-module.exports=Game;

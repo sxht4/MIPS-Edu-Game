@@ -1,5 +1,5 @@
-Component=require('../Component');
-var GAME={speed:3};
+
+
 class InterpreterAnimation extends Component{
     constructor(){
         super('load animation',null,0,0,0,0,false);
@@ -39,4 +39,3 @@ class InterpreterAnimation extends Component{
     }
 
 }
-module.exports=InterpreterAnimation;

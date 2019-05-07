@@ -1,9 +1,4 @@
-MainScene=require('../MainScene');
-Dialogue=require('../Component/Dialogue');
-ChapterOneTest=require('./ChpaterOneTest');
-GoalEvent=require('../Event/GoalEvent');
-TransparentComponent=require('../Component/TransparentComponent');
-var GAME={width:480,height:320}
+
 /**
  * A tutorial chapter to tech the game
  * @class Tutorial

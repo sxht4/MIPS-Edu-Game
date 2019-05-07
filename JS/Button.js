@@ -1,5 +1,4 @@
-LongPressEvent=require('./Event/LongPressEvent');
-Component=require('./Component');
+
 /**
  *
  * button is a clickable component in game
@@ -135,4 +134,4 @@ class Button extends Component {
 
     }
 }
-module.exports=Button;
+

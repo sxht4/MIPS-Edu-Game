@@ -1,4 +1,4 @@
-Layer=require('./Layer');
+
 
 /**
  * 
@@ -111,4 +111,4 @@ class GameScene {
     
     
 }
-module.exports=GameScene;
+

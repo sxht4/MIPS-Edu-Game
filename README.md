@@ -34,7 +34,7 @@ Highlights:
 
 
 ### Game UI for sprint 3
-![UI](https://github.com/sxht4/MIPS-Edu-Game/blob/master/Assets/game_UI/UI_sprint3.jpg)
+![UI](https://github.com/sxht4/MIPS-Edu-Game/blob/master/Assets/game_UI/UI_sprint3.png)
 
 Version 2 (10th April 2019)
 
@@ -45,7 +45,7 @@ Highlights:
 * A more completed UI compared to the first sprint 
 
 ### Game UI for sprint 2
-![UI](https://github.com/sxht4/MIPS-Edu-Game/blob/master/Assets/game_UI/UI_sprint2.jpg)
+![UI](https://github.com/sxht4/MIPS-Edu-Game/blob/master/Assets/game_UI/UI_sprint2.png)
 
 Version 1 (5th March 2019)
 

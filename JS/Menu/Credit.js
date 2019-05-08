@@ -1,5 +1,4 @@
-Component = require('../Component');
-ReturnEvent=require('../Event/ReturnEvent');
+
 
 
 /**
@@ -45,4 +44,3 @@ class Credit extends GameScene {
     }
 } 
 
-module.exports=Credit;

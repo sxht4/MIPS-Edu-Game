@@ -1,4 +1,4 @@
-Checker=require('../Interpreter/Checker');
+
 /**
  * demo implement
  * check the result in tutorial chapter

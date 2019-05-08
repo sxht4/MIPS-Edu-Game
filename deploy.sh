@@ -2,7 +2,7 @@
 dt=$(date '+%d %h %Y %H:%M:%S');
 echo "INFO: Script started at $dt"
 # User configs must be done here!
-hostname="demo.hbai.me"
+hostname=""
 ssl=false
 # End of user configs
 

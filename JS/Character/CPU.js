@@ -1,5 +1,5 @@
 
-var Component=require('../Component');
+
 
 const CPU_CONST = { STATIC: 0, UP: 4, DOWN: 1, LEFT: 3, RIGHT: 2, START_MOVE: 5, CARRAY: -1 };
 /**
@@ -42,18 +42,15 @@ class CPU extends Component {
         this.destination.x = x;
         this.destination.y = y;
         this.state = CPU_CONST.START_MOVE;
-        // while (this.state != CPU_CONST.STATIC) {
-        //     await sleep(100 * this.animation_speed);
+        while (this.state != CPU_CONST.STATIC) {
+            await sleep(100 * this.animation_speed);
 
-        // }
+        }
 
 
             // await  this.sleep(10);
 
 
-    }
-    sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
 
@@ -203,5 +200,5 @@ class CPU extends Component {
 
 }   
 
-module.exports=CPU;
+
 

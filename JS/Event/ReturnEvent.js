@@ -14,4 +14,3 @@ class ReturnEvent{
         }
     }
 }
-module.exports=ReturnEvent;

@@ -1,4 +1,4 @@
-Component=require('../Component');
+
 /**
  * @class MenuAnimation
  * @extends {Component}
@@ -73,4 +73,3 @@ class MenuAnimation extends Component{
     }
 
 }
-module.exports=MenuAnimation;

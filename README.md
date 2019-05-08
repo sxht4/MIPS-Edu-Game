@@ -1,17 +1,16 @@
 # MIPS Educational Game for CSE442 semester-long project
 
-Purpose: A web-based game for teaching MIPS to its beginner.
-
+Purpose: A web-based game for teaching MIPS to its beginner, such as students in UB CSE341.
 
 Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
 Last updated on 08 May 2019
 
-Sprint 1 website: https://hbai.me/sprint1
+Sprint 1 deployed website: https://hbai.me/sprint1
 
-Sprint 2 website: https://hbai.me/sprint2
+Sprint 2 deployed website: https://hbai.me/sprint2
 
-Sprint 3 website: https://hbai.me/sprint3
+Sprint 3 deployed website: https://hbai.me/sprint3
 
 Trello board: https://hbai.me/trello
 
@@ -86,6 +85,4 @@ If you already setup your Apache or nginx, just extract our project into your `p
 
 MIT Licence
 
-Note for future CSE442 groups: You may build more functionalities on top of this project. You MUST not claim these work as your own, otherwise 
-
-you are violating academic integrity policy that is explained in your syllabus.
+Note for future CSE442 groups: You may build more functionalities on top of this project. You MUST not claim these work as your own, otherwise you are violating academic integrity policy that is explained in your syllabus.

@@ -69,7 +69,7 @@ class ChapterOne extends MainScene {
         this.cp.instructions = [''];
         this.r.getCellAt(0).setContent(4);
         this.r.getCellAt(1).setContent(5);
-        add.appendLine('\"Add\" instronction performs addition');
+        add.appendLine('\"Add\" instruction performs addition');
         add.appendLine('operation, and stores the result in a');
         add.appendLine('specific register. For example:');
         add.appendLine('If you want to compute t0 = t1 + t2,');

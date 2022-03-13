@@ -6,15 +6,11 @@ Authors: Hanzhang Bai, Sai Cao, Xiang Li, Tianyu Cao
 
 Last updated on 13 Mar 2022
 
-Sprint 1 deployed website: https://hbai.me/sprint1
-
-Sprint 2 deployed website: https://hbai.me/sprint2
-
-Sprint 3 deployed website: https://hbai.me/sprint3
+Deployed website: https://sxht4.github.io/MIPS-Edu-Game/
 
 Trello board: https://trello.com/b/NIahwqsH/cse442-mips-educational-game
 
-Presentation slide: https://hbai.me/442-ppt
+Presentation slide: https://sxht4.github.io/MIPS-Edu-Game/Assets/game_UI/presentation.pdf
 
 # Release Note
 
